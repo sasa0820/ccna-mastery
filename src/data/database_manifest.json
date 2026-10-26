@@ -1,0 +1,75 @@
+{
+  "totalIngestedFiles": 8,
+  "totalQuestions": 641,
+  "breakdown": {
+    "multipleChoice": 566,
+    "simulations": 75
+  },
+  "files": [
+    {
+      "fileName": "part11_c265ac26.pdf",
+      "part": "Part11",
+      "questionRange": "1 - 82",
+      "questionCount": 82,
+      "dataPath": "src/data/ccna_part11.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "part12_115faeb5.pdf",
+      "part": "Part12",
+      "questionRange": "1 - 114",
+      "questionCount": 114,
+      "dataPath": "src/data/ccna_part12.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "part13_e8406ce6.pdf",
+      "part": "Part13",
+      "questionRange": "1 - 102",
+      "questionCount": 102,
+      "dataPath": "src/data/ccna_part13.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "part14_3e9b8432.pdf",
+      "part": "Part14",
+      "questionRange": "1 - 106",
+      "questionCount": 106,
+      "dataPath": "src/data/ccna_part14.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "part15_8bd6d2d6.pdf",
+      "part": "Part15",
+      "questionRange": "1 - 84",
+      "questionCount": 84,
+      "dataPath": "src/data/ccna_part15.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "part16_ada55c2a.pdf",
+      "part": "Part16",
+      "questionRange": "1 - 78",
+      "questionCount": 78,
+      "dataPath": "src/data/ccna_part16.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "_______________7c4d45dc.pdf",
+      "part": "Simulation Part 1 (コマンド・シナリオ演習)",
+      "questionRange": "全11シナリオ / 37タスク",
+      "questionCount": 37,
+      "dataPath": "src/data/ccna_sim.json",
+      "status": "complete"
+    },
+    {
+      "fileName": "_________________aecbaf69.pdf",
+      "part": "Simulation Part 2 (高度シミュレーション・ラボ演習)",
+      "questionRange": "全27シナリオ / 38タスク",
+      "questionCount": 38,
+      "dataPath": "src/data/ccna_sim_part2.json",
+      "status": "complete"
+    }
+  ],
+  "lastUpdated": "2026-10-25T06:45:00Z"
+}

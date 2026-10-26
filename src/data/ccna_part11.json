@@ -1,0 +1,2828 @@
+{
+  "part": "Part11",
+  "sourceFile": "part11_c265ac26.pdf",
+  "totalQuestions": 82,
+  "questions": [
+    {
+      "id": "part11_q01",
+      "questionNumber": 1,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "Northbound API の機能は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ソフトウェアをアップグレードし、ファイルを復元します"
+        },
+        {
+          "id": "B",
+          "text": "グローバルなプロビジョニングと構成に依存します"
+        },
+        {
+          "id": "C",
+          "text": "構成の分散処理をサポートします"
+        },
+        {
+          "id": "D",
+          "text": "SDN コントローラーとネットワークアプリケーション間のパスを提供します"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊SDNアーキテクチャは、アプリケーション層（操作するソフト） － コントロール層（SDNコントローラー） － インフラストラクチャ層（NW機器たち）で構成される。SDNコントローラーより上位をNorth（北）、下位をSouth（南）と定義する。"
+    },
+    {
+      "id": "part11_q02",
+      "questionNumber": 2,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Access",
+      "questionText": "[ワイヤレス]ドラッグアンドドロップ\n各項目を「スプリットMAC」または「自律型」に分類してください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "作業はアクセスポイントとコントローラの間で分割されます"
+        },
+        {
+          "id": "2",
+          "text": "アクセスポイントはビーコンフレームを送信します"
+        },
+        {
+          "id": "3",
+          "text": "CAPWAPトンネリングプロトコルを使用します"
+        },
+        {
+          "id": "4",
+          "text": "中小企業環境に最適"
+        },
+        {
+          "id": "5",
+          "text": "デバイスごとの構成と管理をサポート"
+        }
+      ],
+      "correctAnswers": [
+        "スプリットMAC: 作業はアクセスポイントとコントローラの間で分割されます、アクセスポイントはビーコンフレームを送信します、CAPWAPトンネリングプロトコルを使用します",
+        "自律型: 中小企業環境に最適、デバイスごとの構成と管理をサポート"
+      ],
+      "explanation": "答え\nスプリットMAC\n・作業はアクセスポイントとコントローラの間で分割されます\n・アクセスポイントはビーコンフレームを送信します\n・CAPWAPトンネリングプロトコルを使用します\n自律型\n・中小企業環境に最適\n・デバイスごとの構成と管理をサポート\n\n＊スプリットMAC＝集中管理型（WLCで制御）のこと\n＊ビーコンフレーム（APが自身の存在を知らせる情報）は、自律型でも送信するため注意。"
+    },
+    {
+      "id": "part11_q03",
+      "questionNumber": 3,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Automation and Programmability",
+      "questionText": "[Ansible]ドラッグアンドドロップ\n各説明に対応するAnsibleの用語を正しく対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "YAMLで記述された自動化タスクの集合"
+        },
+        {
+          "id": "2",
+          "text": "対象デバイスを管理するAnsibleがインストールされたデバイス"
+        },
+        {
+          "id": "3",
+          "text": "コマンドを実行できるAnsibleがインストールされていないネットワークデバイス"
+        },
+        {
+          "id": "4",
+          "text": "1つ以上のターゲットデバイスに対して実行される特定のアクション"
+        },
+        {
+          "id": "5",
+          "text": "実行されるPythonコードの単位"
+        },
+        {
+          "id": "6",
+          "text": "コマンドとタスクを実行できるターゲットデバイスを定義する Ansible ファイル"
+        }
+      ],
+      "correctAnswers": [
+        "YAMLで記述された自動化タスクの集合：playbook",
+        "対象デバイスを管理するAnsibleがインストールされたデバイス：コントロールノード",
+        "コマンドを実行できるAnsibleがインストールされていないネットワークデバイス：マネージドノード",
+        "1つ以上のターゲットデバイスに対して実行される特定のアクション：モジュール",
+        "実行されるPythonコードの単位：タスク",
+        "コマンドとタスクを実行できるターゲットデバイスを定義する Ansible ファイル：インベントリ"
+      ],
+      "explanation": "答え\n・YAMLで記述された自動化タスクの集合：playbook\n・対象デバイスを管理するAnsibleがインストールされたデバイス：コントロールノード\n・コマンドを実行できるAnsibleがインストールされていないネットワークデバイス：マネージドノード\n・1つ以上のターゲットデバイスに対して実行される特定のアクション：モジュール\n・実行されるPythonコードの単位：タスク\n・コマンドとタスクを実行できるターゲットデバイスを定義する Ansible ファイル：インベントリ\n\n＊Ansible：RedHat社が買収したエージェントレスの構成管理ツール。Pythonで実装されている。\n＊管理する側「コントロールノード」、管理される側「マネージドノード」\n＊タスクがあって、その中にモジュールがある。"
+    },
+    {
+      "id": "part11_q04",
+      "questionNumber": 4,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "トラフィックシェーピングの目的は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "動的なフロー識別を可能にします"
+        },
+        {
+          "id": "B",
+          "text": "ポリシーベースのルーティングを可能にします"
+        },
+        {
+          "id": "C",
+          "text": "ベストエフォート型のサービスを提供します"
+        },
+        {
+          "id": "D",
+          "text": "帯域幅の使用を制限します"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊ポリシングは超過トラフィックをドロップ（廃棄）、シェーピングはバッファに貯めて遅延送信。"
+    },
+    {
+      "id": "part11_q05",
+      "questionNumber": 5,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Automation and Programmability",
+      "questionText": "[デバイス管理]ドラッグアンドドロップ\n各特徴を「Cisco DNA Center」または「従来型」に分類してください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "バックグラウンドデバイス構成の連携・自動化"
+        },
+        {
+          "id": "2",
+          "text": "集中型ソフトウェア管理のサポート"
+        },
+        {
+          "id": "3",
+          "text": "オープン API のサポート"
+        },
+        {
+          "id": "4",
+          "text": "デバイスごとの管理に依存"
+        },
+        {
+          "id": "5",
+          "text": "カスタムおよび非標準構成の柔軟性が高い"
+        },
+        {
+          "id": "6",
+          "text": "個別のソフトウェア管理を使用"
+        }
+      ],
+      "correctAnswers": [
+        "Cisco DNA Center: バックグラウンドデバイス構成の連携・自動化、集中型ソフトウェア管理のサポート、オープン API のサポート",
+        "従来型: デバイスごとの管理に依存、カスタムおよび非標準構成の柔軟性が高い、個別のソフトウェア管理を使用"
+      ],
+      "explanation": "答え\nCisco DNA Center\n・バックグラウンドデバイス構成の連携・自動化\n・集中型ソフトウェア管理のサポート\n・オープン API のサポート\n従来型\n・デバイスごとの管理に依存\n・カスタムおよび非標準構成の柔軟性が高い\n・個別のソフトウェア管理を使用\n\n＊Cisco Catalyst Center（旧称：DNA Center）は、有線・無線LANの自動化、監視、アシュアランスを提供するGUIベースの管理ツールです。一元管理か個別管理か？ということ。"
+    },
+    {
+      "id": "part11_q06",
+      "questionNumber": 6,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "自律 AP が 2つのVLAN を WLAN にマッピングする場合、有線ネットワークへの接続に使用されるポートのタイプはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "LAG"
+        },
+        {
+          "id": "B",
+          "text": "EtherChannel"
+        },
+        {
+          "id": "C",
+          "text": "trunk"
+        },
+        {
+          "id": "D",
+          "text": "access"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊自律型AP：AP自身がVLANをタグ付けして処理するため、スイッチ側はトランクモードにする。集中管理型AP（Lightweight AP）：WLCがタグ付けするため、アクセスモードにする。"
+    },
+    {
+      "id": "part11_q07",
+      "questionNumber": 7,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "ネットワーク上の代替ルータとしてR2 を設定しています。初期設定を適用した後、R2 が R1 をネイバーとして表示できなかったことが判明しました。OSPF 設定を完了し、R1 とのネイバー関係を確立できるようにするには、R2 にどの設定を適用しますか。",
+      "diagramDescription": "R1とR2の間でOSPFインターフェース設定（show ip ospf interface g0/0/0）を確認したところ、タイマー値に不一致が生じている。\nR1側: Hello 15, Dead 20, Wait 20, Retransmit 5\nR2側: Hello 10, Dead 40, Wait 40, Retransmit 5",
+      "commandOutputs": "R1#show ip ospf interface g0/0/0\nGigabitEthernet0/0/0 is up, line protocol is up\nInternet address is 192.168.1.2/24, Area 0\nProcess ID 1, Router ID 192.168.1.2, Network Type POINT-TO-POINT, Cost: 1\nTransmit Delay is 1 sec, State POINT-TO-POINT,\nTimer intervals configured, Hello 15, Dead 20, Wait 20, Retransmit 5\nHello due in 00:00:08\nIndex 1/1, flood queue length 0\nNext 0x0(0) /0x0(0)\nLast flood scan length is 1, maximum is 1\nLast flood scan time is 0 msec, maximum is 0 msec\nSuppress hello for 0 neighbor(s)\n\nR2#show ip ospf interface g0/0/0\nGigabitEthernet0/0/0 is up, line protocol is up\nInternet address is 192.168.1.1/24, Area 0\nProcess ID 1, Router ID 10.1.1.1, Network Type POINT-TO-POINT, Cost: 1\nTransmit Delay is 1 sec, State POINT-TO-POINT,\nTimer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5\nHello due in 00:00:11\nIndex 1/1, flood queue length 0\nNext 0x0(0)/0x0(0)\nLast flood scan length is 1, maximum is 1\nLast flood scan time is 0 msec, maximum is 0 msec\nSuppress hello for 0 neighbor(s)",
+      "options": [
+        {
+          "id": "A",
+          "text": "R2(config)#interface g0/0/0\nR2(config-if)#ip ospf hello-interval 15\nR2(config-if)#ip ospf dead-interval 20"
+        },
+        {
+          "id": "B",
+          "text": "R2(config)#router ospf 1\nR2(config-router)#router-id 192.168.1.2"
+        },
+        {
+          "id": "C",
+          "text": "R2(config)#router ospf 1\nR2(config-router)#network 192.168.1.0 255.255.255.0 area 2\nR2(config-router)#network 10.1.1.0 255.255.255.255 area 2"
+        },
+        {
+          "id": "D",
+          "text": "R2(config)#interface g0/0/0\nR2(config-if)#ip ospf dead-interval 20"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊Hello/Dead のインターバル（秒数）を合わせる"
+    },
+    {
+      "id": "part11_q08",
+      "questionNumber": 8,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "コラブスドコアネットワークトポロジの特徴は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "コア層とディストリビューション層を 1 つの結合層として実行できます。"
+        },
+        {
+          "id": "B",
+          "text": "コア層とアクセス層を EtherChannel 経由で 1 つの論理ディストリビューション デバイスに接続できます。"
+        },
+        {
+          "id": "C",
+          "text": "SOHO 環境内のすべてのワークステーションをインターネット アクセスのある単一のスイッチに接続できます。"
+        },
+        {
+          "id": "D",
+          "text": "ワイヤレス デバイスをコア層に直接接続できるため、データ転送が高速化されます。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊コラブスドコアネットワーク：3階層モデル（アクセス・ディストリビューション・コア）を2階層に簡略化した設計。コラブスドコア＝\"崩壊したコア\"＝コア層が無い＝ディストリビューションのスイッチがコアスイッチを担う となる。"
+    },
+    {
+      "id": "part11_q09",
+      "questionNumber": 9,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "ネットワーク上のさまざまなデバイスに異なるレベルの syslog を構成する目的は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "各デバイスからの異なる重大度レベルのメッセージのレート制限を行う"
+        },
+        {
+          "id": "B",
+          "text": "各デバイスからの syslog メッセージの重大度を設定する"
+        },
+        {
+          "id": "C",
+          "text": "各 syslog メッセージの発信元を識別する"
+        },
+        {
+          "id": "D",
+          "text": "ローカルに保存されるさまざまなデバイスからの syslog メッセージの数を制御する"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊0「emergencies＝緊急」～7「debugging＝デバッグ」まで8レベルある。\n＊ログ量削減（ストレージ節約）、運用者のログ解析時間の短縮といったメリットがある。"
+    },
+    {
+      "id": "part11_q10",
+      "questionNumber": 10,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "コントローラ上のプログラムとネットワークデバイス上のプログラム間の通信を可能にするインターフェイスはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ノースバウンドインターフェース"
+        },
+        {
+          "id": "B",
+          "text": "ソフトウェア仮想インターフェース"
+        },
+        {
+          "id": "C",
+          "text": "サウスバウンドインターフェース"
+        },
+        {
+          "id": "D",
+          "text": "トンネルインターフェース"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊問1参照。アプリ→コントローラ→デバイスという構成において、上(北)はノース、下(南)はサウス。"
+    },
+    {
+      "id": "part11_q11",
+      "questionNumber": 11,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Automation and Programmability",
+      "questionText": "[HTTP メソッド]ドラッグアンドドロップ\n各操作に対応するHTTPメソッドを対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "サーバー上にリソースを作成する"
+        },
+        {
+          "id": "2",
+          "text": "サーバーからデータを読み込む"
+        },
+        {
+          "id": "3",
+          "text": "サーバーからリソースを削除する"
+        },
+        {
+          "id": "4",
+          "text": "データベースのエントリを更新する"
+        }
+      ],
+      "correctAnswers": [
+        "サーバー上にリソースを作成する：POST",
+        "サーバーからデータを読み込む：GET",
+        "サーバーからリソースを削除する：DELETE",
+        "データベースのエントリを更新する：PUT"
+      ],
+      "explanation": "答え\n・サーバー上にリソースを作成する：POST\n・サーバーからデータを読み込む：GET\n・サーバーからリソースを削除する：DELETE\n・データベースのエントリを更新する：PUT\n\n＊CRUD（データベースの基本操作）と対比されるため、併せて覚えると良い。CRUD：作成（Create）、読み込み（Read）、更新（Update）、削除（Delete）。"
+    },
+    {
+      "id": "part11_q12",
+      "questionNumber": 12,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "プライベート アドレス空間の主な目的は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "グローバルに一意なアドレス空間を節約する"
+        },
+        {
+          "id": "B",
+          "text": "ネットワーク内のアドレス指定を簡素化する"
+        },
+        {
+          "id": "C",
+          "text": "インターネット経由で到達可能なノードの数を制限する"
+        },
+        {
+          "id": "D",
+          "text": "ネットワークの複雑さを軽減する"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊プライベート アドレス空間：プライベートIPアドレスのこと。グローバルIPの節約（不足対策）や、セキュリティ強化（外からプライベートIPには攻撃できない）。"
+    },
+    {
+      "id": "part11_q13",
+      "questionNumber": 13,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "WLCのディストリビューションポートに接続するスイッチのポートをトランクモードに設定する理由は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "データパスのリンク障害による冗長性を排除するため"
+        },
+        {
+          "id": "B",
+          "text": "データパスで複数の VLAN を使用できるようにするため"
+        },
+        {
+          "id": "C",
+          "text": "アウトオブバンド管理のリンク障害が発生した場合に冗長性を提供するため"
+        },
+        {
+          "id": "D",
+          "text": "複数の VLAN がアウトオブバンド管理を提供できるようにするため"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊まず、AP→WLC→スイッチという構成を想像する。問6と考え方は同じで、VLANタグが付与されたトラフィックを受け取る方は、トランクモードにする必要がある。なお、ディストリビューションポートとは通常のデータトラフィックが流れる（を扱う）ポートのこと。"
+    },
+    {
+      "id": "part11_q14",
+      "questionNumber": 14,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "R1から10.10.2.1へのトラフィックはR3経由、それ以外の10.10.2.0/24へのトラフィックはR2経由でルーティングするには、R1でどのコマンドを使いますか。",
+      "diagramDescription": "【図のトポロジ構成】\n・ルータR1、R2、R3およびPC2台が存在する。\n・R1からR2およびR3への接続ネットワークは 192.168.1.0/24。\n  - R2の接続側IP: .2 (192.168.1.2)\n  - R3の接続側IP: .4 (192.168.1.4)\n・R2とR3の後方に宛先ネットワーク 10.10.2.0/24 が存在し、PCが接続されている。\n  - 宛先端末として PC .1 (10.10.2.1) と PC .2 (10.10.2.2) がある。",
+      "commandOutputs": "R1#show ip route 10.10.2.1\nRouting entry for 10.10.2.0/24\nKnown via \"ospf 1\", distance 110, metric 2, type intra area\n\nLast update from 192.168.1.2 on GigabitEthernet0/0, 01:33:22 ago\nRouting Descriptor Blocks:\n * 192.168.1.2, from 192.168.1.2, 01:33:15 ago, via GigabitEthernet0/0\n   Route metric is 2, traffic share count is 1",
+      "options": [
+        {
+          "id": "A",
+          "text": "ip route 10.10.2.1 255.255.255.255 192.168.1.4 115"
+        },
+        {
+          "id": "B",
+          "text": "ip route 10.10.2.0 255.255.255.0 192.168.1.4 100"
+        },
+        {
+          "id": "C",
+          "text": "ip route 10.10.2.0 255.255.255.0 192.168.1.4 115"
+        },
+        {
+          "id": "D",
+          "text": "ip route 10.10.2.1 255.255.255.255 192.168.1.4 100"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊宛先から考えて、選択肢AやDが候補になります。最後の115や110はAD値です。\n＊showコマンドの上段は、「10.10.2.0/24宛ては OSPFを使用し、AD値は110。」ということを示しています。AD値が小さい方が優先されますので、2.1宛てのみAD値を110未満にします。"
+    },
+    {
+      "id": "part11_q15",
+      "questionNumber": 15,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "WPA2標準でワイヤレス暗号化に使用されるのはどれか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "AES256"
+        },
+        {
+          "id": "B",
+          "text": "AES"
+        },
+        {
+          "id": "C",
+          "text": "RC4"
+        },
+        {
+          "id": "D",
+          "text": "SHA"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊WPA2やWPA3では暗号化アルゴリズムとしてAESが使用される。\n＊よく、\"AES/CCMP\"や\"AES(CCMP)\"と表記されることがあるが、CCMPはAESを使用した暗号化方式である。微妙に異なるが同義と扱ってしまってよい。"
+    },
+    {
+      "id": "part11_q16",
+      "questionNumber": 16,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "ホストIPアドレス 192.168.10.5 に最も長くプレフィックスが一致するのはどれですか。\n1  192.168.10.0 255.255.254.0\n2  192.168.10.0 255.255.255.192\n3  192.168.10.0 255.255.0.0\n4  192.168.10.0 255.255.224.0",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "1"
+        },
+        {
+          "id": "B",
+          "text": "2"
+        },
+        {
+          "id": "C",
+          "text": "3"
+        },
+        {
+          "id": "D",
+          "text": "4"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊「255.255.255」となっている時点で2"
+    },
+    {
+      "id": "part11_q17",
+      "questionNumber": 17,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "SNMPv2で導入された機能のうち、1回のリクエストで大量のデータを取得できるものはどれか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Get"
+        },
+        {
+          "id": "B",
+          "text": "GetNext"
+        },
+        {
+          "id": "C",
+          "text": "Set"
+        },
+        {
+          "id": "D",
+          "text": "GetBulk"
+        },
+        {
+          "id": "E",
+          "text": "Inform"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊Splunkなどのネットワーク監視ツールで\"GetBulk\"というリクエストを使います。"
+    },
+    {
+      "id": "part11_q18",
+      "questionNumber": 18,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "172.18.32.38が宛先であるとき、ルータはパケットをどこに転送しますか。",
+      "diagramDescription": null,
+      "commandOutputs": "router# show ip route\n...\nD 172.18.32.0/26 [90/25789217] via 10.1.1.1\nR 172.18.32.0/24 [120/4] via 10.1.1.2\nO 172.18.32.0/19 [110/229840] via 10.1.1.3\nC 172.18.32.32/32 is directly connected, Loopback0\nC 172.18.32.36/30 directly connected, GigabitEthernet0/0\nL 172.18.32.37/32 is directly connected, GigabitEthernet0/0",
+      "options": [
+        {
+          "id": "A",
+          "text": "GigabitEthernet0/0"
+        },
+        {
+          "id": "B",
+          "text": "Loopback0"
+        },
+        {
+          "id": "C",
+          "text": "10.1.1.1"
+        },
+        {
+          "id": "D",
+          "text": "10.1.1.3"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊ロンゲストマッチの観点から、「C 172.18.32.36/30」が選ばれる。"
+    },
+    {
+      "id": "part11_q19",
+      "questionNumber": 19,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "IP Connectivity",
+      "questionText": "次の事象が起きたとき、どのプロトコルが使用されますか。\n\n事象：\n1 スタティックルートとEIGRPがダウンする\n2 スタティックルートとOSPFがダウンする\n3 スタティックルートとeBGPがダウンする\n4 すべてのプロトコルが稼働中\n5 OSPFとeBGPがダウンする\n\n選択肢プロトコル：\n・eBGP\n・EIGRP\n・スタティックルート",
+      "diagramDescription": "【図のトポロジ構成】\nルータから宛先ネットワーク 10.10.10.0/24 に向けて、以下の5つのルーティングプロトコルが存在している：\n・OSPF\n・eBGP\n・Static\n・EIGRP\n・iBGP",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "1 スタティックルートとEIGRPがダウンする"
+        },
+        {
+          "id": "2",
+          "text": "2 スタティックルートとOSPFがダウンする"
+        },
+        {
+          "id": "3",
+          "text": "3 スタティックルートとeBGPがダウンする"
+        },
+        {
+          "id": "4",
+          "text": "4 すべてのプロトコルが稼働中"
+        },
+        {
+          "id": "5",
+          "text": "5 OSPFとeBGPがダウンする"
+        }
+      ],
+      "correctAnswers": [
+        "1,2 → eBGP",
+        "3 → EIGRP",
+        "4,5 → スタティックルート"
+      ],
+      "explanation": "答え\n1,2 → eBGP\n3 → EIGRP\n4,5 → スタティックルート\n\n＊5つのルーティングプロトコルがある。ダウンしていない（使用できる）プロトコルのうち、最も小さなAD値のプロトコルを選ぶ。\n＊スタティック1、eBGP20、EIGRP90、OSPF110、iBGP200\n＊例）1）1や90がNGなので、20が使用される。"
+    },
+    {
+      "id": "part11_q20",
+      "questionNumber": 20,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "新しく設定された PC が、TCP ポート 80 を使用して www.cisco.com にインターネット接続できません。接続を機能させるには、どの設定を変更しますか。",
+      "diagramDescription": "【図のトポロジ構成】\nインターネット ── R1 (10.2.2.1/27) ── スイッチ ── PC (10.2.2.2)",
+      "commandOutputs": "C:\\>ipconfig /all\nEthernet adapter Ethernet:\n  Connection-specific DNS Suffix .:\n  Physical Address........: F8-75-A4-3B-AB-4F\n  Link-local IPv6 Address.....: fe80::644a:b01:3e5f:ae6%14(Preferred)\n  IPv4 Address........: 10.2.2.2(Preferred)\n  Subnet Mask.........: 255.255.255.192\n  Default Gateway.....: 10.2.2.1\n  DHCP Server.........: 192.168.1.15\n  DNS Servers.........: 8.8.8.8\n  NetBIOS over Tcpip........: Enabled",
+      "options": [
+        {
+          "id": "A",
+          "text": "サブネットマスク"
+        },
+        {
+          "id": "B",
+          "text": "DNSサーバー"
+        },
+        {
+          "id": "C",
+          "text": "デフォルトゲートウェイ"
+        },
+        {
+          "id": "D",
+          "text": "DHCPサーバー"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊図の「/27」とSubnet Mask が一致していないことが原因。/27にするのであれば、サブネットマスクは、255.255.255.224 が正しい。"
+    },
+    {
+      "id": "part11_q21",
+      "questionNumber": 21,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "宛先 MAC アドレスが MAC アドレス テーブルに存在しないフレームを受信した場合、スイッチはどのような処理を行いますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "受信VLAN 内の残りのすべてのポートにフレームを変更せずにフラッディングします。"
+        },
+        {
+          "id": "B",
+          "text": "MAC の静的エントリをテーブルに追加し、ポートをシャットダウンします。"
+        },
+        {
+          "id": "C",
+          "text": "フレームの宛先 MAC アドレスで CAM テーブルを更新します。"
+        },
+        {
+          "id": "D",
+          "text": "フレームのチェックサムを無効なフレームを示す値に変更します。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊フラッディングの基本動作。"
+    },
+    {
+      "id": "part11_q22",
+      "questionNumber": 22,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "WPA3 ではどのような機能強化が実装されていますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "802.1x 認証を適用する"
+        },
+        {
+          "id": "B",
+          "text": "TKIP を使用する"
+        },
+        {
+          "id": "C",
+          "text": "アクセス ポイントを識別するために PKI を使用する"
+        },
+        {
+          "id": "D",
+          "text": "ブルートフォース攻撃から保護する"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊WPA3で使用する認証方式「SAE」は、ログインに失敗すると一定時間待機させるという仕組みである。ブルートフォース攻撃（総当たり攻撃）や辞書攻撃に強い。"
+    },
+    {
+      "id": "part11_q23",
+      "questionNumber": 23,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "HSRPでルータによって共有され、サブネット上のホストによってデフォルト ゲートウェイ アドレスとして使用されるアドレスのタイプはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "マルチキャストアドレス"
+        },
+        {
+          "id": "B",
+          "text": "ループバック IP アドレス"
+        },
+        {
+          "id": "C",
+          "text": "仮想 IP アドレス"
+        },
+        {
+          "id": "D",
+          "text": "ブロードキャストアドレス"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊HSRP (Hot Standby Router Protocol) では、複数のルータが1つの仮想ルータとして動作します。同じIPアドレスを使用します。"
+    },
+    {
+      "id": "part11_q24",
+      "questionNumber": 24,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "multiple_choice",
+      "category": "Network Access",
+      "questionText": "スイッチでフレームフラッディングが発生する理由は何ですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "スイッチポートに不良パッチケーブルが接続されている"
+        },
+        {
+          "id": "B",
+          "text": "スパニングツリー内でトポロジの変更が発生している"
+        },
+        {
+          "id": "C",
+          "text": "古い MAC テーブルエントリによって過剰な更新が発生している"
+        },
+        {
+          "id": "D",
+          "text": "ポートセキュリティがグローバルに設定されている"
+        },
+        {
+          "id": "E",
+          "text": "転送テーブルがオーバーフローしている"
+        }
+      ],
+      "correctAnswers": [
+        "B",
+        "E"
+      ],
+      "explanation": "＊B. トポロジ変更が発生すると、スイッチはMACアドレステーブルをクリアします。MACアドレスを再学習するまでの間、宛先が不明なフレームはフラッディングされます。\n＊E. MACアドレスがテーブルに収まりきらないとき"
+    },
+    {
+      "id": "part11_q25",
+      "questionNumber": 25,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "HTTPS などの広範なエラーチェックを必要とするアプリケーションでは、UDP よりも TCP が望ましいのはなぜですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "UDPは確認応答なしで動作し、TCPは受信したパケットごとに確認応答を送信する。"
+        },
+        {
+          "id": "B",
+          "text": "UDPはすべてのパケットの配信を確実に保証し、TCPは負荷が高い場合にパケットをドロップする。"
+        },
+        {
+          "id": "C",
+          "text": "UDPはパケットの配信にフロー制御を使用し、TCPは効率的なパケット配信のために輻輳制御を使用する。"
+        },
+        {
+          "id": "D",
+          "text": "UDPはパケットが順番に到着するようにシーケンス データを使用するが、TCPはパケットをランダムな順序で受信する機能を提供する。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊なぜTCPを使用するのか？→信頼性を確保するため"
+    },
+    {
+      "id": "part11_q26",
+      "questionNumber": 26,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "セキュリティを強化するために、組織はデータ センターへのアクセスを制限するバッジ認証を実装します。セキュリティプログラムの要素はどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ユーザートレーニング"
+        },
+        {
+          "id": "B",
+          "text": "ユーザーの意識"
+        },
+        {
+          "id": "C",
+          "text": "脆弱性の検証"
+        },
+        {
+          "id": "D",
+          "text": "物理的なアクセス制御"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊“バッジ認証”が分かりにくいが、出入りを制御する→物理的なアクセス制御"
+    },
+    {
+      "id": "part11_q27",
+      "questionNumber": 27,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Security Fundamentals",
+      "questionText": "[AAA] ドラッグアンドドロップ\n各操作を「認可」または「アカウンティング」に分類してください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "FTPサーバーなどのネットワーク資産へのアクセスを許可します"
+        },
+        {
+          "id": "2",
+          "text": "ユーザーが実行できるCLIコマンドを制限します"
+        },
+        {
+          "id": "3",
+          "text": "各接続の継続時間を記録"
+        },
+        {
+          "id": "4",
+          "text": "ユーザーアクセスレポートをサポート"
+        }
+      ],
+      "correctAnswers": [
+        "認可: FTPサーバーなどのネットワーク資産へのアクセスを許可します、ユーザーが実行できるCLIコマンドを制限します",
+        "アカウンティング: 各接続の継続時間を記録、ユーザーアクセスレポートをサポート"
+      ],
+      "explanation": "答え\n認可\n・FTPサーバーなどのネットワーク資産へのアクセスを許可します\n・ユーザーが実行できるCLIコマンドを制限します\nアカウンティング\n・各接続の継続時間を記録\n・ユーザーアクセスレポートをサポート\n\n＊AAA：認証（ログイン制御）、認可（できることを制御）、アカウンティング（記録）"
+    },
+    {
+      "id": "part11_q28",
+      "questionNumber": 28,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "192.168.32.0/24を、より小さなネットワークにサブネット化します。次の要件を満たすとき、インターフェースにはどの構成を適用しますか。\n・8つの新しいサブネットを作成する\n・各サブネットは 30 台のホストを収容する\n・最初の新しいサブネットで最後に使用可能な IP を使用する\n・レイヤー3 インターフェイスを使用する",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "no switchport mode access\nip address 192.168.32.62 255.255.255.240"
+        },
+        {
+          "id": "B",
+          "text": "switchport\nip address 192.168.32.65 255.255.255.240"
+        },
+        {
+          "id": "C",
+          "text": "no switchport mode trunk\nip address 192.168.32.97 255.255.255.224"
+        },
+        {
+          "id": "D",
+          "text": "no switchport\nip address 192.168.32.30 255.255.255.224"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊\"8つのサブネット\"\"30台のホスト\"：NW部3ビット＋ホスト部5ビット。CやDが候補となる。\n＊\"最後に使用可能な IP\"：全て1はブロードキャストアドレスなのでNG。11110のこと。30。\n＊\"レイヤー3 インターフェイスを使用する\"：「no switchport」"
+    },
+    {
+      "id": "part11_q29",
+      "questionNumber": 29,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "JSON オブジェクトの数はいくつですか。",
+      "diagramDescription": null,
+      "commandOutputs": "{\n  \"SW1\": [\"Ten-GigabitEthernet0/0\", \"Ten-GigabitEthernet0/1\"],\n  \"SW2\": [\"Ten-GigabitEthernet0/0\", \"Ten-GigabitEthernet0/1\"],\n  \"SW3\": [\"Ten-GigabitEthernet0/0\", \"Ten-GigabitEthernet0/1\"],\n  \"SW4\": [\"Ten-GigabitEthernet0/0\", \"Ten-GigabitEthernet0/1\"]\n}",
+      "options": [
+        {
+          "id": "A",
+          "text": "1"
+        },
+        {
+          "id": "B",
+          "text": "2"
+        },
+        {
+          "id": "C",
+          "text": "3"
+        },
+        {
+          "id": "D",
+          "text": "4"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊\"key\":\"値\"、オブジェクト{}、配列[]"
+    },
+    {
+      "id": "part11_q30",
+      "questionNumber": 30,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "SW2のGe0/0-1がダウンしたときに、SW1とSW2間のポートチャネル1を無効にします。どの設定をスイッチに適用しますか。",
+      "diagramDescription": "【図のトポロジ構成】\nPC1 ── SW1 ── SW2 ── Server\nSW1とSW2の間は LACP Port Channel 1 で接続されている（リンクは Ge0/0, Ge0/1, Ge0/2 の3本）。\nSW1とSW2はそれぞれ下位の SW3 とも三角形トポロジで接続されている。",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "SW2#configure terminal\nSW2(config)# interface port-channel 1\nSW2(config-if)#lacp port-priority 32000"
+        },
+        {
+          "id": "B",
+          "text": "SW2#configure terminal\nSW2(config)#interface port-channel 1\nSW2(config-if)#lacp max-bundle 2"
+        },
+        {
+          "id": "C",
+          "text": "SW2#configure terminal\nSW2(config)#lacp system-priority 32000"
+        },
+        {
+          "id": "D",
+          "text": "SW2#configure terminal\nSW2(config)#interface port-channel 1\nSW2(config-if)#port-channel min-links 2"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊\"min-links\" は、ポートチャネルを構成するのに必要な最少リンク数です。\"2\"を満たさなくなったとき、SW1～SW2間はトラフィックを転送せず、SW3経路で転送することになる。"
+    },
+    {
+      "id": "part11_q31",
+      "questionNumber": 31,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "文書記述用アドレスプレフィックスはどれか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "FF00::1/12"
+        },
+        {
+          "id": "B",
+          "text": "2001:db8::/32"
+        },
+        {
+          "id": "C",
+          "text": "2002:db84:3f37:ca98:be05:8/64"
+        },
+        {
+          "id": "D",
+          "text": "FE80::1/10"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊【丸暗記】教育やマニュアル作成用であり、実際の通信で使用してはいけない。"
+    },
+    {
+      "id": "part11_q32",
+      "questionNumber": 32,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "R19 のパフォーマンスが低下する原因は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "R19#show int fa0/0\nFastEthernet0/0 is up, line protocol is up\nHardware is DEC21140, address is ca02.7788.0000 (bia ca02.7788.0000)\nDescription: SALES_SUBNET\nInternet address is 10.32.102.2/30\nMTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,\nreliability 255/255, txload 1/255, rxload 1/255\nEncapsulation ARPA, loopback not set\nKeepalive set (60 sec)\nFull-duplex, 100Mb/s, 100BaseTX/FX\nARP type: ARPA, ARP Timeout 04:00:00\nLast input 00:00:01, output 00:00:00, output hang never\nLast clearing of \"show interface\" counters never\nInput queue: 0/300/0/0 (size/max/drops/flushes); Total output drops: 135298429\nQueueing strategy: fifo\nOutput queue: 0/300 (size/max)\n30 second input rate 0 bits/sec, 0 packets/sec\n30 second output rate 0 bits/sec, 0 packets/sec\n73310 packets input, 7101162 bytes\nReceived 73115 broadcasts (0 IP multicasts)\n0 runts, 0 giants, 0 throttles\n0 input errors, 4 CRC, 0 frame, 0 overrun, 0 ignored\n0 watchdog\n0 input packets with dribble condition detected\n3927513096455 packets output, 14404034810952 bytes, 0 underruns\n0 output errors, 11 collisions, 0 interface resets",
+      "options": [
+        {
+          "id": "A",
+          "text": "過度の衝突"
+        },
+        {
+          "id": "B",
+          "text": "速度とデュプレックスの不一致"
+        },
+        {
+          "id": "C",
+          "text": "ポートのオーバーサブスクリプション"
+        },
+        {
+          "id": "D",
+          "text": "過度の CRC エラー"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊アウトプットのときに帯域不足でドロップしてしまっていると考えられる。4 CRCや11 collisionsも気になるが、\"過度\"(選択肢A)とは言えない。"
+    },
+    {
+      "id": "part11_q33",
+      "questionNumber": 33,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "VoIP 電話機が接続されたスイッチポートで、音声VLAN 4 のMAC アドレス abcd.abcd.abcd を使用してポートセキュリティを設定するコマンドはどれか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "switchport port-security mac-address abcd.abcd.abcd"
+        },
+        {
+          "id": "B",
+          "text": "switchport port-security mac-address abcd.abcd.abcd vlan 4"
+        },
+        {
+          "id": "C",
+          "text": "switchport port-security mac-address sticky abcd.abcd.abcd vlan 4"
+        },
+        {
+          "id": "D",
+          "text": "switchport port-security mac-address abcd.abcd.abcd vlan voice"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊許可するMACアドレスの設定。通常はA、音声VLANのときはD。"
+    },
+    {
+      "id": "part11_q34",
+      "questionNumber": 34,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "IP Services",
+      "questionText": "[DNSコマンド]ドラッグアンドドロップ\n各操作に対応するDNS設定コマンドを対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "ホストから IP アドレスへの変換を有効にします"
+        },
+        {
+          "id": "2",
+          "text": "ホストテーブルにエントリを追加します"
+        },
+        {
+          "id": "3",
+          "text": "アドレスマッピング情報を表示します"
+        },
+        {
+          "id": "4",
+          "text": "DNS サーバーの IP アドレスを指定します"
+        },
+        {
+          "id": "5",
+          "text": "不完全なホスト名にドメイン名を補完します"
+        }
+      ],
+      "correctAnswers": [
+        "ホストから IP アドレスへの変換を有効にします: ip domain lookup",
+        "ホストテーブルにエントリを追加します: ip host switch_1 192.168.0.1",
+        "アドレスマッピング情報を表示します: show hosts",
+        "DNS サーバーの IP アドレスを指定します: ip name-server",
+        "不完全なホスト名にドメイン名を補完します：ip domain name"
+      ],
+      "explanation": "答え\n・ホストから IP アドレスへの変換を有効にします: ip domain lookup\n・ホストテーブルにエントリを追加します: ip host switch_1 192.168.0.1\n・アドレスマッピング情報を表示します: show hosts\n・DNS サーバーの IP アドレスを指定します: ip name-server\n・不完全なホスト名にドメイン名を補完します：ip domain name\n\n＊ip domain name：ホスト名だけを指定したときでも、自動的にドメイン名を補完してくれる"
+    },
+    {
+      "id": "part11_q35",
+      "questionNumber": 35,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "暗号化によってワイヤレス ネットワークはどのように保護されますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "フレーム内の改ざんを検出するための整合性チェック"
+        },
+        {
+          "id": "B",
+          "text": "ゼロデイネットワーク攻撃を検出して防止するための特殊な暗号方式"
+        },
+        {
+          "id": "C",
+          "text": "アクセスポイントとクライアントのみが理解できるようにデータを暗号化するアルゴリズム"
+        },
+        {
+          "id": "D",
+          "text": "権限のないユーザーがネットワークにアクセスすることを防ぐポリシー"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊暗号化の主な目的は、データを第三者に読めない形に変換することです。"
+    },
+    {
+      "id": "part11_q36",
+      "questionNumber": 36,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "独自のセキュリティポリシーを持つ個別のゾーンにネットワークを分離するデバイスはどれか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "IPS"
+        },
+        {
+          "id": "B",
+          "text": "ファイアウォール"
+        },
+        {
+          "id": "C",
+          "text": "アクセスポイント"
+        },
+        {
+          "id": "D",
+          "text": "スイッチ"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊\"個別のゾーン\"：内部/外部/DMZ"
+    },
+    {
+      "id": "part11_q37",
+      "questionNumber": 37,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "SSID の仕様はどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Cisco 独自のセキュリティ機能です"
+        },
+        {
+          "id": "B",
+          "text": "1つの数字と1つの文字を含める必要があります"
+        },
+        {
+          "id": "C",
+          "text": "スイッチ上の VLAN を定義します"
+        },
+        {
+          "id": "D",
+          "text": "大文字と小文字が区別されます"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊ちなみに本問は「ESSID」の説明。BSSIDはMACアドレスのこと。"
+    },
+    {
+      "id": "part11_q38",
+      "questionNumber": 38,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "SW2を新しいCisco スイッチ NewSW に置き換えます。NewSWにどの構成を適用しますか。\n\n要件：\n＊SW1 および SW2 は、トランクポートをサポートしていないサードパーティ製デバイスです\n＊PC1、PC2、および PC3 間の既存の接続を維持します\n＊スイッチが将来の VLAN 10 からのトラフィックを通過できるようにします",
+      "diagramDescription": "【図のトポロジ構成】\n・左側: PC1 (Vlan 2) がスイッチ SW1 に接続。SW1の対向インターフェースは f0/0。\n・SW1とSW2が f0/0 同士で接続されている。\n・右側: SW2 に PC2 (Vlan 2) と PC3 (Vlan 2) が接続されている。\n・新しく追加される New Vlan 10 のPCが SW1側と NewSW側にそれぞれ存在。\n・SW2 から NewSW へのリプレース矢印がある。NewSWのポートは f0/0。\n・SW1の show interface 結果: FastEthernet0/0 は switchport access vlan 2 / switchport mode access",
+      "commandOutputs": "SW1#show interface\ninterface FastEthernet0/0\nswitchport access vlan 2\nswitchport mode access",
+      "options": [
+        {
+          "id": "A",
+          "text": "NewSW(config)#interface f0/0\nNewSW(config-if)#switchport mode trunk\nNewSW(config-if)#switchport trunk allowed vlan 2,10\nNewSW(config-if)#switchport trunk native vlan 2"
+        },
+        {
+          "id": "B",
+          "text": "NewSW(config)#interface f0/0\nNewSW(config-if)#switchport mode trunk\nNewSW(config-if)#switchport trunk allowed vlan 10\nNewSW(config-if)#switchport trunk native vlan 10"
+        },
+        {
+          "id": "C",
+          "text": "NewSW(config)#interface f0/0\nNewSW(config-if)#switchport mode access\nNewSW(config-if)#switchport trunk allowed vlan 2,10\nNewSW(config-if)#switchport trunk native vlan 10"
+        },
+        {
+          "id": "D",
+          "text": "NewSW(config)#interface f0/0\nNewSW(config-if)#switchport mode access\nNewSW(config-if)#switchport trunk allowed vlan 2,10\nNewSW(config-if)#switchport trunk native vlan 2"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊サードパーティのスイッチやデバイスで VLAN タグに対応していない場合、ネイティブ VLAN に設定して、トラフィックを通してあげる。"
+    },
+    {
+      "id": "part11_q39",
+      "questionNumber": 39,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "IPv4 プライベート アドレスを実装する理由は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ネットワークセキュリティ侵害のリスクを軽減する"
+        },
+        {
+          "id": "B",
+          "text": "PCI規制に準拠する"
+        },
+        {
+          "id": "C",
+          "text": "現地の法律に準拠する"
+        },
+        {
+          "id": "D",
+          "text": "ネットワークルーターの転送テーブルのサイズを縮小する"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊外部から直接参照されない→セキュリティ向上"
+    },
+    {
+      "id": "part11_q40",
+      "questionNumber": 40,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "FTP に関連する事実はどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ブロック番号を使用してデータ転送エラーを識別し、軽減します。"
+        },
+        {
+          "id": "B",
+          "text": "常にユーザー認証なしで動作します。"
+        },
+        {
+          "id": "C",
+          "text": "よく知られている UDP ポート 69 を使用します。"
+        },
+        {
+          "id": "D",
+          "text": "制御トラフィックとデータ トラフィックに 2 つの別々の接続を使用します。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊20番ポートは転送用、21番ポートは制御用のこと。"
+    },
+    {
+      "id": "part11_q41",
+      "questionNumber": 41,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "multiple_choice",
+      "category": "Security Fundamentals",
+      "questionText": "アクセスポイントの認証と構成に管理者が使用するプロトコルはどれですか(2つ選択)。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ケルベロス"
+        },
+        {
+          "id": "B",
+          "text": "802.1Q"
+        },
+        {
+          "id": "C",
+          "text": "802.1x"
+        },
+        {
+          "id": "D",
+          "text": "TACACS+"
+        },
+        {
+          "id": "E",
+          "text": "RADIUS"
+        }
+      ],
+      "correctAnswers": [
+        "C",
+        "E"
+      ],
+      "explanation": "＊シスコ文書「Configuring Authentication for Access Points」参照。なお、TACACS＋の記載は無い。"
+    },
+    {
+      "id": "part11_q42",
+      "questionNumber": 42,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "以下のNAT構成を完成させるための手順はどれか。",
+      "diagramDescription": null,
+      "commandOutputs": "CPE1# show protocols e0/1\nEthernet0/1 is up, line protocol is up\nInternet address is 10.0.12.2/24\n\nCPE1#show ip access-list LAN\nStandard IF access list LAN\n10 permit 10.0.12.0, wildcard bits 0.0.0.255\n\nCPE1# show ip nat translations\n\nCPE1# show ip net statistics\n\nTotal active translations: 0 (0 static, 0 dynamic, 0 extended)\nPeak translations: 0\nOutside interfaces:\nInside interfaces:\n  Ethernet0/1\nHits: 0 Misses: 0\nCEF Translated packets: 0, CEF Funted packets: 0\nExpired translations: 0\nDynamic mappings:\n-- Inside Source\n[Id: 1] access-list LAN pool NATPOOL refcount 0\n  pool NATPOOL: netmask 255.255.255.0\n  start 198.51.100.11 end 198.51.100.20\n  type generic, total addresses 10, allocated 0 (0%), misses 0",
+      "options": [
+        {
+          "id": "A",
+          "text": "NATプールと重複する静的NATエントリを再設定する"
+        },
+        {
+          "id": "B",
+          "text": "NAT外部インターフェイスを設定する"
+        },
+        {
+          "id": "C",
+          "text": "e0/1の内部ネットワークのアクセスリストを変更する"
+        },
+        {
+          "id": "D",
+          "text": "ACLをプール設定に適用する"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊\"Outside interfaces:\"に記載がない→設定されていない"
+    },
+    {
+      "id": "part11_q43",
+      "questionNumber": 43,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "どの種類のIPv4アドレスが、グローバルに一意なアドレスクラスを節約するのに役立ちますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "マルチキャスト"
+        },
+        {
+          "id": "B",
+          "text": "プライベート"
+        },
+        {
+          "id": "C",
+          "text": "ループバック"
+        },
+        {
+          "id": "D",
+          "text": "パブリック"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "グローバルIPアドレスの枯渇対策としてプライベートIPアドレスが使用されます。"
+    },
+    {
+      "id": "part11_q44",
+      "questionNumber": 44,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "[IPv6]ドラッグアンドドロップ\n各説明に対応するIPv6アドレスを対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "サイト内でローカルにのみ使用されるマルチキャストアドレス"
+        },
+        {
+          "id": "2",
+          "text": "IPv6 が有効になっている場合にリンク上に自動的に作成されるアドレス"
+        },
+        {
+          "id": "3",
+          "text": "インターネットへのルーティングが禁止されているアドレス"
+        },
+        {
+          "id": "4",
+          "text": "ドキュメント作成用に予約されている一意のアドレス"
+        }
+      ],
+      "correctAnswers": [
+        "サイト内でローカルにのみ使用されるマルチキャストアドレス → FF05::23:becf:22:1111",
+        "IPv6 が有効になっている場合にリンク上に自動的に作成されるアドレス → FE80::abcf:ffff:12de:3992",
+        "インターネットへのルーティングが禁止されているアドレス → FD00:0000:0000:1a2d:a153:3992:a19d:ccca",
+        "ドキュメント作成用に予約されている一意のアドレス → 2001:DB8::bced:1234:456d:aacc"
+      ],
+      "explanation": "答え\n・サイト内でローカルにのみ使用されるマルチキャストアドレス\n  → FF05::23:becf:22:1111\n・IPv6 が有効になっている場合にリンク上に自動的に作成されるアドレス\n  → FE80::abcf:ffff:12de:3992\n・インターネットへのルーティングが禁止されているアドレス\n  → FD00:0000:0000:1a2d:a153:3992:a19d:ccca\n・ドキュメント作成用に予約されている一意のアドレス\n  → 2001:DB8::bced:1234:456d:aacc\n\n＊2番目：リンクローカル「FE80」\n＊3番目：ユニークローカル「FC」や「FD」\n＊4番目：教育やマニュアル作成用"
+    },
+    {
+      "id": "part11_q45",
+      "questionNumber": 45,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Access",
+      "questionText": "[ワイヤレス規格]ドラッグアンドドロップ\n2.4GHzおよび5GHz帯域の重複しないチャネル仕様を規格と対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "802.11b"
+        },
+        {
+          "id": "2",
+          "text": "802.11g"
+        },
+        {
+          "id": "3",
+          "text": "802.11n (2.4GHz)"
+        },
+        {
+          "id": "4",
+          "text": "802.11a"
+        },
+        {
+          "id": "5",
+          "text": "802.11n (5GHz)"
+        }
+      ],
+      "correctAnswers": [
+        "3つの重複しないチャネル (2.4GHz): 802.11b, 802.11g, 802.11n (2.4GHz)",
+        "重複しないチャネル (5GHz): 802.11a, 802.11n (5GHz)"
+      ],
+      "explanation": "答え\n3つの重複しないチャネル\n・802.11b\n・802.11g\n・802.11n (2.4GHz)\n3の重複しないチャネル\n・802.11a\n・802.11n (5GHz)\n\n＊上は2.4GHz、下は5GHzを指している。"
+    },
+    {
+      "id": "part11_q46",
+      "questionNumber": 46,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Security Fundamentals",
+      "questionText": "[AAA]ドラッグアンドドロップ\n各操作を「認証」または「認可」に分類してください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "ログイン試行を許可または拒否"
+        },
+        {
+          "id": "2",
+          "text": "ローカル、PPP、RADIUS、TACACS＋をサポート"
+        },
+        {
+          "id": "3",
+          "text": "ユーザーごとに属性を割り当てます"
+        },
+        {
+          "id": "4",
+          "text": "ユーザーが実行できる CLI コマンドを制限します"
+        }
+      ],
+      "correctAnswers": [
+        "認証: ログイン試行を許可または拒否、ローカル、PPP、RADIUS、TACACS＋をサポート",
+        "認可: ユーザーごとに属性を割り当てます、ユーザーが実行できる CLI コマンドを制限します"
+      ],
+      "explanation": "答え\n認証\n・ログイン試行を許可または拒否\n・ローカル、PPP、RADIUS、TACACS＋をサポート\n認可\n・ユーザーごとに属性を割り当てます\n・ユーザーが実行できる CLI コマンドを制限します"
+    },
+    {
+      "id": "part11_q47",
+      "questionNumber": 47,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "[クラウドコンポーネント]ドラッグアンドドロップ\nクラウドコンピューティングの特性と説明を対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "リソース プールは需要に応じて迅速に拡張できる"
+        },
+        {
+          "id": "2",
+          "text": "消費者はサービスの使用を開始または停止するタイミングを選択できる"
+        },
+        {
+          "id": "3",
+          "text": "プロバイダーは共有コンピューティング リソースから CPU、メモリ、ディスクを顧客に割り当てる"
+        },
+        {
+          "id": "4",
+          "text": "プロバイダーは使用量に応じて消費者に請求できる"
+        },
+        {
+          "id": "5",
+          "text": "サービスはさまざまな種類のデバイスとネットワークから利用できる"
+        }
+      ],
+      "correctAnswers": [
+        "迅速な伸縮性：リソース プールは需要に応じて迅速に拡張できる",
+        "オンデマンド セルフサービス：消費者はサービスの使用を開始または停止するタイミングを選択できる",
+        "リソース プーリング：プロバイダーは共有コンピューティング リソースから CPU、メモリ、ディスクを顧客に割り当てる",
+        "測定可能なサービス：プロバイダーは使用量に応じて消費者に請求できる",
+        "ブロードネットワーク アクセス：サービスはさまざまな種類のデバイスとネットワークから利用できる"
+      ],
+      "explanation": "答え\n・迅速な伸縮性：リソース プールは需要に応じて迅速に拡張できる\n・オンデマンド セルフサービス：消費者はサービスの使用を開始または停止するタイミングを選択できる\n・リソース プーリング：プロバイダーは共有コンピューティング リソースから CPU、メモリ、ディスクを顧客に割り当てる\n・測定可能なサービス：プロバイダーは使用量に応じて消費者に請求できる\n・ブロードネットワーク アクセス：サービスはさまざまな種類のデバイスとネットワークから利用できる"
+    },
+    {
+      "id": "part11_q48",
+      "questionNumber": 48,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "192.168.12.16 へのトラフィックをどのように管理しますか。",
+      "diagramDescription": null,
+      "commandOutputs": "EIGRP : 192.168.12.0/24\nRIP : 192.168.12.0/27\nOSPF : 192.168.12.0/28",
+      "options": [
+        {
+          "id": "A",
+          "text": "宛先アドレスを含むプレフィックスが最も長い RIP ルートを選択します"
+        },
+        {
+          "id": "B",
+          "text": "3つのルート間でトラフィックの負荷を分散します"
+        },
+        {
+          "id": "C",
+          "text": "宛先アドレスを含むプレフィックスが最も長い OSPF ルートを選択します"
+        },
+        {
+          "id": "D",
+          "text": "管理距離が最も短い EIGRP ルートを選択します"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊/24は0～255、/27は0～31、/28は0～15。「.16」が含まれるのは/24と/27。プレフィックスがより長い /27 の RIP ルートがロンゲストマッチにより選択されます。"
+    },
+    {
+      "id": "part11_q49",
+      "questionNumber": 49,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Access",
+      "questionText": "[VLAN ポートモード]ドラッグアンドドロップ\n各説明に対応するVLANポートモードを対応付けてください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "手動で設定した場合、ポートが 1 つの VLAN に属することを可能にします"
+        },
+        {
+          "id": "2",
+          "text": "ポートが 1 つの VLAN に自動的に割り当てられることを可能にします"
+        },
+        {
+          "id": "3",
+          "text": "ポートが 1 つ以上の VLAN に属することを可能にします"
+        },
+        {
+          "id": "4",
+          "text": "ポートがサービスプロバイダーネットワーク全体で単一のVLAN をリポートできるようにします"
+        },
+        {
+          "id": "5",
+          "text": "ポートが同じコミュニティVLAN 内の他のポートと通信することを可能にします"
+        }
+      ],
+      "correctAnswers": [
+        "①手動で設定した場合、ポートが 1 つの VLAN に属することを可能にします：静的アクセス",
+        "②ポートが 1 つの VLAN に自動的に割り当てられることを可能にします：動的アクセス",
+        "③ポートが 1 つ以上の VLAN に属することを可能にします：トランク",
+        "④ポートがサービスプロバイダーネットワーク全体で単一のVLAN をリポートできるようにします：トンネル",
+        "⑤ポートが同じコミュニティVLAN 内の他のポートと通信することを可能にします：プライベート"
+      ],
+      "explanation": "答え\n①手動で設定した場合、ポートが 1 つの VLAN に属することを可能にします：静的アクセス\n②ポートが 1 つの VLAN に自動的に割り当てられることを可能にします：動的アクセス\n③ポートが 1 つ以上の VLAN に属することを可能にします：トランク\n④ポートがサービスプロバイダーネットワーク全体で単一のVLAN をリポートできるようにします：トンネル\n⑤ポートが同じコミュニティVLAN 内の他のポートと通信することを可能にします：プライベート\n\n＊④：サービスプロバイダが、顧客VLANをカプセル化して透過的に運ぶことを可能にする\n＊⑤：プライベートVLANの中でも、Communityポートの説明である。"
+    },
+    {
+      "id": "part11_q50",
+      "questionNumber": 50,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "現在のデフォルトルートが失敗したときだけ有効になるフローティングスタティックルートを設定する必要があります。そのルートは 2001:db8:1234:2::1 を指すように設定します。CPEでどのコマンドを設定しますか。",
+      "diagramDescription": null,
+      "commandOutputs": "CPE# show ipv6 route\nIPv6 Routing Table - default - 6 entries\n\nND ::/0 [2/0]\n  via FE80::A8BB:CCFF:FE00:200, Ethernet0/0\nNDp 2001:DB8:1234:1::/64 [2/0]\n  via Ethernet0/0, directly connected\nL 2001:DB8:1234:1:A8BB:CCFF:FE00:100/128 [0/0]\n  via Ethernet0/0, receive\nC 2001:DB8:1234:2::/64 [0/0]\n  via Ethernet0/1, directly connected\nL 2001:DB8:1234:2:A8BB:CCFF:FE00:110/128 [0/0]\n  via Ethernet0/1, receive\nL FF00::/8 [0/0]\nvia Null0, receive",
+      "options": [
+        {
+          "id": "A",
+          "text": "ipv6 route ::/0 2001:db8:1234:2::1 2"
+        },
+        {
+          "id": "B",
+          "text": "ipv6 route ::/0 2001:db8:1234:2::1 3"
+        },
+        {
+          "id": "C",
+          "text": "ipv6 route ::/128 2001:db8:1234:2::1 3"
+        },
+        {
+          "id": "D",
+          "text": "ipv6 route ::/0 2001:db8:1234:2::1 1"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊::/0 [2/0] から現在のデフォルトルートの AD 値は2と分かります。フローティングスタティックルート(障害時用の保険ルート)を設定するには、より大きな AD値(本問では3以上)を指定します。C.IPv6 のデフォルトルートの構文は::/0 が正しく、/128 は誤りです。"
+    },
+    {
+      "id": "part11_q51",
+      "questionNumber": 51,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "プライベート IPv4 アドレスを使用する利点は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "同様のデバイス間で信頼性の高い接続を提供する"
+        },
+        {
+          "id": "B",
+          "text": "インターネット経由で安全な接続を可能にする"
+        },
+        {
+          "id": "C",
+          "text": "内部ネットワークデバイスを外部アクセスから保護する"
+        },
+        {
+          "id": "D",
+          "text": "外部ネットワーク経由でルーティングできるようにする"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊枯渇対策とセキュリティ強化"
+    },
+    {
+      "id": "part11_q52",
+      "questionNumber": 52,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "アクセスレートを超えるトラフィックをドロップする QoS機能はどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "重み付け公平キューイング"
+        },
+        {
+          "id": "B",
+          "text": "FIFO"
+        },
+        {
+          "id": "C",
+          "text": "シェーピング"
+        },
+        {
+          "id": "D",
+          "text": "ポリシング"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊ドロップするのはポリシング。キューイングするのはシェーピング。"
+    },
+    {
+      "id": "part11_q53",
+      "questionNumber": 53,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "2つのスイッチが実装されており、すべてのインターフェイスはデフォルトの構成レベルにあります。2つのスイッチ間にトランクリンクを実装するには、次の要件を満たす必要があります。相互接続ポートはどのように構成しますか。\n・業界標準のトランキング プロトコルを使用する\n・VLAN 1 ～ 10 を許可し、他の VLAN を拒否する",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "switchport mode trunk\nswitchport trunk allowed vlans 1-10\nswitchport trunk native vlan 11"
+        },
+        {
+          "id": "B",
+          "text": "switchport mode trunk\nswitchport trunk encapsulation dot1q\nswitchport trunk allowed vlans 1-10"
+        },
+        {
+          "id": "C",
+          "text": "switchport mode dynamic desirable\nchannel-group 1 mode desirable\nswitchport trunk encapsulation isl\nswitchport trunk allowed vlan except 11-4094"
+        },
+        {
+          "id": "D",
+          "text": "switchport mode dynamic\nchannel-protocol lacp\nswitchport trunk allowed vlans 1-10"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊AまたはBが候補であるが、AのようにネイティブVLANは要件にないためB。\n＊\"dot1q\"→業界標準であるIEEE 802.1Qのこと。"
+    },
+    {
+      "id": "part11_q54",
+      "questionNumber": 54,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "SSID「USERWL」に接続するデバイスの数を 125 に制限するとき、WLCでどの設定をしますか。",
+      "diagramDescription": "【図の構成】\nAP ── Network Cloud ── WLC (Vlan 20, 172.16.10.0/24)\nAP配下のSSID: USERWL (172.16.10.0/24)",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "WLAN 構成で、Maximam Allowed Clients の値を 125 に設定します"
+        },
+        {
+          "id": "B",
+          "text": "詳細構成で、DTIM 値を 125 に設定します"
+        },
+        {
+          "id": "C",
+          "text": "コントローラ IPv6 構成で、スロットル値を 125 に設定します"
+        },
+        {
+          "id": "D",
+          "text": "管理ソフトウェアのアクティベーション構成で、クライアント値を 125 に設定します"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "WLANの詳細設定・クライアント制限設定項目（Maximum Allowed Clients）にて接続台数を設定します。"
+    },
+    {
+      "id": "part11_q55",
+      "questionNumber": 55,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "ネットワーク環境で自動化を実装するのはなぜですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "デバイス情報のストレージを一元管理するため"
+        },
+        {
+          "id": "B",
+          "text": "すべてのデバイスにわたって一貫した構成状態を維持するプロセスを簡素化するため"
+        },
+        {
+          "id": "C",
+          "text": "管理プレーンをネットワークの残りの部分とは別に展開するため"
+        },
+        {
+          "id": "D",
+          "text": "一元化されたユーザーアカウント管理を実装するため"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊A「ストレージ」やD「アカウント」は誤り。"
+    },
+    {
+      "id": "part11_q56",
+      "questionNumber": 56,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "Cisco とサードパーティの両方のネットワーク デバイスを含む新しいネットワークを展開する場合、デフォルト ゲートウェイ ルータに障害が発生した場合にネットワーク トラフィックの中断を回避する冗長プロトコルはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "FHRP"
+        },
+        {
+          "id": "B",
+          "text": "VRRP"
+        },
+        {
+          "id": "C",
+          "text": "HSRP"
+        },
+        {
+          "id": "D",
+          "text": "GLBP"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊A : B,C,Dあたりの総称。CやD : Cisco 独自プロトコル\n＊B : シスコとサードパーティで使える"
+    },
+    {
+      "id": "part11_q57",
+      "questionNumber": 57,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "multiple_choice",
+      "category": "IP Connectivity",
+      "questionText": "本社に冗長性を確保してインターネットアクセスを提供するために、CPEルーターにどの設定をしますか。(2つ選択)",
+      "diagramDescription": "【図のトポロジ構成】\nISP 1 (198.51.100.1) と ISP 2 (203.0.113.1) の2つのISPクラウド。\nCPEルータ（本社）から両方のISPへデュアル接続されている。",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ip route 0.0.0.0 0.0.0.0 198.51.100.1\nip route 0.0.0.0 0.0.0.0 203.0.113.1 2"
+        },
+        {
+          "id": "B",
+          "text": "ip route 0.0.0.0 128.0.0.0 198.51.100.1\nip route 128.0.0.0 128.0.0.0 203.0.113.1\nip route 0.0.0.0 0.0.0.0 198.51.100.1\nip route 0.0.0.0 0.0.0.0 203.0.113.1"
+        },
+        {
+          "id": "C",
+          "text": "ip route 0.0.0.0 128.0.0.0 198.51.100.1\nip route 128.0.0.0 128.0.0.0 203.0.113.1"
+        },
+        {
+          "id": "D",
+          "text": "ip route 0.0.0.0 0.0.0.0 198.51.100.1 255\nip route 0.0.0.0 0.0.0.0 203.0.113.1 255\nip route 128.0.0.0 128.0.0.0 203.0.113.1"
+        },
+        {
+          "id": "E",
+          "text": "ip route 0.0.0.0 0.0.0.0 198.51.100.1\nip route 0.0.0.0 0.0.0.0 203.0.113.1"
+        }
+      ],
+      "correctAnswers": [
+        "C",
+        "E"
+      ],
+      "explanation": "答え C,E ※1つだけ選択ならB\n＊「ip route 0.0.0.0 128.0.0.0」と「ip route 128.0.0.0 128.0.0.0」はセットで使う。アドレス空間を2つに分割するためのテクニック。"
+    },
+    {
+      "id": "part11_q58",
+      "questionNumber": 58,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "SSH 経由での接続用にルーターを設定しています。service password-encryption コマンドが発行されました。次の要件を満たす必要があるとき、どれを設定しますか。\n・ユーザー名を CCUser として作成します\n・パスワードを NA!2$cc として作成します\n・ユーザー パスワードを暗号化します",
+      "diagramDescription": null,
+      "commandOutputs": "Router#conf t\nEnter configuration commands, one per line. End with CNTL/Z.\nRouter(config)#hostname R1\nR1(config)#ip domain-name CC-Net.com\nR1(config)#enable secret Passfornewuser\nR1(config)#line vty 0 15\nR1(config-line)#transport input ssh\nR1(config-line)#login local",
+      "options": [
+        {
+          "id": "A",
+          "text": "username CCUser password NA!2$cc\nenable password level 5 NA!2$cc"
+        },
+        {
+          "id": "B",
+          "text": "username CCUser privilege 15 password NA!2$cc\nenable secret 0 NA!2$cc"
+        },
+        {
+          "id": "C",
+          "text": "username CCUser secret NA!2$cc"
+        },
+        {
+          "id": "D",
+          "text": "username CCUser privilege 10 password NA!2$cc"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊シンプルにC。なお「service～」を実行済みなので、secretでなくても問題ない。"
+    },
+    {
+      "id": "part11_q59",
+      "questionNumber": 59,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "IP Connectivity",
+      "questionText": "ホストA がホスト B と通信できるように、各ルーターに静的ネットワークルートを設定する必要があります。すべてのコマンドが使用されるわけではありません。\n\n選択肢：\na. ip route 10.10.13.0 255.255.255.128 10.10.10.1\nb. ip route 10.10.13.0 255.255.255.128 10.10.10.5\nc. ip route 10.10.13.10 255.255.255.255 10.10.10.1\nd. ip route 10.10.14.0 255.255.255.0 10.10.10.2\ne. ip route 10.10.14.0 255.255.255.0 10.10.10.6\nf. ip route 10.10.14.10 255.255.255.255 10.10.10.6\n\nR1 [ ], R2 [ ] [ ], R3 [ ]",
+      "diagramDescription": "【図のトポロジ構成】\nHost A (10.10.14.10/24) ── R1 (.2) ── [NW: 10.10.10.0/30] ── (.1) R2 (.6) ── [NW: 10.10.10.4/30] ── (.5) R3 ── Host B (10.10.13.10/25)",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "ip route 10.10.13.0 255.255.255.128 10.10.10.1"
+        },
+        {
+          "id": "b",
+          "text": "ip route 10.10.13.0 255.255.255.128 10.10.10.5"
+        },
+        {
+          "id": "c",
+          "text": "ip route 10.10.13.10 255.255.255.255 10.10.10.1"
+        },
+        {
+          "id": "d",
+          "text": "ip route 10.10.14.0 255.255.255.0 10.10.10.2"
+        },
+        {
+          "id": "e",
+          "text": "ip route 10.10.14.0 255.255.255.0 10.10.10.6"
+        },
+        {
+          "id": "f",
+          "text": "ip route 10.10.14.10 255.255.255.255 10.10.10.6"
+        }
+      ],
+      "correctAnswers": [
+        "R1:a",
+        "R2:b,d",
+        "R3:e"
+      ],
+      "explanation": "答え R1:a R2:b,d R3:e\n＊サブネットで選択肢が絞れる。/24は.0、/25は.128、cやfは/32になってしまうためx。"
+    },
+    {
+      "id": "part11_q60",
+      "questionNumber": 60,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "172.16.4.0 のサブネットマスクはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": "R1# show ip route | begin Gateway\nGateway of last resort is 0.0.0.0 to network 0.0.0.0\nS* 0.0.0.0/0 is directly connected, Serial0/0/1\n  172.16.0.0/16 is variably subnetted, 4 subnets, 2 masks\nC   172.16.2.0/24 is directly connected, GigabitKthernet0/0\nL   172.16.2.2/32 is directly connected, GigabitEthernet0/0\nC   172.16.4.0/21 is directly connected, Serial0/0/1\nL   172.16.8.2/26 is directly connected, Serial0/0/1",
+      "options": [
+        {
+          "id": "A",
+          "text": "255.255.255.192"
+        },
+        {
+          "id": "B",
+          "text": "255.255.248.0"
+        },
+        {
+          "id": "C",
+          "text": "255.255.254.0"
+        },
+        {
+          "id": "D",
+          "text": "255.255.240.0"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊/21 : 1111-1000.0000-0000 → 3ビットは7なので、255-7＝248"
+    },
+    {
+      "id": "part11_q61",
+      "questionNumber": 61,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "WLCのどのインターフェイスまたはポートが、インバンドデバイス管理およびコントローラとアクセスポイント間の通信のデフォルトですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "仮想インターフェース"
+        },
+        {
+          "id": "B",
+          "text": "マネジメントインターフェース"
+        },
+        {
+          "id": "C",
+          "text": "コンソールポート"
+        },
+        {
+          "id": "D",
+          "text": "サービスポート"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊「物理の〇〇ポートや」「論理の〇〇インターフェース」「インバンド/アウトオブバンド」このあたりは理解しておくこと。\n＊両方を担うのは、マネジメントインターフェース。CやDはアウトオブバンド。\n＊物理はC,D、論理はA,B、インバンドはB、アウトオブバンドはC,D"
+    },
+    {
+      "id": "part11_q62",
+      "questionNumber": 62,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "R2をEUI-64形式を使用してIPv6 アドレスを設定したとき、どのアドレスになりますか。",
+      "diagramDescription": "【設定パラメータ】\nルータ R2\nネットワーク：2001:DB8:D8D2:1009::/64\nMACアドレス：12-a0-ab-cc-00-02",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "2001:DB8:D8D2:1009:10A0:ABFF:FECC:2"
+        },
+        {
+          "id": "B",
+          "text": "2001:DB8:D8D2:1009:12A0:AB34:FFCC:2"
+        },
+        {
+          "id": "C",
+          "text": "2001:DB8:D8D2:1009:1230:ABFF:FECC:2"
+        },
+        {
+          "id": "D",
+          "text": "2001:DB8:D8D2:1009:4345:80FF:FF16:7"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊EUI64：128ビットのうち、前半をネットワークプレフィックス、後半をMACアドレスにする。MACアドレスは少し加工する。\n①MACアドレスを前半/後半で分割、②FFFEを挿入、③7ビット目を反転\n①「12a0ab」「cc0002」、②「12a0ab」「FFFE」「cc0002」、③「10a0ab」「FFFE」「cc0002」\n③1 2「0001 0010」→1 0「0001 0000」 ※16進数"
+    },
+    {
+      "id": "part11_q63",
+      "questionNumber": 63,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "複数のSSIDを使う環境で、SSID変更時の顧客エクスペリエンスを向上させるためには、どの機能を有効にするか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "アシストローミング予測最適化"
+        },
+        {
+          "id": "B",
+          "text": "Fast BSS Transition"
+        },
+        {
+          "id": "C",
+          "text": "ネイバーリストデュアルバンド"
+        },
+        {
+          "id": "D",
+          "text": "Fast SSID Switching"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊【難】ユーザーがSSID AからBに切り替える際、WLCが既存の認証情報を利用して高速に再接続させる。\n＊“変更時”→Switching"
+    },
+    {
+      "id": "part11_q64",
+      "questionNumber": 64,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "EtherChannel は、両端で速度 1000、デュプレックスがフルに設定されています。スイッチAのチャネルをLACP通信に応答するが開始しないように設定するときの設定はどれか。",
+      "diagramDescription": "【図のトポロジ構成】\nSwitch A と Switch B が Group1 で EtherChannel 接続されている。",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "interface range gigabitethernet0/0 -15\nchannel-group 1 mode desirable"
+        },
+        {
+          "id": "B",
+          "text": "interface range gigabitethernet0/0 -15\nchannel-group 1 mode on"
+        },
+        {
+          "id": "C",
+          "text": "interface port-channel 1\nchannel-group 1 mode auto"
+        },
+        {
+          "id": "D",
+          "text": "interface port-channel 1\nchannel-group 1 mode passive"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊LACP「active/passive」→\"応答するが開始しないように\"「passive」\n＊参考：PAgP「desirable/auto」、静的「on」"
+    },
+    {
+      "id": "part11_q65",
+      "questionNumber": 65,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "multiple_choice",
+      "category": "Security Fundamentals",
+      "questionText": "複数の支社や大規模な導入向けにシスコが推奨するVPN テクノロジーはどれか(2つ選択)。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "IPsec リモートアクセス"
+        },
+        {
+          "id": "B",
+          "text": "サイト間 VPN"
+        },
+        {
+          "id": "C",
+          "text": "クライアントレス VPN"
+        },
+        {
+          "id": "D",
+          "text": "GETVPN"
+        },
+        {
+          "id": "E",
+          "text": "DMVPN"
+        }
+      ],
+      "correctAnswers": [
+        "D",
+        "E"
+      ],
+      "explanation": "＊どちらもフルメッシュトポロジー、スケーラビリティに適しています。"
+    },
+    {
+      "id": "part11_q66",
+      "questionNumber": 66,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "JSON データにはいくつの配列がありますか。",
+      "diagramDescription": null,
+      "commandOutputs": "{\n  \"Test_Questions\": [\n    \"Automation\",\n    \"Configuration\",\n  ],\n  \"Test_Exam_Level\": [\n    \"CCNA\",\n    \"CCNP\",\n  ],\n  \"Test_Response\": [\n    \"Correct\",\n    \"Incorrect\",\n  ]\n}",
+      "options": [
+        {
+          "id": "A",
+          "text": "1つ"
+        },
+        {
+          "id": "B",
+          "text": "3つ"
+        },
+        {
+          "id": "C",
+          "text": "6つ"
+        },
+        {
+          "id": "D",
+          "text": "9つ"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊オブジェクト{}、配列[]、\"key\":\"値\""
+    },
+    {
+      "id": "part11_q67",
+      "questionNumber": 67,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "本社でホストされているアプリケーションのパフォーマンスが低いという件で支社から電話を受けました。ethernet1は、Router1と LAN スイッチの間に接続されています。何が原因ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "Router1#show interface ethernet 1\nEthernet1 is up, line protocol is up\nHardware is Lance, address is 0010.7b36.Ibe8 (bia 0010.7b36.Ibe8)\nInternet address is 10.100.48.240/24\nMTU 1500 bytes, BW 10000 Kbit, DLY 1000 usec,\nreliability 255/255, txload 1/255, rxload 1/255 Encapsulation ARPA, loopback not set\nKeepalive set (10 sec)\nARP type: ARPA, ARP Timeout 04:00:00\nLast input 00:00:00, output 00:00:06, output hang never\nLast clearing of \"show interface\" counters never\nInput queue: 1/75/1/0 (size/max/drops/flushes); Total output drops: 0\nQueueing strategy: random early detection(RED)\nOutput queue :0/40 (size/max)\n5 minute input rate 1000 bits/sec, 2 packets/sec\n5 minute output rate 0 bits/sec, 0 packets/sec\n7558065 packets input, 783768942 bytes, 1 no buffer\nReceived 8280963 broadcasts, 0 runts, 0 giants, 1 throttles\n15 input errors, 14278 CRC, 0 frame, 0 overrun, 3 ignored\n0 input packets with dribble condition detected\n798092 packets output, 50280266 bytes, 0 underruns\n0 output errors, 15000 collisions, 0 interface resets\n0 babbles, 0 late collision, 179 deferred\n0 lost carrier, 0 no carrier\n0 output buffer failures, 0 output buffers swapped out",
+      "options": [
+        {
+          "id": "A",
+          "text": "デュプレックスの一致がありません"
+        },
+        {
+          "id": "B",
+          "text": "MTU がデフォルト値に設定されていません"
+        },
+        {
+          "id": "C",
+          "text": "リンクが過剰に使用されています"
+        },
+        {
+          "id": "D",
+          "text": "QoS ポリシーによってトラフィックがドロップされています"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊14278 CRC：NIC破損、ケーブル断線の可能性あり\n＊15000 collisions：デュプレックス不一致の可能性あり（半二重/全二重）\n→選択肢から考えてA"
+    },
+    {
+      "id": "part11_q68",
+      "questionNumber": 68,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "SW1のFa1/1の設定を更新します。別のベンダーのスイッチと同じグループ指定を使用してEtherChannel を確立するとき、どの設定をしますか。",
+      "diagramDescription": null,
+      "commandOutputs": "SW1#show etherchannel\n  Channel-group listing:Group: 2\nGroup state = L2\nPorts: 1 Maxports = 8\nPort-channels: 1 Max Portchannels = 1\nProtocol: PAGP",
+      "options": [
+        {
+          "id": "A",
+          "text": "interface port-channel 2\nchannel-group 2 mode desirable"
+        },
+        {
+          "id": "B",
+          "text": "interface fastethernet 1/1\nchannel-group 2 mode on"
+        },
+        {
+          "id": "C",
+          "text": "interface port-channel 2\nchannel-group 2 mode auto"
+        },
+        {
+          "id": "D",
+          "text": "interface fastethernet 1/1\nchannel-group 2 mode active"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊「Protocol: PAGP」と表示されているが、問題文には「別のベンダーのスイッチと」と記載があり、LACP (active/passive) で設定することに注意。この時点でAやCは除外される。\n＊onは、PAGPでもLACPでもないが、誤設定防止や障害検知のためにも避けることが望ましい。"
+    },
+    {
+      "id": "part11_q69",
+      "questionNumber": 69,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "R4 のローカル アクセスを確立し、次の要件を満たすとき、どの設定をしますか。\n\n要件：\n・Telnet アクセスのみが許可されます\n・enableパスワードは安全に保存します\n・enableパスワードはプレーンテキストで適用します\n・ログインが成功すると、R4 へのフルアクセスが許可されます",
+      "diagramDescription": "【図の構成】\nルータ R4 が WAN クラウドに接続されている。",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "username test1 password testpass1\nenable password level 1 7 Test123\n!\nline vty 0 15\naccounting exec default\ntransport input all"
+        },
+        {
+          "id": "B",
+          "text": "username test1 password testpass1\nenable secret level 15 0 Test123\n!\nline vty 0 15\nlogin local\ntransport input telnet"
+        },
+        {
+          "id": "C",
+          "text": "username test1 password testpass1\nenable secret level 1 0 Test123\n!\nline vty 0 15\nlogin authentication\npassword Test123\ntransport input telnet"
+        },
+        {
+          "id": "D",
+          "text": "username test1 password testpass1\nenable password level 15 0 Test123\n!\nline vty 0 15\npassword Test123\ntransport input all"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊Telnet アクセスのみ許可：input telnet（BまたはC）\n＊enableパスワードは安全に：enable secret（BまたはC）\n＊enableパスワードはプレーンテキストで適用：15の後ろの「0」のこと\n＊フルアクセスが許可＝level 15（BまたはD）"
+    },
+    {
+      "id": "part11_q70",
+      "questionNumber": 70,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "172.31.0.1 宛てにパケットを送信します。ルーティング テーブルに、172.31.0.0/16、172.31.0.0/24、172.31.0.0/25 の3つがあるとき、ルーターはどのように処理しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "デフォルト ゲートウェイ 0.0.0.0/0 経由で送信されます"
+        },
+        {
+          "id": "B",
+          "text": "172.31.0.0/16 経由で送信されます"
+        },
+        {
+          "id": "C",
+          "text": "172.31.0.0/25 経由で送信されます"
+        },
+        {
+          "id": "D",
+          "text": "172.31.0.0/24 経由で送信されます"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊①ロンゲストマッチ、②AD値(小) ③メトリック (小)の優先順位で決定されるが、①によりC。"
+    },
+    {
+      "id": "part11_q71",
+      "questionNumber": 71,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "パスワード保護を実装する場合、どのようなアクションを実行しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "パスワードを、シングルファクタ認証を使用してモバイル デバイスの連絡先として保存します。"
+        },
+        {
+          "id": "B",
+          "text": "上級 IT 管理者とパスワードを共有し、適切な監視を確保します。"
+        },
+        {
+          "id": "C",
+          "text": "特殊文字を含め、パスワードは可能な限り長くします。"
+        },
+        {
+          "id": "D",
+          "text": "パスワードが複雑な場合は、8 文字未満の長さを使用します。"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "＊特殊文字は#や?など"
+    },
+    {
+      "id": "part11_q72",
+      "questionNumber": 72,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "APがWLCに参加しようとしている場合、APマネージャーインターフェイスに送信されるメッセージはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "DHCP 要求"
+        },
+        {
+          "id": "B",
+          "text": "DHCP 検出"
+        },
+        {
+          "id": "C",
+          "text": "Discovery Response (検出応答)"
+        },
+        {
+          "id": "D",
+          "text": "Discovery Request (検出要求)"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊WLCはAPから検出要求を受け取り、検出応答を返す"
+    },
+    {
+      "id": "part11_q73",
+      "questionNumber": 73,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "自動化されたネットワーク管理アプローチを実装する理由は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ネットワーク構成の不整合を削減します"
+        },
+        {
+          "id": "B",
+          "text": "定期的な管理コストが増加します"
+        },
+        {
+          "id": "C",
+          "text": "「ボックス単位」の構成と展開を可能にします"
+        },
+        {
+          "id": "D",
+          "text": "単純なパスワード ポリシーを解読します"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊自動化によりミス防止や効率化が見込める。"
+    },
+    {
+      "id": "part11_q74",
+      "questionNumber": 74,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "セキュリティドメインによってネットワークを分離するデバイスはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "アクセスポイント"
+        },
+        {
+          "id": "B",
+          "text": "ファイアウォール"
+        },
+        {
+          "id": "C",
+          "text": "侵入防止システム"
+        },
+        {
+          "id": "D",
+          "text": "ワイヤレスコントローラ"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊\"分離する\"=内部/外部/DMZ ＊類36"
+    },
+    {
+      "id": "part11_q75",
+      "questionNumber": 75,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "multiple_choice",
+      "category": "Network Fundamentals",
+      "questionText": "仮想マシン (VM) を代表する特性はどれですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ハイパーバイザー上のVMは、他のVMと自動的に相互接続されます。"
+        },
+        {
+          "id": "B",
+          "text": "個々のハイパーバイザー上のVMは、リソースを均等に共有します。"
+        },
+        {
+          "id": "C",
+          "text": "各VMのオペレーティングシステムは、そのハイパーバイザーに依存します。"
+        },
+        {
+          "id": "D",
+          "text": "各VMは、同じハイパーバイザー内の他のVMとは独立して実行されます。"
+        },
+        {
+          "id": "E",
+          "text": "複数のVMが同じ基盤ハードウェア上で動作します。"
+        }
+      ],
+      "correctAnswers": [
+        "D",
+        "E"
+      ],
+      "explanation": "＊全体的にハイパーバイザー型の説明\n＊ハイパーバイザー型：ハード＞ハイパーバイザー＞ゲストOS\n＊他にはゲストOS型、コンテナ型があったりする。"
+    },
+    {
+      "id": "part11_q76",
+      "questionNumber": 76,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "R7のルーティングテーブルから確認できることは何か。",
+      "diagramDescription": null,
+      "commandOutputs": "R7#\n172.22.0.0/24 is subnetted, 1 subnets\nD 172.22.49.0 [90/284160] via 10.81.22.2, 04:55:53, FastEthernet0/0\n10.0.0.0/8 is variably subnetted, 26 subnets, 5 masks\nD EX 10.10.10.10/32 [170/35840] via 10.3.5.1, 04:55:55, FastEthernet0/1\nD 10.9.1.0/30 [90/33280] via 10.3.5.1, 04:55:56, FastEthernet0/1\nB 10.111.99.0/24 [20/0] via 10.6.25.2, 03:58:52\nD 10.14.3.0/30 [90/30720] via 10.3.5.1, 04:55:58, FastEthernet0/1\nC 10.9.4.0/30 is directly connected, FastEthernet1/0\nB 10.100.100.0/24 [20/0] via 10.6.25.2, 03:58:53\nD 10.0.1.0/30 [90/30720] via 10.3.5.1, 04:55:58, FastEthernet0/1\nD EX 10.10.10.70/32 [170/1612801 via 10.3.5.1, 04:55:57, FastEthernet0/1\nB 10.90.0.0/16 [200/0] via 0.0.0.0, 03:57:59, Null0\nD EX 10.90.1.0/24 [170/158720] via 10.3.5.1, 04:55:57, FastEthernet0/1\nD EX 10.90.2.0/24 [170/158720] via 10.3.5.1, 04:55:57, FastEthernet0/1\nD 10.90.3.0/29 [90/161280] via 10.3.5.1, 02:46:03, FastEthernet0/1\nD EX 10.90.3.0/24 [170/158720] via 10.3.5.1, 02:46:04, FastEthernet0/1\nD EX 10.90.4.0/24 [170/158720] via 10.3.5.1, 04:55:59, FastEthernet0/1\nD EX 10.90.5.0/24 [170/158720] via 10.3.5.1, 04:55:59, FastEthernet0/1\nB* 0.0.0.0/0 [20/0] via 10.6.25.2, 02:22:38",
+      "options": [
+        {
+          "id": "A",
+          "text": "R7はデフォルトゲートウェイが欠如しています。R7はBGPから再配布されたルートを受信しています。R7は10.90.8.0/24宛のトラフィックを転送します。"
+        },
+        {
+          "id": "B",
+          "text": "R7はデフォルトゲートウェイが欠如しています。R7はEIGRPで再配布されたルートを受信しています。R7は10.90.8.0/24宛のトラフィックを転送します。"
+        },
+        {
+          "id": "C",
+          "text": "R7はデフォルトゲートウェイが利用可能です。R7はBGPから再配布されたルートを受信しています。R7は10.90.8.0/24宛のトラフィックをドロップします。"
+        },
+        {
+          "id": "D",
+          "text": "R7はデフォルトゲートウェイが利用可能です。R7はEIGRPで再配布されたルートを受信しています。R7は10.90.8.0/24宛のトラフィックをドロップします。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "＊最終行「B* 0.0.0.0」より、デフォルトルートがあることが分かります。\n＊「D EX」より、EIGRPが再配布されていることがわかります。D＝EIGRP、EX＝外部（再配布）\n＊10.90.8.0/24宛は「B 10.90.～」に該当します。「Null0」はドロップ（破棄）するという意味です。"
+    },
+    {
+      "id": "part11_q77",
+      "questionNumber": 77,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "パケットの宛先は 172.16.3.254 です。宛先ルートのサブネットマスクはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": "Gateway of last resort is 172.16.2.2 to network 0.0.0.0\n\n  10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks\nC   10.10.10.0/24 is directly connected, GigabitEthernet0/0/0\nL   10.10.10.3/32 is directly connected, GigabitEthernet0/0/0\n  172.16.0.0/16 is variably subnetted, 3 subnets, 2 masks\n1 S  172.16.1.33/32 is directly connected, GigabitEthernet0/0/1\n2 C  172.16.2.0/23 is directly connected, GigabitEthernet0/0/1\n3 L  172.16.2.1/32 is directly connected, GigabitEthernet0/0/1\nS* 0.0.0.0/0 [1/0] via 172.16.2.2",
+      "options": [
+        {
+          "id": "A",
+          "text": "0.0.0.0"
+        },
+        {
+          "id": "B",
+          "text": "255.255.254.0"
+        },
+        {
+          "id": "C",
+          "text": "255.255.255.0"
+        },
+        {
+          "id": "D",
+          "text": "255.255.255.255"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊パっと見て、1,2,3で考える。ロンゲストマッチの観点から、2（172.16.2.0/23 = 172.16.2.0〜172.16.3.255）が正しい。/23 のサブネットマスクは 255.255.254.0。"
+    },
+    {
+      "id": "part11_q78",
+      "questionNumber": 78,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "Rapid PVST+ の共有 LAN セグメント上のバックアップポートの動作モードと役割は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ブロッキングモードは指定ブリッジへの代替パスを提供します"
+        },
+        {
+          "id": "B",
+          "text": "リスニングモードはルートブリッジへの代替パスを提供します"
+        },
+        {
+          "id": "C",
+          "text": "転送モードは各VLANのルートブリッジへの最低コストパスを提供します"
+        },
+        {
+          "id": "D",
+          "text": "学習モードはLANから離れたトラフィックを処理するルートブリッジへの最短パスを提供します"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊バックアップポート＝指定ポート（BPDUを送信するポート）がダウンした場合のバックアップポート。指定ポートが機能しているときは、ループを回避するためにブロッキング状態である。"
+    },
+    {
+      "id": "part11_q79",
+      "questionNumber": 79,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "ドロップ確率に基づいてサブクラスに分割されるDSCPのホップ単位の転送動作はどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "class-selector"
+        },
+        {
+          "id": "B",
+          "text": "assured"
+        },
+        {
+          "id": "C",
+          "text": "expedited"
+        },
+        {
+          "id": "D",
+          "text": "default"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "＊【難】QoSの話。QoSに「DiffServ」というモデルがある。DiffServは、パケットに付与されたDSCP値を見て、各ルータが転送優先度やドロップ制御を行う。\n＊DSCP値は、AF,EF,DF,CSによって決定される。（例：AF11ならDSCP値は10）\n＊AF＝Assured Forwarding（保証された転送）のことで、AFはクラスごとにトラフィックを分類し、ドロップ確率（低・中・高）に基づきサブクラスに分ける。"
+    },
+    {
+      "id": "part11_q80",
+      "questionNumber": 80,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "スイッチが宛先が不明な MAC アドレスであるフレームを受信すると何が起こりますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "フレームは、そのフレームが属するVLAN内のすべてのインターフェースにフラッディングされます。"
+        },
+        {
+          "id": "B",
+          "text": "フレームはスイッチ内のすべてのインターフェースにフラッディングされます。"
+        },
+        {
+          "id": "C",
+          "text": "フレームは破棄されます"
+        },
+        {
+          "id": "D",
+          "text": "スイッチのMACアドレステーブルはフラッシュされます。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "＊類21。スイッチは未知のユニキャストフレームを受信すると、受信ポートを除く同一VLAN内のすべてのポートへフラッディングします。"
+    },
+    {
+      "id": "part11_q81",
+      "questionNumber": 81,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Access",
+      "questionText": "[ワイヤレス] ドラッグアンドドロップ\n各特徴を「クラウドベースのアクセスポイント」または「軽量アクセスポイント」に分類してください。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "1",
+          "text": "ウェブベースのダッシュボードから管理可能"
+        },
+        {
+          "id": "2",
+          "text": "自動デプロイに対応"
+        },
+        {
+          "id": "3",
+          "text": "WLCによる設定と管理"
+        },
+        {
+          "id": "4",
+          "text": "さまざまな運用モードをサポート"
+        }
+      ],
+      "correctAnswers": [
+        "クラウドベースのアクセスポイント: ウェブベースのダッシュボードから管理可能、自動デプロイに対応",
+        "軽量アクセスポイント: WLCによる設定と管理、さまざまな運用モードをサポート"
+      ],
+      "explanation": "答え\nクラウドベースのアクセスポイント\n・ウェブベースのダッシュボードから管理可能\n・自動デプロイに対応\n軽量アクセスポイント\n・WLCによる設定と管理\n・さまざまな運用モードをサポート\n\n＊問題が分かりづらい。\"クラウドベースのアクセスポイント\"は、WLCがクラウドにあると解釈する。軽量APの方はWLCはオンプレ。"
+    },
+    {
+      "id": "part11_q82",
+      "questionNumber": 82,
+      "part": "part11",
+      "sourceFile": "part11_c265ac26.pdf",
+      "type": "multiple_choice",
+      "category": "Network Access",
+      "questionText": "SIPベースのコールアドミッション制御（CAC）をWLC GUIで設定します。SIPコールスヌーピングポートが設定されています。次に完了する必要があるアクションはどれですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "音声トラフィックの QoS レベルをシルバー以上に設定する"
+        },
+        {
+          "id": "B",
+          "text": "WLAN でメディア セッション スヌーピングを有効にする"
+        },
+        {
+          "id": "C",
+          "text": "データトラフィックと音声トラフィックに 2 つの異なる QoS ロールを設定する"
+        },
+        {
+          "id": "D",
+          "text": "音声トラフィックの QoS レベルをプラチナに設定する"
+        },
+        {
+          "id": "E",
+          "text": "WLC の LAN インターフェイスのトラフィック シェーピングを有効にする"
+        }
+      ],
+      "correctAnswers": [
+        "B",
+        "D"
+      ],
+      "explanation": "答え B,D\n＊【難】SIP (Session Initiation Protocol)：インターネット上で音声通話やビデオ通話を開始・管理・終了するためのプロトコル\n＊CAC (Call Admission Control)：ネットワークの帯域やリソースを監視し、品質を維持できる範囲内でのみ新規通話を許可する仕組み\n→つまり、\"SIPベースのCACの設定\"=SIPプロトコルを監視することで、音声通話の帯域を管理すること\n→つまり、CACを設定することで電話品質が良くなる。\n\n以下マニュアルの転記\nSIPベースのCACの設定（GUI）\nはじめる前に\n・音声が Platinum QoS レベルに設定されていることを確認します。・・・D\n・WLAN のコールスヌーピングが有効になっていることを確認します。・・・・B\n・この無線のアドミッション制御（ACM）が有効になっていることを確認します。"
+    }
+  ]
+}

@@ -1,0 +1,3570 @@
+{
+  "part": "Part14",
+  "sourceFile": "part14_3e9b8432.pdf",
+  "totalQuestions": 106,
+  "questions": [
+    {
+      "id": "part14_q001",
+      "questionNumber": 1,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題1 ネットワーク管理者は、syslog サーバーが受信メッセージを重要度に応じて異なるファイルにフィルタリングすることを望んでいます。どのフィルタリング基準を使用しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "メッセージ本文"
+        },
+        {
+          "id": "B",
+          "text": "プロセス ID"
+        },
+        {
+          "id": "C",
+          "text": "レベル"
+        },
+        {
+          "id": "D",
+          "text": "機能"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊\"重要度に応じて\"＝レベル0（緊急/Emergency）～レベル7（デバッグ/Debug）に応じて振り分けるのが一般的です。"
+    },
+    {
+      "id": "part14_q002",
+      "questionNumber": 2,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題2 フレームスイッチングの特徴は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ARPテーブルにイグレスポートを入力します。"
+        },
+        {
+          "id": "B",
+          "text": "アドレステーブルにリストされていない受信MACアドレスをドロップする。"
+        },
+        {
+          "id": "C",
+          "text": "バッファにフレームを保存して転送し、エラーチェックを使用する。"
+        },
+        {
+          "id": "D",
+          "text": "送信元と宛先のMACアドレスを書き換える"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊選択肢の文章に違和感がありますが、スイッチはエラーチェックをしてから転送します。"
+    },
+    {
+      "id": "part14_q003",
+      "questionNumber": 3,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題3 この JSON スキーマ内の「R20」という単語は何を表していますか。",
+      "diagramDescription": null,
+      "commandOutputs": "[\n{\"firewall\": \"FW12\", \"port\":\"e0/23\"},\n{\"router\": \"R20\", \"port\":\"te5/5\"},\n{\"switch\": \"SW25\", \"port\":\"ge1/36\"},\n5 ]",
+      "options": [
+        {
+          "id": "A",
+          "text": "value（値）"
+        },
+        {
+          "id": "B",
+          "text": "array（配列）"
+        },
+        {
+          "id": "C",
+          "text": "key（キー）"
+        },
+        {
+          "id": "D",
+          "text": "object（オブジェクト）"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊\"key\":\"値\"、オブジェクト{}、配列[]"
+    },
+    {
+      "id": "part14_q004",
+      "questionNumber": 4,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題4 R1 はルータ A、B、C、D から静的ルーティング更新を受信します。ネットワーク エンジニアは、R1 が OSPF エリア 1 で静的ルートをアドバタイズすることを望んでいます。OSPF でアドバタイズする必要があるサマリーアドレスはどれですか。",
+      "diagramDescription": "【図のトポロジ構成】\nルータA ──(10.1.40.0/25)──┐\nルータB ──(10.1.40.128/25)─┤\nルータC ──(10.1.40.176/28)─┼── R1 ──(ISP Croud / OSPF area 1)── R2\nルータD ──(10.1.41.224/29)─┘",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "10.1.40.0/25"
+        },
+        {
+          "id": "B",
+          "text": "10.1.40.0/24"
+        },
+        {
+          "id": "C",
+          "text": "10.1.41.0/25"
+        },
+        {
+          "id": "D",
+          "text": "10.1.40.0/23"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\nA~R1 10.1.40.0/25 → 10.1.40.0 ～ 10.1.40.127\nB~R1 10.1.40.128/25 → 10.1.40.128 ～ 10.1.40.255\nC~R1 10.1.40.176/28 → 10.1.40.176 ～ 10.1.40.191\nD~R1 10.1.41.224/29 → 10.1.41.224 ～ 10.1.41.231\n10.1.40.0～10.1.14.231をカバーする1つのネットワークが答えとなります。\n10.1.40.0/23であれば、10.1.40.0 ～ 10.1.41.255 をカバーします。\n【実践】Cは40の範囲をもっていないため、すぐに除外できます。AやCは/24より大きいため41をカバーできていないことが分かります。"
+    },
+    {
+      "id": "part14_q005",
+      "questionNumber": 5,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題5 どのスイッチがルートブリッジになりますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "SW 1\nBridge Priority - 28672\nmac-address 00:10:a1:51:57:51"
+        },
+        {
+          "id": "B",
+          "text": "SW 2\nBridge Priority - 28672\nmac-address 00:10:a1:82:03:94"
+        },
+        {
+          "id": "C",
+          "text": "SW3\nBridge Priority - 12288\nmac-address 00:10:a1:95:2b:77"
+        },
+        {
+          "id": "D",
+          "text": "SW4\nBridge Priority - 12288\nmac-address 00:10:a1:03:42:e8"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊①ブリッジプライオリティが小さいもの、②MACアドレスが小さい方"
+    },
+    {
+      "id": "part14_q006",
+      "questionNumber": 6,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Network Access",
+      "questionText": "問題6 Cisco ワイヤレス LAN コントローラ GUI で新しい WLAN を設定するときに入力する必要がある2つの値または設定はどれですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "管理インターフェース設定"
+        },
+        {
+          "id": "B",
+          "text": "QoS 設定"
+        },
+        {
+          "id": "C",
+          "text": "1つ以上のアクセス ポイントの IP アドレス"
+        },
+        {
+          "id": "D",
+          "text": "SSID"
+        },
+        {
+          "id": "E",
+          "text": "プロファイル名"
+        }
+      ],
+      "correctAnswers": [
+        "D",
+        "E"
+      ],
+      "explanation": "答え: D,E\n＊プロファイル名とは、そのWLANが何であるか分かりやすくするための任意の文字列です。\"〇〇用\"など。"
+    },
+    {
+      "id": "part14_q007",
+      "questionNumber": 7,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "問題7 左側の特性を右側の IPv6 アドレス タイプにドラッグ アンド ドロップします。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "送信元アドレスとして使用されない",
+          "target": "マルチキャスト"
+        },
+        {
+          "item": "1対多の通信を提供",
+          "target": "マルチキャスト"
+        },
+        {
+          "item": "インターネット上でルーティングできない",
+          "target": "ユニークローカル"
+        },
+        {
+          "item": "アドレス競合なしでサイトを結合できる",
+          "target": "ユニークローカル"
+        }
+      ],
+      "correctAnswers": [
+        "マルチキャスト: 送信元アドレスとして使用されない, 1対多の通信を提供",
+        "ユニークローカル: インターネット上でルーティングできない, アドレス競合なしでサイトを結合できる"
+      ],
+      "explanation": "答え:\nマルチキャスト\n・送信元アドレスとして使用されない\n・1対多の通信を提供\nユニークローカル\n・インターネット上でルーティングできない\n・アドレス競合なしでサイトを結合できる"
+    },
+    {
+      "id": "part14_q008",
+      "questionNumber": 8,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題8 R2 の LAN セグメントの IPv6 アドレスは、EUI-64 形式を使用して設定するとき、ルータによってどの IPv6 アドレスが生成されますか。",
+      "diagramDescription": "【図のトポロジ構成】\nISPの上部ネットワーク: 2001:db8:9bb6:961b::/64\nISP ── R1 ── Switch ── DNSサーバー1, DNSサーバー2\nISP ── R2 (ca-01-b6-b4-00-01) ── Switch ── PC2台\nR2のLANセグメント: 2001:db8:9bb6:6bb9::/64",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "2001:db8:9bb6:6bb9:C801:B6FF:FEB4:1"
+        },
+        {
+          "id": "B",
+          "text": "2001:db8:9bb6:6bb9:C001:6BFE:FF01:1"
+        },
+        {
+          "id": "C",
+          "text": "2001:db8:9bb6:6bb9:C081:B6FF:FF4B:1"
+        },
+        {
+          "id": "D",
+          "text": "2001:db8:9bb6:6bb9:4626:109F:FE56:1"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊①プレフィックス64ビット＋MACアドレス64ビットをする\n→「2001:db8:9bb6:6bb9」+「ca-01-b6-b4-00-01」\n②MACアドレスの真ん中に「FF:FE」を挿入する。\n→「ca-01-b6-ff-fe-b4-00-01」\n③7ビット目を反転させる。ca「1100 1010」→c8「1100 1000」\n【実践】FF:FEをまず探す。本問は1つしかない。"
+    },
+    {
+      "id": "part14_q009",
+      "questionNumber": 9,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Security Fundamentals",
+      "questionText": "問題9 左側の管理接続タイプを右側の定義にドラッグ アンド ドロップします。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "コントローラ CLI へのクリアテキスト接続",
+          "target": "Telnet"
+        },
+        {
+          "item": "シリアルケーブル経由の物理接続をサポート",
+          "target": "Console"
+        },
+        {
+          "item": "デバイス管理用の安全な Web アクセスをサポート",
+          "target": "HTTPS"
+        },
+        {
+          "item": "CLI への暗号化アクセスとデータ転送用の安全なチャネルをサポート",
+          "target": "SSH"
+        }
+      ],
+      "correctAnswers": [
+        "コントローラ CLI へのクリアテキスト接続: Telnet",
+        "シリアルケーブル経由の物理接続をサポート: Console",
+        "デバイス管理用の安全な Web アクセスをサポート: HTTPS",
+        "CLI への暗号化アクセスとデータ転送用の安全なチャネルをサポート: SSH"
+      ],
+      "explanation": "答え:\n・コントローラ CLI へのクリアテキスト接続 : Telnet\n・シリアルケーブル経由の物理接続をサポート : Console\n・デバイス管理用の安全な Web アクセスをサポート : HTTPS\n・CLI への暗号化アクセスとデータ転送用の安全なチャネルをサポート : SSH"
+    },
+    {
+      "id": "part14_q010",
+      "questionNumber": 10,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題10 仮想マシンを展開する前に考慮すべきことは何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "データセンター環境内の仮想マシンの場所"
+        },
+        {
+          "id": "B",
+          "text": "VSM を利用して複数の仮想プロセッサを 2 台以上の仮想マシンにマッピングするかどうか"
+        },
+        {
+          "id": "C",
+          "text": "CPU コアの数やメモリの量などのリソース制限"
+        },
+        {
+          "id": "D",
+          "text": "モニター、キーボード、マウスなどの物理周辺機器のサポート"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊リソースやコスト、NW設計、セキュリティなど様々考えることがあるが、選択肢の中ではこれ。"
+    },
+    {
+      "id": "part14_q011",
+      "questionNumber": 11,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題11 スイッチドネットワークにおけるルートポートの役割は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "指定ポートに障害が発生したときに指定ポートを置き換えます"
+        },
+        {
+          "id": "B",
+          "text": "非ルートスイッチからルートへの最適なパスです。"
+        },
+        {
+          "id": "C",
+          "text": "ルート ポートに障害が発生したときに指定ポートを置き換えます"
+        },
+        {
+          "id": "D",
+          "text": "フェイルオーバーが発生するまで管理上無効になっています。"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊STPのポート種別の理解。ルートブリッジの選出→ルートポートの選出→指定ポート/非指定ポートの選出。ルートポートは、ルートブリッジに向かう最短経路のポート。"
+    },
+    {
+      "id": "part14_q012",
+      "questionNumber": 12,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題12 WPA1 はデータ保護にどのタイプの暗号化を使用しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "AES"
+        },
+        {
+          "id": "B",
+          "text": "TKIP"
+        },
+        {
+          "id": "C",
+          "text": "PEAP"
+        },
+        {
+          "id": "D",
+          "text": "EAP"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊WPA1はTKIP、WPA2,3はCCMP"
+    },
+    {
+      "id": "part14_q013",
+      "questionNumber": 13,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題13 パケットは 192.168.10.1 から 192.168.20.75 の宛先に流れています。ルータはどのネクストホップを選択しますか。",
+      "diagramDescription": null,
+      "commandOutputs": "R_1# show ip route\n.....\nD 192.168.20.0/26 [90/24513456] via 10.10.10.1\nR 192.168.20.0/24 [120/5] via 10.10.10.2\nO 192.168.0.0/19 [110/219414] via 10.10.10.13\nB 192.168.0.0/16 is variably subnetted, 4 subnets, 4 masks\nD 192.168.20.0/27 [90/4123710] via 10.10.10.12\nD 192.168.20.0/25 [90/14464211] via 10.10.10.11\nS* 0.0.0.0/0 [1/0] via 10.10.10.14",
+      "options": [
+        {
+          "id": "A",
+          "text": "10.10.10.1"
+        },
+        {
+          "id": "B",
+          "text": "10.10.10.11"
+        },
+        {
+          "id": "C",
+          "text": "10.10.10.12"
+        },
+        {
+          "id": "D",
+          "text": "10.10.10.14"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊選択肢は、D（EIGRP）やS（当てはまらなかったときのスタティックルート）です。Dの3つを見て、宛先の第4オクテット「75」がサブネット内に含まれるか考えます。75を表現するには7ビット必要であるため、/25が正解です。"
+    },
+    {
+      "id": "part14_q014",
+      "questionNumber": 14,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題14 スイッチが期限切れになった宛先MACアドレスを持つフレームを受信するとどうなりますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "フレームを受信したポートの履歴アドレスのMACアドレスエージングテーブルを参照します。"
+        },
+        {
+          "id": "B",
+          "text": "フレームを受信したポート以外のすべてのVLANのポートにフレームをフラッディングします。"
+        },
+        {
+          "id": "C",
+          "text": "フレームをドロップし、フレームを受信したポートから宛先MACアドレスを再度学習します。"
+        },
+        {
+          "id": "D",
+          "text": "フレームを受信したポートを除くVLANのすべてのポートにフレームをフラッディングします。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊そのポートがVLANに属していれば、同じVLANでフラッディングします。"
+    },
+    {
+      "id": "part14_q015",
+      "questionNumber": 15,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題15 偽のDHCP サーバーを識別するために何が使用されますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "DHCP REQUEST"
+        },
+        {
+          "id": "B",
+          "text": "DHCP DISCOVER"
+        },
+        {
+          "id": "C",
+          "text": "DHCP ACK"
+        },
+        {
+          "id": "D",
+          "text": "DHCP OFFER"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊DISCOVERパケットをネットワークにブロードキャストすることで、すべてのDHCPサーバー（正規・不正を問わず）がOFFERを返します。予期しないサーバーからの応答を検出することで、偽のDHCPサーバーの存在を特定することができます。【注】DISCOVERも使用しますが、\"識別\"できるのはOFFERです。"
+    },
+    {
+      "id": "part14_q016",
+      "questionNumber": 16,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題16 R1が受信パケットに適用しているホップごとのQoS動作はどれですか。",
+      "diagramDescription": "【図の構成】\n左側（着信 Gi0/0）: [AF31, AF21, AF11] の3つのキュー\nルータ: R1 (Gi0/0 -> Gi0/1)\n右側（出側 Gi0/1）: 一列に並んだ [AF31, AF21, AF11]",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "キューイング"
+        },
+        {
+          "id": "B",
+          "text": "マーキング"
+        },
+        {
+          "id": "C",
+          "text": "シェーピング"
+        },
+        {
+          "id": "D",
+          "text": "ポリシング"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊右側が一列であることを見て、キューイングと判断する。正確にはCBWFQ（クラス分けし、優先度に応じて送る）を示しております。"
+    },
+    {
+      "id": "part14_q017",
+      "questionNumber": 17,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題17 Rapid PVST＋を使用する場合、スイッチ ポートがブートプロセスの直後に常に入る一時的な状態は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ディスカーディング"
+        },
+        {
+          "id": "B",
+          "text": "リスニング"
+        },
+        {
+          "id": "C",
+          "text": "フォワーディング"
+        },
+        {
+          "id": "D",
+          "text": "ラーニング"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊Rapid PVST＋では、Discarding→Learning→Forwardingの順で状態遷移します。ブートプロセスの直後＝電源を入れた直後はディスカーディングです。"
+    },
+    {
+      "id": "part14_q018",
+      "questionNumber": 18,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題18 無線アクセスポイントが必要で、以下の要件を満たす必要がある。どのアクセスポイントタイプを使用しなければなりませんか。①WLCによって「ゼロタッチ」がデプロイされ、管理される。②リアルタイムのMAC機能のみを処理する。③スプリットMACアーキテクチャで使用する。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "自律型"
+        },
+        {
+          "id": "B",
+          "text": "軽量"
+        },
+        {
+          "id": "C",
+          "text": "メッシュ"
+        },
+        {
+          "id": "D",
+          "text": "クラウドベース"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊A.WLCなし（自律型）、B.WLCあり（集中管理型）という点で理解する。集中管理型のときのAPは「light weight AP」「軽量AP」と言ったりする。"
+    },
+    {
+      "id": "part14_q019",
+      "questionNumber": 19,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題19 仮想マシンにはどのようなコンポーネントが含まれていますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "NIC、RAM、ディスク、CPU などの物理リソース"
+        },
+        {
+          "id": "B",
+          "text": "ハイパーバイザの物理リソースによってサポートされる構成ファイル"
+        },
+        {
+          "id": "C",
+          "text": "ハイパーバイザで実行されるアプリケーション"
+        },
+        {
+          "id": "D",
+          "text": "ハイパーバイザとゲスト OS で実行されるプロセス"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊ここでの\"コンポーネント\"は、そもそもVMの構成要素を意味しています。VMは初期の段階でゲストOSや設定ファイルなどを持っています。設定ファイルとは、VMwaraでいうとVMXファイルのことです。A.VMというよりそのマシンの物理リソース。\"論理リソース\"や\"仮想リソース\"なら正解かも。CやD.VMが起動したあとに構成されるもの。"
+    },
+    {
+      "id": "part14_q020",
+      "questionNumber": 20,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題20 エンジニアは、3 台の PC を持つ現在の VLAN に IP アドレスを割り当てます。構成では、サブネット化とホスト数に同じクラス C サブネットを使用して、30 個の追加 VLAN の拡張も考慮する必要があります。予想される成長のためにアドレス空間を予約しながら、要求を満たすコマンド セットはどれですか。",
+      "diagramDescription": "【図のトポロジ構成】\nルータ (f0/1, 192.168.0.0/24) ── スイッチ (VLAN10) ── PC1, PC2, PC3",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Switch(config)#interface vlan 10\nSwitch(config-if)#ip address 192.168.0.1 255.255.255.252"
+        },
+        {
+          "id": "B",
+          "text": "Switch(config)#interface vlan 10\nSwitch(config-if)#ip address 192.168.0.1 255.255.255.248"
+        },
+        {
+          "id": "C",
+          "text": "Switch(config)#interface vlan 10\nSwitch(config-if)#ip address 192.168.0.1 255.255.255.0"
+        },
+        {
+          "id": "D",
+          "text": "Switch(config)#interface vlan 10\nSwitch(config-if)#ip address 192.168.0.1 255.255.255.128"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊サブネットマスクの最後に注目。例えば、「248」は/29を指すが、これは6ホストまで使えて、現在の3台にちょうどよい（満たしているし無駄が少ない）。また、/24にしたときに、残り(/25～/29)の5ビットから32個のサブネットが作れるので、30個の追加VLANにも対応可能。なお、クラスCは「192.168～/24」のアドレス体系のことです。"
+    },
+    {
+      "id": "part14_q021",
+      "questionNumber": 21,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題21 WLC から AP への CAPWAP パケットのトンネル ソースとして機能するインターフェイス IP アドレスはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "サービス"
+        },
+        {
+          "id": "B",
+          "text": "トランク"
+        },
+        {
+          "id": "C",
+          "text": "APマネージャ"
+        },
+        {
+          "id": "D",
+          "text": "仮想 AP 接続"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊CAPWAPはWLCとAPの間で使われるトンネルプロトコルです。AP Managerは、CAPWAP通信用インターフェースです。"
+    },
+    {
+      "id": "part14_q022",
+      "questionNumber": 22,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題22 スイッチはフレームを転送するときに CAM テーブルで何を検索しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "送信元 MAC アドレスとエージング時間"
+        },
+        {
+          "id": "B",
+          "text": "宛先 MAC アドレスとフラッシュ時間"
+        },
+        {
+          "id": "C",
+          "text": "送信元 MAC アドレスと送信元ポート"
+        },
+        {
+          "id": "D",
+          "text": "宛先 MAC アドレスと宛先ポート"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊CAMテーブルとはスイッチがMACアドレスと物理ポートを対応付けて記録するテーブルです。受信時には送信元MACアドレスと受信ポート、送信時には宛先 MAC アドレスと宛先ポートを記録します。本問は\"転送するとき\"です。"
+    },
+    {
+      "id": "part14_q023",
+      "questionNumber": 23,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題23 仮想マシンをホストするために基盤となる OS なしで動作するハイパーバイザーのタイプはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "タイプ 1"
+        },
+        {
+          "id": "B",
+          "text": "タイプ 2"
+        },
+        {
+          "id": "C",
+          "text": "タイプ 3"
+        },
+        {
+          "id": "D",
+          "text": "タイプ 12"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊ホストOSなし：タイプ1（ベアメタル型）、ホストOSあり：タイプ2（ホスト型）。基本的に企業で使われるのはタイプ1です。タイプ2は個人PCのWindows上でmacOSを動かしたいときなど。"
+    },
+    {
+      "id": "part14_q024",
+      "questionNumber": 24,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題24 IPv4 優先機能を使用する場合、ホストはどのような処理を行いますか。",
+      "diagramDescription": null,
+      "commandOutputs": "Connection-specific DNS Suffix .:\nDescription ...............: Intel(R) Ethernet Connection (2) I218-V\nPhysical Address...........: D0-50-99-47-A9-7F\nDHCP Enabled...............: Yes\nAutoconfiguration Enabled....: Yes\nLink-local IPv6 Address .....: fe80::8809:9772:c583:6bl8%15(Preferred)\nIPv4 Address...............: 192.168.69.132(Preferred)\nSubnet Mask ...............: 255.255.255.0\nLease Obtained.............: Thursday, January 21, 2021 11:10:46 PM\nLease Expires .............: Wednesday, February 3, 2021 11:27:29 AM\nDefault Gateway............: 192.168.69.1\nDHCP Server ...............: 192.168.69.1\nDHCPv6 IAID ...............: 231755929\nDHCPv6 Client DUID.........: 00-01-00-01-26-D7-BB-D0-50-99-47-A9-7F\nDNS Servers ...............: 192.168.69.1\nNetBIOS over Tcpip..........: Enabled",
+      "options": [
+        {
+          "id": "A",
+          "text": "静的に割り当てられた IPv4 アドレスを引き続き使用します"
+        },
+        {
+          "id": "B",
+          "text": "DNS サーバーに、更新のたびに同じ IPv4 アドレスを提供するよう強制します"
+        },
+        {
+          "id": "C",
+          "text": "DHCP サーバーとのリースを更新するときに、同じ IPv4 アドレスを要求します"
+        },
+        {
+          "id": "D",
+          "text": "IPv4 ホスト IP アドレスを更新するときに、アドレス プールを優先します"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊\"IPv4 優先機能\"は、C.のとおりで、DHCPクライアントが以前に使っていたIPv4アドレスをできるだけ再利用しようとすることです。表に\"Preferred\"（優先）と記載があります。"
+    },
+    {
+      "id": "part14_q025",
+      "questionNumber": 25,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "問題25 ［IPv6］ドラッグ アンド ドロップ",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "プライベート IPv4 アドレスに対応する",
+          "target": "ユニークローカル"
+        },
+        {
+          "item": "複数の組織で同時に使用可能",
+          "target": "ユニークローカル"
+        },
+        {
+          "item": "IPv4アドレスと同様にパブリックにルーティング可能",
+          "target": "グローバルユニキャストアドレス"
+        },
+        {
+          "item": "1対1の通信を提供",
+          "target": "グローバルユニキャストアドレス"
+        }
+      ],
+      "correctAnswers": [
+        "ユニークローカル: プライベート IPv4 アドレスに対応する, 複数の組織で同時に使用可能",
+        "グローバルユニキャストアドレス: IPv4アドレスと同様にパブリックにルーティング可能, 1対1の通信を提供"
+      ],
+      "explanation": "答え:\nユニークローカル\n・プライベート IPv4 アドレスに対応する\n・複数の組織で同時に使用可能\nグローバルユニキャストアドレス\n・IPv4アドレスと同様にパブリックにルーティング可能\n・1対1の通信を提供"
+    },
+    {
+      "id": "part14_q026",
+      "questionNumber": 26,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題26 MAC 学習はどのように機能しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ポートを最大 10 個の動的に学習されたアドレスに制限します"
+        },
+        {
+          "id": "B",
+          "text": "管理 VLAN のセキュリティを強化します"
+        },
+        {
+          "id": "C",
+          "text": "MAC アドレスを、それを受信したポートに関連付けます"
+        },
+        {
+          "id": "D",
+          "text": "アドレス テーブルにリストされていない受信 MAC アドレスをドロップします。"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊問22参照"
+    },
+    {
+      "id": "part14_q027",
+      "questionNumber": 27,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "IP Services",
+      "questionText": "問題27 LAN ネットワーク内で VRRP によって提供される 2つの機能は何ですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "負荷分散"
+        },
+        {
+          "id": "B",
+          "text": "帯域幅最適化"
+        },
+        {
+          "id": "C",
+          "text": "動的ルーティング更新"
+        },
+        {
+          "id": "D",
+          "text": "冗長性"
+        },
+        {
+          "id": "E",
+          "text": "きめ細かい QoS"
+        }
+      ],
+      "correctAnswers": [
+        "A",
+        "D"
+      ],
+      "explanation": "答え: A,D\n＊VRRP（Virtual Router Redundancy Protocol）は、複数のルーターを仮想ルーターとしてグループ化し、デフォルトゲートウェイを冗長化するプロトコルです。"
+    },
+    {
+      "id": "part14_q028",
+      "questionNumber": 28,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Access",
+      "questionText": "問題28 左側の特性を右側のデバイス タイプにドラッグ アンド ドロップします。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "イーサネットフレームをフォーマットして宛先に転送",
+          "target": "アクセスポイント"
+        },
+        {
+          "item": "IEEE 802.11 とイーサネット標準の両方をサポート",
+          "target": "アクセスポイント"
+        },
+        {
+          "item": "集中管理とセキュリティを提供",
+          "target": "ワイヤレス LAN コントローラ"
+        },
+        {
+          "item": "LWAPP モード時に転送の決定を行う",
+          "target": "ワイヤレス LAN コントローラ"
+        }
+      ],
+      "correctAnswers": [
+        "アクセスポイント: イーサネットフレームをフォーマットして宛先に転送, IEEE 802.11 とイーサネット標準の両方をサポート",
+        "ワイヤレス LAN コントローラ: 集中管理とセキュリティを提供, LWAPP モード時に転送の決定を行う"
+      ],
+      "explanation": "答え:\nアクセスポイント\n・イーサネットフレームをフォーマットして宛先に転送\n・IEEE 802.11 とイーサネット標準の両方をサポート\nワイヤレス LAN コントローラ\n・集中管理とセキュリティを提供\n・LWAPP モード時に転送の決定を行う"
+    },
+    {
+      "id": "part14_q029",
+      "questionNumber": 29,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題29 ルータDでshow ip routeコマンドを実行したとき、192.168.1.0/24 へのネクストホップはどれですか。また、その理由は何ですか。",
+      "diagramDescription": "【図のトポロジ構成】\nホスト(192.168.1.0/24) ── RA ──(EIGRP100 メトリック 128256)── RB (.1)\nRB ──(10.0.1.0/30 OSPF Area 1 メトリック 10000)── RC (.1)\nRB ──(10.0.0.0/30 EIGRP 100 メトリック 128256)── RD\nRC ──(10.0.2.0/30 OSPF Area 1 メトリック 10000)── RD\n※RBとRDの間で「再分配 EIGRPとOSPF間」の表記あり",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "次のホップは 10.0.2.1 です。リンクステートルーティング プロトコルだからです。"
+        },
+        {
+          "id": "B",
+          "text": "次のホップは 10.0.0.1 です。AD値が優れているからです。"
+        },
+        {
+          "id": "C",
+          "text": "次のホップは 10.0.2.1 です。距離ベクトルルーティングを使用しているからです。"
+        },
+        {
+          "id": "D",
+          "text": "次のホップは 10.0.0.1 です。メトリックが高いからです。"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊ネクストホップにはRBかRCしかない。AD値を比較して、RBへ行く。\n＊AD値：EIGRPは100（デフォルトは90）、OSPFは110（明示されていないときはデフォルト）。\n＊\"再配布\"の説明は無視で良い。"
+    },
+    {
+      "id": "part14_q030",
+      "questionNumber": 30,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Security Fundamentals",
+      "questionText": "問題30 AAA サービスに関するステートメントを左側から右側にドラッグ アンド ドロップします。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "TACACS+を介してユーザー検証を実行します",
+          "target": "認証"
+        },
+        {
+          "item": "「あなたが誰であるか」を確認します",
+          "target": "認証"
+        },
+        {
+          "item": "FTPサーバーなどのネットワーク資産へのアクセスを許可します",
+          "target": "承認"
+        },
+        {
+          "item": "ユーザーが実行できるCLIコマンドを制限します",
+          "target": "承認"
+        }
+      ],
+      "correctAnswers": [
+        "認証: TACACS+を介してユーザー検証を実行します, 「あなたが誰であるか」を確認します",
+        "承認: FTPサーバーなどのネットワーク資産へのアクセスを許可します, ユーザーが実行できるCLIコマンドを制限します"
+      ],
+      "explanation": "答え:\n認証\n・TACACS+を介してユーザー検証を実行します\n・「あなたが誰であるか」を確認します\n承認\n・FTPサーバーなどのネットワーク資産へのアクセスを許可します\n・ユーザーが実行できるCLIコマンドを制限します\n\n＊認証「本人確認」→承認「認証されたユーザーに何ができるかを決める」"
+    },
+    {
+      "id": "part14_q031",
+      "questionNumber": 31,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題31 R2のLANセグメントでIPv6アドレスをEUI-64 形式を使用して設定するとき、どのIPv6アドレスが生成されますか。",
+      "diagramDescription": "【図のトポロジ構成】\nR2 (MAC: 12-db8-ba-c2-00-01) ── スイッチ ── PC2台\nLANセグメント: 2001:db8:d955:1008::/64",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "2001:db8:d955:1008:1030:ABFF:FECC:1"
+        },
+        {
+          "id": "B",
+          "text": "2001:db8:d955:1008:12D8:BAFE:FF01:1"
+        },
+        {
+          "id": "C",
+          "text": "2001:db8:d955:1008:10D8:BAFF:FEC2: 1"
+        },
+        {
+          "id": "D",
+          "text": "2001:db8:d955:1008:4635:278F:FE95:1"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊EUI-64は、プレフィックス64ビット＋MACアドレス64ビットでIPアドレスを作成します。\n「2001:db8:1055:1008」+「12-d8-ba-c2-00-01」です。\nただし、以下の手順を適用します。\n①MACアドレスの真ん中に「FF:FE」を挿入する。→「12-d8-ba-ff-fe-c2-00-01」\n②7ビット目を反転させる。12「0001 0010」→10「0001 0000」"
+    },
+    {
+      "id": "part14_q032",
+      "questionNumber": 32,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題32 宛先ネットワークにトラフィックを送信するために使用されるインターフェースはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": "O 10.18.75.113/27 [110/6906] via G0/6\nO 10.18.75.113/27 [110/23018] via G0/3\nR 10.18.75.113/27 [120/16] via G0/16\nR 10.18.75.113/27 [120/14] via G0/23",
+      "options": [
+        {
+          "id": "A",
+          "text": "G0/6"
+        },
+        {
+          "id": "B",
+          "text": "G0/3"
+        },
+        {
+          "id": "C",
+          "text": "G0/16"
+        },
+        {
+          "id": "D",
+          "text": "G0/23"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊ルート選択は①AD値が小さい方→②同じならメトリックが小さい方で決定します。\n[]書きは、[AD値/メトリック]です。OはOSPF、RはRIPです。"
+    },
+    {
+      "id": "part14_q033",
+      "questionNumber": 33,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題33 ワイヤレス トラフィックをキャプチャし、そのトラフィックをパケットアナライザーを実行している PC に転送するために使用されるAPモードはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "モニター"
+        },
+        {
+          "id": "B",
+          "text": "スニファー"
+        },
+        {
+          "id": "C",
+          "text": "ブリッジ"
+        },
+        {
+          "id": "D",
+          "text": "不正検出機能"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊Wiresharkなどを用いて、パケット解析やトラブルシューティングができます。"
+    },
+    {
+      "id": "part14_q034",
+      "questionNumber": 34,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題34 レイヤー2スイッチの特徴は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "接続されているすべてのデバイスに単一のブロードキャストドメインを提供します"
+        },
+        {
+          "id": "B",
+          "text": "アクティブな TCP 接続の数を追跡します"
+        },
+        {
+          "id": "C",
+          "text": "接続されているすべてのデバイスに1つの衝突ドメインを提供します"
+        },
+        {
+          "id": "D",
+          "text": "MAC アドレスに基づいて転送を決定します"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊MACアドレステーブルには、受信元/宛先のMACアドレスやポートが記録されます。"
+    },
+    {
+      "id": "part14_q035",
+      "questionNumber": 35,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題35 フレームスイッチングの特徴は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "不明な宛先からのフレームを検査してドロップする"
+        },
+        {
+          "id": "B",
+          "text": "受信ポートを除くすべてのポートに不明な宛先をフラッディングする"
+        },
+        {
+          "id": "C",
+          "text": "CDP を使用してフレームを隣接ポートに転送する"
+        },
+        {
+          "id": "D",
+          "text": "サービス拒否攻撃から保護する"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊「MACアドレステーブルに宛先MACアドレスが登録されていない場合、」という前提が抜けているため、不親切な問題です。"
+    },
+    {
+      "id": "part14_q036",
+      "questionNumber": 36,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題36 WLC のアウトオブバンド管理に使用されるインターフェイスはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "dynamic"
+        },
+        {
+          "id": "B",
+          "text": "management"
+        },
+        {
+          "id": "C",
+          "text": "service port"
+        },
+        {
+          "id": "D",
+          "text": "virtual"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊アウトオブバンド）WLC自体の設定用。サービスポート。\n＊インバンド）管理者がWLC経由で各APを設定するときのポート。マネジメントポート。"
+    },
+    {
+      "id": "part14_q037",
+      "questionNumber": 37,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題37 どのようなインターフェース状態ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "R30# show interface fa0/0\nFastEthernet0/0 is up, line protocol is up\nHardware is DEC21140, address is ca02.7788.0000 (bia ca02.7788.0000)\nDescription: madrid_subnet\nInternet address is 10.32.102.2/30\nMTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,\nreliability 255/255, txload 1/255, rxload 1/255\nEncapsulation ARPA, loopback not set\nKeepalive set (60 sec)\nHalf-duplex, 100 Mb/s, 100BaseTX/FX\nARP type: ARPA, ARP Timeout 04:00:00\nLast input 00:00:01, output 00:00:00, output hang never\nLast clearing of \"show interface\" counters 00:00:18\nInput queue: 0/300/0/0 (size/max/drops/flushes); Total output drops: 0\nQueueing strategy: fifo\nOutput queue: 0/300 (size/max)\n30 second input rate 0 bits/sec, 0 packets/sec\n30 second output rate 0 bits/sec, 0 packets/sec\n7331 packets input, 7101162 bytes\nReceived 267 broadcasts (0 IP multicasts)\n35 runts, 0 giants, 0 throttles\n0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n0 watchdog\n0 input packets with dribble condition detected\n3927 packets output, 1440403 bytes, 0 underruns\n0 output errors, 480 collisions, 0 interface resets\n0 unknown protocol drops\n0 babbles, 0 late collision, 0 deferred\n0 lost carrier, 0 no carrier\n0 output buffer failures, 0 output buffers swapped out",
+      "options": [
+        {
+          "id": "A",
+          "text": "不良 NIC"
+        },
+        {
+          "id": "B",
+          "text": "ブロードキャスト ストーム"
+        },
+        {
+          "id": "C",
+          "text": "キューイング"
+        },
+        {
+          "id": "D",
+          "text": "デュプレックスの不一致"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊「Half-duplex」「480 collisions」に注目。相手側はおそらく「Full-duplex」であり、通信モード不一致のためにcollisionが発生しています。"
+    },
+    {
+      "id": "part14_q038",
+      "questionNumber": 38,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題38 宛先ネットワークにトラフィックを送信するために使用されるインターフェースはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": "D 10.47.114.119/29 [90/6451] via F0/2\nD 10.47.114.119/29 [90/52201] via F0/20\nR 10.47.114.119/29 [120/9] via F0/12\nR 10.47.114.119/29 [120/10] via F0/10",
+      "options": [
+        {
+          "id": "A",
+          "text": "F0/2"
+        },
+        {
+          "id": "B",
+          "text": "F0/20"
+        },
+        {
+          "id": "C",
+          "text": "F0/12"
+        },
+        {
+          "id": "D",
+          "text": "F0/10"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊問題32参照"
+    },
+    {
+      "id": "part14_q039",
+      "questionNumber": 39,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題39 管理者が自動化されたネットワーク管理ソリューションの実装を選択するのはなぜでしょうか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ボックスごとの構成と展開を可能にするため"
+        },
+        {
+          "id": "B",
+          "text": "定期的な管理コストを制限するため"
+        },
+        {
+          "id": "C",
+          "text": "運用コストを削減するため"
+        },
+        {
+          "id": "D",
+          "text": "よりシンプルな パスワード ポリシーをサポートするため"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊自動化→運用コストが下がる。"
+    },
+    {
+      "id": "part14_q040",
+      "questionNumber": 40,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題40 SSID セキュリティを強化したワイヤレス ネットワークを作成します。ネットワークは2.4GHz、54 Mbps のスループットで動作する必要があります。管理者はどのタスクを実行しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Broadcast SSIDチェックボックスをオンにし、Radio Policyを802.11aに設定します。"
+        },
+        {
+          "id": "B",
+          "text": "Broadcast SSIDチェックボックスをオフにし、Radio Policyを802.11a/gに設定します。"
+        },
+        {
+          "id": "C",
+          "text": "Broadcast SSIDチェックボックスをオンにし、無線ポリシーを802.11gに設定します。"
+        },
+        {
+          "id": "D",
+          "text": "Broadcast SSIDチェックボックスをオフにし、無線ポリシーを 802.11g に設定します。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊Broadcast（全体周知）をオフにし、SSIDをステルスにします。\n＊【暗記】2.4GHz帯は、b,gです。5GHzはa,acです。（n,ax,beは両方）"
+    },
+    {
+      "id": "part14_q041",
+      "questionNumber": 41,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題41 どのような条件下で TCP が UDP より優先されますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "データの信頼性が重要な場合は TCP が使用され、パケットの欠落が許容される場合は UDP が使用される"
+        },
+        {
+          "id": "B",
+          "text": "低遅延が最適な場合は UDP が使用され、遅延が許容される場合は TCP が使用される"
+        },
+        {
+          "id": "C",
+          "text": "データの対話性が高い場合はUDPが使用され、データが時間に敏感な場合はTCPが使用される"
+        },
+        {
+          "id": "D",
+          "text": "データの欠落がより許容される場合はTCP が使用され、データが順序どおりに受け入れられない場合は UDP が使用される"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊UDPの例としては、SNMP,NTPがあります。（軽くて速いけど信頼性は低い）\n＊【余談】NTPは時刻なので正確な方が良いのでは？と思うが、より高速に届けた方が正確なのでUDP。"
+    },
+    {
+      "id": "part14_q042",
+      "questionNumber": 42,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題42 内部ネットワークをインターネットから保護するデバイスはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ファイアウォール"
+        },
+        {
+          "id": "B",
+          "text": "レイヤー 2 スイッチ"
+        },
+        {
+          "id": "C",
+          "text": "ルーター"
+        },
+        {
+          "id": "D",
+          "text": "アクセス ポイント"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊FW：IPアドレスやポート番号、プロトコルなどの情報をもとに通信の許可・拒否を行う"
+    },
+    {
+      "id": "part14_q043",
+      "questionNumber": 43,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題43 エンジニアは、互いにローカル通信するために、2つの異なるサブネットにある 2 台の PC の構成を更新する必要があります。1 台の PC は IP アドレス 192.168.25.128/25 で構成され、もう 1 台の PC は 192.168.25.100/25 で構成されています。通信を有効にするには、エンジニアは両方の PC でどのネットワークマスクを構成しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "255.255.255.248"
+        },
+        {
+          "id": "B",
+          "text": "255.255.255.0"
+        },
+        {
+          "id": "C",
+          "text": "255.255.255.252"
+        },
+        {
+          "id": "D",
+          "text": "255.255.255.224"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊192.168.25.128/25は192.168.25.128～192.168.25.255、192.168.25.100/25 は192.168.25.0～192.168.25.127の範囲を持ちます。つまり、合せて0～255の範囲を含める必要があります。"
+    },
+    {
+      "id": "part14_q044",
+      "questionNumber": 44,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題44 VRRP はどのタイプのプロトコルですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "動的 IP アドレス割り当てを使用する"
+        },
+        {
+          "id": "B",
+          "text": "ルータ間通信に宛先 IP アドレス 224.0.0.102 を使用する"
+        },
+        {
+          "id": "C",
+          "text": "シスコ独自のファースト ホップ冗長プロトコルを使用する"
+        },
+        {
+          "id": "D",
+          "text": "2 台以上のルータがデフォルト ゲートウェイとして動作できるようにする"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊VRRP（Virtual Router Redundancy Protocol）は、複数のルーターを仮想ルーターとしてグループ化し、デフォルトゲートウェイを冗長化するプロトコルです。"
+    },
+    {
+      "id": "part14_q045",
+      "questionNumber": 45,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題45 RFC1918 IPアドレスはネットワークでどのように使用されますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "セキュリティ強化のため、パブリックアドレスの代わりに使用される。"
+        },
+        {
+          "id": "B",
+          "text": "インターネットサービスプロバイダがインターネット上でルーティングするために使用されます。"
+        },
+        {
+          "id": "C",
+          "text": "変換せずに内部ネットワークからインターネットにアクセスするために使用される。"
+        },
+        {
+          "id": "D",
+          "text": "パブリックIPv4アドレスを保持するためにNATと一緒に使われる。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊【難】RFC1918 IPアドレスは、プライベートIPアドレスのことです。\"保持するために\"とは、\"節約するために\"という意味です。"
+    },
+    {
+      "id": "part14_q046",
+      "questionNumber": 46,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題46 設計者はCisco 自律アクセス ポイントと軽量アクセス ポイントのどちらを実装するかを決定します。ファームウェア更新に関してどのような事実を考慮しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "自律型アクセスポイントとは異なり、軽量アクセスポイントはリモートファームウェア更新を実装するためにWLCを必要とします。"
+        },
+        {
+          "id": "B",
+          "text": "自律型アクセスポイントは、軽量アクセスポイントと異なり、破損したファームウェアの更新から自動的に回復することができます。"
+        },
+        {
+          "id": "C",
+          "text": "ファームウェアのアップグレードをサポートするために冗長化されたWLCを必要とする軽量アクセスポイントとは異なり、自律型アクセスポイントは1つのWLCのみを必要とします。"
+        },
+        {
+          "id": "D",
+          "text": "自律型アクセスポイントと異なり、軽量アクセスポイントはバックアップのために現在のファームウェアの完全なコピーを保存します。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊ファームウェア更新に関して：自立型（WLC無）はAP単体で行います。集中管理型（WLC有）は、WLCを通じて実行されます。"
+    },
+    {
+      "id": "part14_q047",
+      "questionNumber": 47,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題47 DHCPサーバーは 172.16.32.15 にあります。192.168.52.0/24 サブネット上のクライアントが DHCP サーバーに到達するプロセスの次の手順は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ip forward-protocol udp 137"
+        },
+        {
+          "id": "B",
+          "text": "ip default-network 192.168.52.253"
+        },
+        {
+          "id": "C",
+          "text": "ip default-gateway 192.168.52.253"
+        },
+        {
+          "id": "D",
+          "text": "ip helper-address 172.16.32.15"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊異なるサブネットにあるDHCPサーバーへクライアントのDHCP要求を中継するには、ルーター（L3の何か）によるDHCPリレー設定が必要で、ip helper-address コマンドを使用する。"
+    },
+    {
+      "id": "part14_q048",
+      "questionNumber": 48,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題48 R1 が宛先 IP アドレス 10.56.0.62 のパケットを受信すると、どのインターフェイスを介してパケットをルーティングしますか。",
+      "diagramDescription": null,
+      "commandOutputs": "R1#\nGateway of last resort is 10.56.0.1 to network 0.0.0.0\n\nS* 0.0.0.0/0 [1/0] via 10.56.0.1\n10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks\nC 10.56.0.0/16 is directly connected, Null0\nC 10.56.0.0/26 is directly connected, Vlan58\nC 10.56.0.0/17 is directly connected, Vlan59\nC 10.56.0.0/24 is directly connected, Vlan60",
+      "options": [
+        {
+          "id": "A",
+          "text": "Vlan59"
+        },
+        {
+          "id": "B",
+          "text": "Vlan60"
+        },
+        {
+          "id": "C",
+          "text": "Null0"
+        },
+        {
+          "id": "D",
+          "text": "Vlan58"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊どれも範囲に含まれるが、よりプレフィックスが長いものが正解。\n＊10.56.0.0/26の使用可能なIP範囲は、10.56.0.1 ～ 10.56.0.62である。"
+    },
+    {
+      "id": "part14_q049",
+      "questionNumber": 49,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題49 すべてのデバイスが同時に起動したときに、どのルータが DR となりますか。",
+      "diagramDescription": "【図のトポロジ構成】\nOSPFネットワーク\nR1: IP 192.168.2.8, Priority: 108, RID: 1.1.1.1\nR2: RID: 192.168.2.1, Loopback: 2.2.2.1, Priority: 1\nR3: IP: 192.168.2.6, Priority: 106\nR4: IP: 192.168.2.4, Priority: 204, RID: 4.4.4.4\n4台のルータがスイッチを介して相互接続されている",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "R1"
+        },
+        {
+          "id": "B",
+          "text": "R2"
+        },
+        {
+          "id": "C",
+          "text": "R3"
+        },
+        {
+          "id": "D",
+          "text": "R4"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊①プライオリティが最も高いもの → ②同じならルータIDが大きいものがDRやBDRになる。\n＊【補足】ルートブリッジ（スイッチの話）はプライオリティやMACアドレスが小さいものになる。つまり、「スイッチは小、ルーターは大」と覚えておく。"
+    },
+    {
+      "id": "part14_q050",
+      "questionNumber": 50,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題50 インターフェイス GigabitEthernet0/0/1 の問題は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "Output from R1\nGigabitEthernet0/0/1 is up, line protocol is down\nHardware is SPA-10X1GE-V2, address is 0023.33ee.7o00 (bia 0023.33ee.7c00)\nMTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,\nreliability 255/255, txload 1/255, rxload 1/255\nEncapsulation ARPA, loopback not set\nKeepalive not supported\nHalf Duplex, 1000Mbps, link type is auto, media type is LX\noutput flow-control is off, input flow-control is off\nARP type: ARPA, ARP Timeout 04:00:00\nLast input 00:00:01, output 00:02:31, output hang never\n10 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n0 watchdog, 314 multicast, 0 pause input\n1 packets output, 77 bytes, 0 underruns\n0 output errors, 50 collisions, 6 interface resets\n17 unknown protocol drops\n0 babbles, 0 late collision, 0 deferred",
+      "options": [
+        {
+          "id": "A",
+          "text": "ケーブルの切断"
+        },
+        {
+          "id": "B",
+          "text": "デュプレックスの不一致"
+        },
+        {
+          "id": "C",
+          "text": "ポートのセキュリティ"
+        },
+        {
+          "id": "D",
+          "text": "高スループット"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊問37参照。ちなみに、本問では2行目はup/downになっている。これは、L1（物理）では繋がっているが、L2（データリンク）では接続できていないという意味。「Half Duplex」で 1000Mbps 通信を行おうとしていることも考えにくい。"
+    },
+    {
+      "id": "part14_q051",
+      "questionNumber": 51,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題51 次の JSON 全体のデータ型はどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": "{\n\"interface\":[\"ethernet0/3\", \"ethernet0/4\", \"ethernet0/5\"]\n}",
+      "options": [
+        {
+          "id": "A",
+          "text": "文字列"
+        },
+        {
+          "id": "B",
+          "text": "配列"
+        },
+        {
+          "id": "C",
+          "text": "オブジェクト"
+        },
+        {
+          "id": "D",
+          "text": "bool値"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊\"key\":\"値\"、オブジェクト{}、配列[]"
+    },
+    {
+      "id": "part14_q052",
+      "questionNumber": 52,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題52 デフォルトでは、ワークステーションがトラフィックの送信を停止した後、スイッチはどのくらいの期間ワークステーションの MAC アドレスを認識し続けますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "200秒"
+        },
+        {
+          "id": "B",
+          "text": "300秒"
+        },
+        {
+          "id": "C",
+          "text": "600秒"
+        },
+        {
+          "id": "D",
+          "text": "900秒"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊5分経過するとエントリを削除するため、再度「宛先不明」としてフラッディングします。"
+    },
+    {
+      "id": "part14_q053",
+      "questionNumber": 53,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題53 Rapid PVST＋モードは、各スイッチの同じ VLAN 上にあります。どのスイッチがルート ブリッジになりますか。また、その理由は何ですか。",
+      "diagramDescription": "【図のトポロジ構成】\nSW1: Priority 8192, MAC: 00:24:98:6f:3b:41\nSW2: Priority 16384, MAC: 00:24:98:6f:3b:43\nSW3: Priority 32768, MAC: 00:24:98:6f:3b:42\nSW4: Priority 8192, MAC: 00:24:98:6f:3b:40\n4台のスイッチがリング状に接続",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "SW3、優先度が最も高いため"
+        },
+        {
+          "id": "B",
+          "text": "SW2、MACアドレスが最も高いため"
+        },
+        {
+          "id": "C",
+          "text": "SW4、優先度が最も高く、MACアドレスが低いため"
+        },
+        {
+          "id": "D",
+          "text": "SW1、優先度が最も低く、MACアドレスが高いため"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊問49参照。ルートブリッジはプライオリティが小さいものが選定されます。同じときはMACアドレスが小さいものになります。"
+    },
+    {
+      "id": "part14_q054",
+      "questionNumber": 54,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Access",
+      "questionText": "問題54 ワイヤレス[ドラッグ アンド ドロップ]",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "Wi-Fi 信号を増幅する機能",
+          "target": "アクセス ポイント"
+        },
+        {
+          "item": "ワークグループ ブリッジとして構成可能",
+          "target": "アクセス ポイント"
+        },
+        {
+          "item": "テンプレートを使用して QOS 構成を実装",
+          "target": "ワイヤレス LAN コントローラ"
+        },
+        {
+          "item": "デバイス グループ内のユーザー接続データを提供",
+          "target": "ワイヤレス LAN コントローラ"
+        }
+      ],
+      "correctAnswers": [
+        "アクセス ポイント: Wi-Fi 信号を増幅する機能, ワークグループ ブリッジとして構成可能",
+        "ワイヤレス LAN コントローラ: テンプレートを使用して QOS 構成を実装, デバイス グループ内のユーザー接続データを提供"
+      ],
+      "explanation": "答え:\nアクセス ポイント:\n・Wi-Fi 信号を増幅する機能\n・ワークグループ ブリッジとして構成可能\nワイヤレス LAN コントローラ:\n・テンプレートを使用して QOS 構成を実装\n・デバイス グループ内のユーザー接続データを提供\n\n＊AP上：リピータモードで信号の増幅や延長も可能。AP下：例えばPC→ルーター→プリンタという風に橋渡しの役割にもなる。"
+    },
+    {
+      "id": "part14_q055",
+      "questionNumber": 55,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題55 ワイヤレス認証用に RADIUS サーバーを実装する場合、WLCではどれを使用しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "クライアント除外と SSH"
+        },
+        {
+          "id": "B",
+          "text": "ネットワーク アクセス制御状態と SSH"
+        },
+        {
+          "id": "C",
+          "text": "802.1x とサーバーの MAC アドレス"
+        },
+        {
+          "id": "D",
+          "text": "AAA オーバーライドとサーバーの IP アドレス"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊【難】AAAオーバーライドとは、RADIUSからの属性（VLAN, QoS等）のこと。WLCの設定において、RADIUSサーバーのIPアドレスは当然必要です。MACアドレスは不要です。802.1xという項目があるので、そこにチェックを入れます。また、「Allow AAA Override」の項目でもチェックを入れます。"
+    },
+    {
+      "id": "part14_q056",
+      "questionNumber": 56,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題56 ハブはスイッチとは異なり、既知の宛先MACアドレスに転送するフレームをどう処理しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ハブは FIB テーブル内のすべてのポートにフレームを転送し、スイッチは宛先 MAC が既知のフレームを転送します。"
+        },
+        {
+          "id": "B",
+          "text": "ハブはすべてのポートにフレームを転送し、スイッチは既知の宛先にフレームを転送します。"
+        },
+        {
+          "id": "C",
+          "text": "ハブは MAC テーブルの情報を使用してフレームを転送し、スイッチはルーティング テーブルのデータを使用します。"
+        },
+        {
+          "id": "D",
+          "text": "ハブは既知の MAC アドレスに接続されたポートにのみフレームを転送し、スイッチはすべてのポートにフレームを転送します。"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊ハブ(L1)とスイッチ（L2）の違いです。正確にはハブは受信ポート以外にフラッディングします。スイッチも未知のMACアドレスであれば、受信ポート以外からフラッディングします。"
+    },
+    {
+      "id": "part14_q057",
+      "questionNumber": 57,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題57 ESSID の目的は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "標準的なSSIDよりも高いセキュリティを提供します。"
+        },
+        {
+          "id": "B",
+          "text": "802.11 r、802.11k、802.11v などの高速ローミング機能をサポートしています。"
+        },
+        {
+          "id": "C",
+          "text": "アクセスポイントのワイヤレスMACアドレスとして機能します。"
+        },
+        {
+          "id": "D",
+          "text": "複数のアクセスポイントがクライアント接続のために共通のネットワークを提供することを可能にします。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊一般に言われるSSIDは、正確にはESSIDのことを指しています。Extended Service Set Identifier"
+    },
+    {
+      "id": "part14_q058",
+      "questionNumber": 58,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題58 不明な MAC アドレスからのトラフィックをドロップし、SNMP トラップを転送するポート セキュリティ違反モードはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "restrict (制限)"
+        },
+        {
+          "id": "B",
+          "text": "protect (保護)"
+        },
+        {
+          "id": "C",
+          "text": "shutdown VLAN"
+        },
+        {
+          "id": "D",
+          "text": "shutdown"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊Bはドロップするだけ。"
+    },
+    {
+      "id": "part14_q059",
+      "questionNumber": 59,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題59 同じハイパーバイザー上で実行されている複数の仮想マシン間で分散される物理コンポーネントはどれですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ハードウェアリソース"
+        },
+        {
+          "id": "B",
+          "text": "ネットワークインターフェース"
+        },
+        {
+          "id": "C",
+          "text": "バックプレーンネットワーク"
+        },
+        {
+          "id": "D",
+          "text": "外部ストレージ"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊仮想化の基本的な考え方。物理リソースを分散する。"
+    },
+    {
+      "id": "part14_q060",
+      "questionNumber": 60,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題60 これらの基準を使用して 2つの同様のデバイスを接続する場合、どのタイプのケーブルを使用しますか。①ピンの 1は3へ、2は6へ接続する、②自動検出 MDI-X は使用できない。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ストレートスルー"
+        },
+        {
+          "id": "B",
+          "text": "コンソール"
+        },
+        {
+          "id": "C",
+          "text": "クロスオーバー"
+        },
+        {
+          "id": "D",
+          "text": "ロールオーバー"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊\"2つの同様のデバイス\"と、①の説明でクロスケーブルと分かります。"
+    },
+    {
+      "id": "part14_q061",
+      "questionNumber": 61,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題61 PC1 は新しくインストールされた PC2 にトラフィックを送信します。PC2 の MAC アドレスはスイッチの MAC アドレス テーブルにリストされていないため、スイッチは同じ VLAN 内のすべてのポートにパケットを送信します。これはどのスイッチング概念を表していますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "MAC アドレスのエージング"
+        },
+        {
+          "id": "B",
+          "text": "MAC アドレス テーブル"
+        },
+        {
+          "id": "C",
+          "text": "スパニング ツリー プロトコル"
+        },
+        {
+          "id": "D",
+          "text": "フレーム フラッディング"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊宛先MACアドレスが未知（未登録）であるとき、スイッチはフラッディングします。"
+    },
+    {
+      "id": "part14_q062",
+      "questionNumber": 62,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "問題62 ケーブルタイプ[ドラッグ アンド ドロップ]",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "PoE実装用の導管を提供",
+          "target": "銅線"
+        },
+        {
+          "item": "簡単に接続して情報を盗みやすい",
+          "target": "銅線"
+        },
+        {
+          "item": "長距離にわたる DWDM 光システムに使用",
+          "target": "シングルモード光ファイバー"
+        },
+        {
+          "item": "コア径は 9 ミクロン",
+          "target": "シングルモード光ファイバー"
+        }
+      ],
+      "correctAnswers": [
+        "銅線: PoE実装用の導管を提供, 簡単に接続して情報を盗みやすい",
+        "シングルモード光ファイバー: 長距離にわたる DWDM 光システムに使用, コア径は 9 ミクロン"
+      ],
+      "explanation": "答え:\n銅線:\n・PoE実装用の導管を提供\n・簡単に接続して情報を盗みやすい\nシングルモード光ファイバー:\n・長距離にわたる DWDM 光システムに使用\n・コア径は 9 ミクロン\n\n＊銅線（UTPケーブルなど）は電磁波を発するため、盗聴器などで傍受可能という理屈です。"
+    },
+    {
+      "id": "part14_q063",
+      "questionNumber": 63,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "問題63 ケーブルタイプ[ドラッグ アンド ドロップ]",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "盗聴しやすく、情報を入手しやすい",
+          "target": "銅線"
+        },
+        {
+          "item": "シールド付きとシールドなしのツイストペアで構成されている",
+          "target": "銅線"
+        },
+        {
+          "item": "長距離では減衰が増加",
+          "target": "マルチモードファイバー"
+        },
+        {
+          "item": "取り扱い時に損傷を受けやすい",
+          "target": "マルチモードファイバー"
+        }
+      ],
+      "correctAnswers": [
+        "銅線: 盗聴しやすく、情報を入手しやすい, シールド付きとシールドなしのツイストペアで構成されている",
+        "マルチモードファイバー: 長距離では減衰が増加, 取り扱い時に損傷を受けやすい"
+      ],
+      "explanation": "答え:\n銅線:\n・盗聴しやすく、情報を入手しやすい\n・シールド付きとシールドなしのツイストペアで構成されている\nマルチモードファイバー:\n・長距離では減衰が増加\n・取り扱い時に損傷を受けやすい\n\n＊銅線も長距離になるほど減衰するため注意。"
+    },
+    {
+      "id": "part14_q064",
+      "questionNumber": 64,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題64 物理的なアクセス制御要素をサポートするタスクはどれですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ビデオ監視システムを導入する"
+        },
+        {
+          "id": "B",
+          "text": "企業のセキュリティポリシーに関するワークショップを実施する"
+        },
+        {
+          "id": "C",
+          "text": "重要な場所へのバッジアクセスを実装する"
+        },
+        {
+          "id": "D",
+          "text": "新しいセキュリティ規制に関するスライドショーを作成する"
+        },
+        {
+          "id": "E",
+          "text": "組織の機密データを保護する方法に関する情報を配布する"
+        }
+      ],
+      "correctAnswers": [
+        "A",
+        "C"
+      ],
+      "explanation": "答え: A,C\n＊不審者の立ち入りを防ぐ方法"
+    },
+    {
+      "id": "part14_q065",
+      "questionNumber": 65,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "問題65 [ケーブルタイプ] ドラッグ アンド ドロップ",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "電子信号の形でデータを送信",
+          "target": "銅線"
+        },
+        {
+          "item": "盗聴しやすく、情報を入手しやすい",
+          "target": "銅線"
+        },
+        {
+          "item": "光パルスを使用して信号を伝送",
+          "target": "マルチモードファイバー"
+        },
+        {
+          "item": "コア、クラッド、コーティングを含む",
+          "target": "マルチモードファイバー"
+        }
+      ],
+      "correctAnswers": [
+        "銅線: 電子信号の形でデータを送信, 盗聴しやすく、情報を入手しやすい",
+        "マルチモードファイバー: 光パルスを使用して信号を伝送, コア、クラッド、コーティングを含む"
+      ],
+      "explanation": "答え:\n銅線:\n・電子信号の形でデータを送信\n・盗聴しやすく、情報を入手しやすい\nマルチモードファイバー:\n・光パルスを使用して信号を伝送\n・コア、クラッド、コーティングを含む"
+    },
+    {
+      "id": "part14_q066",
+      "questionNumber": 66,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題66 どのようなインターフェース状態ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "R9# show interface fa0/0\nFastEthernet0/0 is up, line protocol is up\nHardware is DEC21140, address is ca02.7788.0000 (bia ca02.7788.0000)\nDescription: atlanta_subnet\nInternet address is 10.32.102.2/30\nMTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,\nreliability 255/255, txload 1/255, rxload 1/255\nEncapsulation ARPA, loopback not set\nKeepalive set (60 sec)\nfull-duplex, 100 Mb/s, 100BaseTX/FX\nARP type: ARPA, ARP Timeout 04:00:00\nLast input 00:00:01, output 00:00:00, output hang never\nLast clearing of \"show interface\" counters 00:00:18\nInput queue: 175/300/0/0 (size/max/drops/flushes); Total output drops: 100\nQueueing strategy: fifo\nOutput queue: 50/300 (size/max)\n30 second input rate 0 bits/sec, 0 packets/sec\n30 second output rate 0 bits/sec, 0 packets/sec\n7331 packets input, 7101162 bytes\nReceived 267 broadcasts (0 IP multicasts)\n0 runts, 0 giants, 0 throttles\n0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n0 watchdog\n0 input packets with dribble condition detected\n3927 packets output, 1440403 bytes, 0 underruns\n0 output errors, 0 collisions, 0 interface resets\n0 unknown protocol drops\n0 babbles, 0 late collision, 0 deferred\n0 lost carrier, 0 no carrier\n0 output buffer failures, 0 output buffers swapped out",
+      "options": [
+        {
+          "id": "A",
+          "text": "ブロードキャスト ストーム"
+        },
+        {
+          "id": "B",
+          "text": "不良 NIC"
+        },
+        {
+          "id": "C",
+          "text": "キューイング"
+        },
+        {
+          "id": "D",
+          "text": "デュプレックスの不一致"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊インプットの順番待ちが175パケット、アウトプット側で処理できずに捨てたのは100パケット、正常にアウトプットできたのは50パケット。負荷分散やQOS(優先順位付け)などの対策が必要です。"
+    },
+    {
+      "id": "part14_q067",
+      "questionNumber": 67,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題67 ネットワーク セキュリティ チームは、フィッシング攻撃の被害者となる従業員が増加していることに気づきました。この問題を軽減するには、どのセキュリティ プログラムを導入しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ユーザー意識向上トレーニング"
+        },
+        {
+          "id": "B",
+          "text": "電子メールシステムのパッチ"
+        },
+        {
+          "id": "C",
+          "text": "すべての PC でソフトウェアファイアウォールを有効にする"
+        },
+        {
+          "id": "D",
+          "text": "物理的なアクセス制御"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊B.ソフトの欠陥を修正しても、\"騙すこと\"を防ぐことはできない。"
+    },
+    {
+      "id": "part14_q068",
+      "questionNumber": 68,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題68 IPsecはどのようにして組織内のアプリケーションに安全なネットワークを提供するのでしょうか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "TFTPを活用し、ネットワーク上のピア間で安全なファイル転送を行います。"
+        },
+        {
+          "id": "B",
+          "text": "ネットワークノード間でトラフィックを安全に転送するGREトンネルを提供します。"
+        },
+        {
+          "id": "C",
+          "text": "ピア間のセキュリティ・アソシエーションのセットを可能にする。"
+        },
+        {
+          "id": "D",
+          "text": "FTPを利用して、ネットワーク上のノード間のファイル転送をセキュアにします。"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊IPsecはセキュリティ・アソシエーション（どんな暗号アルゴリズムを使うか、どの鍵を使うかなどの情報）を相手と確立します。"
+    },
+    {
+      "id": "part14_q069",
+      "questionNumber": 69,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題69 会社はすべてのシステムに多要素認証を要求することを決定しました。どのパラメータ セットが要件を満たしていますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "個人の 10 桁の PIN と RSA 証明書"
+        },
+        {
+          "id": "B",
+          "text": "複雑なパスワードと個人の 10 桁の PIN"
+        },
+        {
+          "id": "C",
+          "text": "8 文字から 15 文字のパスワードと個人の 12 桁の PIN"
+        },
+        {
+          "id": "D",
+          "text": "指紋スキャンと顔認識"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊知識（PWなど）、所持（スマホ認証、証明書など）、生体を組み合わせたものが正解。"
+    },
+    {
+      "id": "part14_q070",
+      "questionNumber": 70,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題70 自動化の実装を決定する際に、ネットワーク管理者は何を考慮すべきでしょうか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "手作業による変更は、構成エラーや不整合の原因になることが多い。"
+        },
+        {
+          "id": "B",
+          "text": "ネットワークの自動化は、通常、ネットワーク内の仮想デバイスの構成と管理に限定される。"
+        },
+        {
+          "id": "C",
+          "text": "ネットワークの自動化は、通常、企業の管理運用コストを増加させます。"
+        },
+        {
+          "id": "D",
+          "text": "自動化されたシステムでは、ネットワークの変更を大規模に拡張することが困難な場合がある。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊自動化によりミスが減り、コスト下がる。"
+    },
+    {
+      "id": "part14_q071",
+      "questionNumber": 71,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題71 TFTP はどのような機能を提供しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "データストレージデバイスなしでシステム上に構成ファイルをロードする"
+        },
+        {
+          "id": "B",
+          "text": "LAN内で安全なファイルアクセスを提供する"
+        },
+        {
+          "id": "C",
+          "text": "WANを介したファイル転送のための暗号化メカニズムを提供する"
+        },
+        {
+          "id": "D",
+          "text": "プライベートデータネットワークを介したデータ通信の認証を提供する"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊TFTPはTrivial FTPであり、Trivialは「ささいな」という意味です。FTPの軽量版です。ストレージを持たない機器がネットワーク越しに設定ファイルやOSをロードするときなどに用いられます。"
+    },
+    {
+      "id": "part14_q072",
+      "questionNumber": 72,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題72 スイッチ cat9k-acc-1 は、ユーザーをキャンパス LAN に接続します。ネットワーク経由で印刷サービスにアクセスできません。接続の問題の原因となっているのはどのインターフェイスの問題ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "cat9k-acc-1# show interfaces gigabitethernet 1/0/1\ngigabitethernet 1/0/1 is up, line protocol is up\nHardware is gigabitethernet, address is aa00.0400.0134 (via 0000.0c00.4369)\nMTU 1500 bytes, BW 1000 Kbit, DLY 1000 usec, rely 255/255, load 1/255\nEncapsulation ARPA, loopback not set, keepalive set (10 sec)\nARP type: ARPA, PROBE, ARP Timeout 4:00:00\nLast input 0:00:00, output 0:00:00, output hang never\nOutput queue 1/1, 1 drops; input queue 0/0, 0 drops\nFive minute input rate 61000 bits/sec, 200 packets/sec\nFive minute output rate 1000 bits/sec, 200 packets/sec\n2295197 packets input, 305539992 bytes, 0 no buffer\nReceived 1925500 broadcasts, 0 runts, 0 giants\n0 input errors, 1790 CRC, 1790 frame, 0 overrun, 0 ignored, 0 abort\n0 input packets with dribble condition detected\n3594664 packets output, 436549843 bytes, 1 underruns\n0 output errors, 1 collisions, 1 interface resets, 0 restarts",
+      "options": [
+        {
+          "id": "A",
+          "text": "不正なチェックサムにより、イーサネット フレームがドロップされています。"
+        },
+        {
+          "id": "B",
+          "text": "過度の衝突によりフレームがドロップされています。"
+        },
+        {
+          "id": "C",
+          "text": "多数のブロードキャスト パケットによりポートがリセットされています。"
+        },
+        {
+          "id": "D",
+          "text": "インターフェイス出力キューがイーサネット フレームを処理できません。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊「1790 CRC」に注目。ケーブル不良やNICの問題によりフレームが破棄されていることを意味します。"
+    },
+    {
+      "id": "part14_q073",
+      "questionNumber": 73,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題73 エンジニアがデバイスを管理するために IP アドレスやダイヤルアップ番号を設定せずに AP に接続する場合、どの接続タイプが使用されますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "VIY"
+        },
+        {
+          "id": "B",
+          "text": "コンソール"
+        },
+        {
+          "id": "C",
+          "text": "AUX"
+        },
+        {
+          "id": "D",
+          "text": "イーサネット"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊デバイスに直接ケーブルを接続する形式です。"
+    },
+    {
+      "id": "part14_q074",
+      "questionNumber": 74,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題74 User1 と User2 に対して DHCP パケットと DNS パケットのみを許可するように WLC を設定する必要があります。どの設定をしますか。",
+      "diagramDescription": "【図のトポロジ構成】\nWLANコントローラー1 ──(無線)── AP21 ── User1, User2",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "レイヤ 2 セキュリティ設定で 802.1X 標準の Web 認証を有効にする"
+        },
+        {
+          "id": "B",
+          "text": "レイヤ 3 セキュリティ設定で MAC フィルタリングによるフォールバック ポリシーを有効にする"
+        },
+        {
+          "id": "C",
+          "text": "レイヤ 3 セキュリティ設定で Web ポリシーと認証を有効にする"
+        },
+        {
+          "id": "D",
+          "text": "WLAN の AAA サーバ設定で Web 認証を有効にする"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊\"ユーザーがインターネット接続を開始するとき、WLCで認証を行いたい（Web認証したい）。\"というシチュエーションです。WLANs＞Security＞Layer3のタブで、以下の設定をします。\n①Layer 3 Security：Web Policyを選択\n②Authenticationのラジオボタン：選択する"
+    },
+    {
+      "id": "part14_q075",
+      "questionNumber": 75,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題75 APが1つの固有の SSID を提供し、クライアントデータと管理トラフィックを渡し、自律モードになっている場合、どのタイプの有線ポートが必要ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "デフォルト"
+        },
+        {
+          "id": "B",
+          "text": "トランク"
+        },
+        {
+          "id": "C",
+          "text": "アクセス"
+        },
+        {
+          "id": "D",
+          "text": "LAG"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊自律型APは管理トラフィックもクライアントトラフィックも同じVLANで処理することが多いです。つまり、アクセスポートで十分です。"
+    },
+    {
+      "id": "part14_q076",
+      "questionNumber": 76,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題76 VoIP は、VLAN ID 73 を使用し、「VoIP」という名前が付けられています。各ユーザは、自分のデスクに Cisco IP 電話が必要です。e0/0 は、データ VLAN のアクセスポートとして設定されています。Cisco Discovery Protocol はグローバルに有効になっています。どのシーケンスで設定が完了しましたか。",
+      "diagramDescription": "【図のトポロジ構成】\nSW1 (e0/0) ── Cisco IP電話 ── PC",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "vlan 73\nname VoIP\ninterface e0/0\nswitchport access vlan 73"
+        },
+        {
+          "id": "B",
+          "text": "vlan 73\nname VoIP\ninterface e0/0\nswitchport trunk allowed vlan 73"
+        },
+        {
+          "id": "C",
+          "text": "vlan 73\nname VoIP\ninterface e0/0\nswitchport voice vlan 73"
+        },
+        {
+          "id": "D",
+          "text": "vlan 73\nname VoIP\ninterface e0/0\nswitchport voice vlan dot1p"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊データ VLAN ＋ 音声 VLAN の両方を扱うときは「アクセスポート」です。本問では、トランクポート(dot1q)にするかどうか聞いている。\n典型的な設定\ninterface e0/0\nswitchport mode access\nswitchport access vlan 10\nswitchport voice vlan 73"
+    },
+    {
+      "id": "part14_q077",
+      "questionNumber": 77,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題77 PC A は IP アドレス 10.227.151.255 の別のデバイスと通信しています。ルータ Y はどのルータを経由してトラフィックをルーティングしますか。",
+      "diagramDescription": "【図のトポロジ構成】\nPC-A (10.223.2.2) ──(G0/1: 10.223.4.1) RY (G0/0: 10.224.4.1)\nRY (G0/0) ── RA (10.224.4.2)\nRY (G0/0) ── RB (10.224.4.3)\nRY (G0/0) ── RC (10.224.4.4)\nRY (G0/0) ── RD (10.224.4.5)",
+      "commandOutputs": "Router-Y#show ip route\n\nGateway of last resort is not set\n10.0.0.0/8 is variably subnetted\nS 10.0.0.0/8 [1/0] via 10.224.4.2\nB 10.127.151.192/27 [20/0] via 10.224.4.3, 1w6d\nS 10.128.0.0/9 [1/0] via 10.224.4.3\nB 10.224.0.0/11 [20/0] via 10.224.4.5, 5d18h\nB 10.224.0.0/15 [20/0] via 10.224.4.4, 5d18h\nC 10.223.4.0/24 is directly connected, GigabitEthernet0/1\nC 10.224.4.0/24 is directly connected, GigabitEthernet0/0\nB 10.226.34.0/24 [20/0] via 10.224.4.5, 5d18h",
+      "options": [
+        {
+          "id": "A",
+          "text": "ルータA"
+        },
+        {
+          "id": "B",
+          "text": "ルータB"
+        },
+        {
+          "id": "C",
+          "text": "ルータC"
+        },
+        {
+          "id": "D",
+          "text": "ルータD"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊下の5つが怪しいです。下3つは/24であり、3オクテット目まで固定されてしまうため、誤りであると分かります。次に/11と/15を考えます。/11は10.224.0.0～10.255.255.255、/15は10.224.0.0 ～ 10.225.255.255が範囲です。"
+    },
+    {
+      "id": "part14_q078",
+      "questionNumber": 78,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題78 ホスト A がインターネットにアクセスできないのはなぜですか。",
+      "diagramDescription": "【図のトポロジ構成】\nHost A (192.168.1.1) ── (192.68.1.254/24) RA (200.100.100.1/32) ── インターネット ── DNSサーバー (196.1.38.132)\n【Host AのIP設定画面】\nIP address: 192.168.1.1\nSubnet mask: 255.255.255.0\nDefault gateway: 192.168.1.254\nPreferred DNS server: 192.168.1.254\nAlternate DNS server: 196.1.30.254",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "LANとWANのネットワークセグメントは異なる。"
+        },
+        {
+          "id": "B",
+          "text": "IPアドレスの割り当てが間違っている。"
+        },
+        {
+          "id": "C",
+          "text": "デフォルトゲートウェイは、最初に使用可能なIPアドレスであるべきです。"
+        },
+        {
+          "id": "D",
+          "text": "ドメインネームサーバーに到達できない。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊Preferred＝優先的に、Alternate＝（優先の）代わりの。上段は正しい。Preferredは「196.1.38.132」が正しいです。"
+    },
+    {
+      "id": "part14_q079",
+      "questionNumber": 79,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題79 R1とISP 間のアップリンクは手動でアドレスを割り当てる必要があります。R1のLANインターフェイスはセルフプロビジョニングする必要があります。R1に設定すべき項目はどれですか。(2つ選択)",
+      "diagramDescription": "【図のトポロジ構成】\nISP ──(Gi0/1) R1 (Gi0/0) ── Switch ── PC\nIPv6WAN (ISP - R1 Gi0/1間): 2001:db8:0F1B:FCCB:ACCE:FCED:ACBD:FA0:/127\nIPv6 LAN (R1 Gi0/0側): 2001:db8:0000:AFFF:0000:0000:0000:0000/64",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "interface Gi0/0\nipv6 address 2001:db8:0F1B:FCCB:ACCE:FCED:ABCD:FA03/127"
+        },
+        {
+          "id": "B",
+          "text": "interface Gi0/0\nipv6 address 2001:db8:0:AFFF::/64 eui-64"
+        },
+        {
+          "id": "C",
+          "text": "interface Gi0/0\nipv6 address 2001:db8:1:AFFF::/64 eui-64"
+        },
+        {
+          "id": "D",
+          "text": "interface Gi0/1\nipv6 address 2001:db8:0F1B:FCCB:ACCE:FCED:ABCD:FA02/127"
+        },
+        {
+          "id": "E",
+          "text": "interface Gi0/1\nipv6 address 2001:db8:0F1B:FCCB:ACCE:FCED:ABCD:FA00/127"
+        }
+      ],
+      "correctAnswers": [
+        "B",
+        "E"
+      ],
+      "explanation": "答え: B,E\n＊R1のWAN側とLAN側にIPv6を設定します。LAN側の\"セルフプロビジョニング\"とはEUI-64のことです。\n＊LAN側（Gi0/0）：ネットワークプレフィックス（64ビット=4ブロック）＋「::/64 eui-64」\n＊WAN側（Gi0/1）：素直にE"
+    },
+    {
+      "id": "part14_q080",
+      "questionNumber": 80,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題80 直接接続された 2 つのスイッチ間の LACP EtherChannel が設定中です。SW1 へのチャネルを確立するには、スイッチ SW2 の Gi0/1-2 インターフェイスでどのコマンドを設定しますか。",
+      "diagramDescription": null,
+      "commandOutputs": "SW1\nconfigure terminal\ninterface range GigabitEthernet 0/1-2\nswitchport mode trunk\nchannel-group 1 mode active\n\nSW2\nconfigure terminal\ninterface range GigabitEthernet 0/1-2\nswitchport mode trunk\ninterface Port-channel1\nswitchport mode trunk",
+      "options": [
+        {
+          "id": "A",
+          "text": "channel-group 1 mode desirable"
+        },
+        {
+          "id": "B",
+          "text": "channel-group 1 mode on"
+        },
+        {
+          "id": "C",
+          "text": "channel-group 1 mode active"
+        },
+        {
+          "id": "D",
+          "text": "channel-group 1 mode auto"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊対向（SW1）がactiveであるとき、activeまたはpassiveにすると成立します。on/onでも成立します。"
+    },
+    {
+      "id": "part14_q081",
+      "questionNumber": 81,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題81 ユーザーの Windows コンピューター上の IP アドレスと DNS サーバー情報を確認する必要があります。コンピューターのコマンド プロンプトにどのコマンドを入力しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ipconfig /all"
+        },
+        {
+          "id": "B",
+          "text": "show interface"
+        },
+        {
+          "id": "C",
+          "text": "netstat -r"
+        },
+        {
+          "id": "D",
+          "text": "ifconfig -a"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊C.ルーティングテーブルの表示、D.Linux向け"
+    },
+    {
+      "id": "part14_q082",
+      "questionNumber": 82,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "IP Services",
+      "questionText": "問題82 DHCP サーバーの 2 つの機能は何ですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "集中 IP 管理をサポートする"
+        },
+        {
+          "id": "B",
+          "text": "ネットワークに追加されたときに DHCP DISCOVER メッセージを発行する"
+        },
+        {
+          "id": "C",
+          "text": "IP アドレスを発行してクライアントの DHCP OFFER 要求に応答する"
+        },
+        {
+          "id": "D",
+          "text": "ユーザーが独自の IP アドレスをホストに割り当てることを防ぐ"
+        },
+        {
+          "id": "E",
+          "text": "ネットワーク内のホストに動的 IP 構成を割り当てる"
+        }
+      ],
+      "correctAnswers": [
+        "A",
+        "E"
+      ],
+      "explanation": "答え: A,E\n＊A.IPアドレスを一元的に管理できる、E.DHCPの主な機能。C.クライアントが要求するのは\"REQUEST\"、D.ユーザが静的IPを割り当てることを防ぐことは不可。"
+    },
+    {
+      "id": "part14_q083",
+      "questionNumber": 83,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題83 どのSNMPメッセージタイプが信頼性が高く、SNMPマネージャーからの確認応答に先行しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Inform"
+        },
+        {
+          "id": "B",
+          "text": "Get"
+        },
+        {
+          "id": "C",
+          "text": "Traps"
+        },
+        {
+          "id": "D",
+          "text": "Set"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊確認応答あり：Inform、確認応答なし：Traps"
+    },
+    {
+      "id": "part14_q084",
+      "questionNumber": 84,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題84 ワイヤレス LAN コントローラに複数の AP マネージャ インターフェイスがプロビジョニングされている場合、AP によって要求はどのように処理されますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "AP から AP マネージャ インターフェイスへの検出応答により、WLAN ポートが無効になります。"
+        },
+        {
+          "id": "B",
+          "text": "AP 参加要求は失敗し、AP マネージャ インターフェイスで静的に設定する必要があります。"
+        },
+        {
+          "id": "C",
+          "text": "応答する最初の AP マネージャ インターフェイスが AP によって選択されます"
+        },
+        {
+          "id": "D",
+          "text": "AP の数が最も少ない AP マネージャが AP によって参加に使用されます。"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊最も少ない AP を持つインターフェイスに動的に参加することで、負荷分散が行われます。"
+    },
+    {
+      "id": "part14_q085",
+      "questionNumber": 85,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題85 ワイヤレスコントローラーで提供されるサービスとは何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "有線デバイスに IP アドレスを発行します。"
+        },
+        {
+          "id": "B",
+          "text": "高密度ネットワークでの干渉を管理します。"
+        },
+        {
+          "id": "C",
+          "text": "有線デバイスと無線デバイス間のレイヤー3ルーティングを提供します。"
+        },
+        {
+          "id": "D",
+          "text": "インターネットからの脅威を軽減します。"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊C.L3ルーティングはルーターや L3 スイッチの機能です。"
+    },
+    {
+      "id": "part14_q086",
+      "questionNumber": 86,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Automation and Programmability",
+      "questionText": "問題86 左側の HTTP 動詞を右側の API 操作にドラッグ アンド ドロップします。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "特定のリソースを消去します",
+          "target": "DELETE"
+        },
+        {
+          "item": "リソースに関する特定の情報を要求します",
+          "target": "GET"
+        },
+        {
+          "item": "特定のリソースを部分的に変更します",
+          "target": "PATCH"
+        },
+        {
+          "item": "指定された URI の下に従属リソースを作成します",
+          "target": "POST"
+        },
+        {
+          "item": "特定のリソースの現在のバージョンをペイロードの新しいコンテンツで完全に置き換えます",
+          "target": "PUT"
+        }
+      ],
+      "correctAnswers": [
+        "DELETE: 特定のリソースを消去します",
+        "GET: リソースに関する特定の情報を要求します",
+        "PATCH: 特定のリソースを部分的に変更します",
+        "POST: 指定された URI の下に従属リソースを作成します",
+        "PUT: 特定のリソースの現在のバージョンをペイロードの新しいコンテンツで完全に置き換えます"
+      ],
+      "explanation": "答え:\n・DELETE: 特定のリソースを消去します\n・GET: リソースに関する特定の情報を要求します\n・PATCH: 特定のリソースを部分的に変更します\n・POST: 指定された URI の下に従属リソースを作成します\n・PUT: 特定のリソースの現在のバージョンをペイロードの新しいコンテンツで完全に置き換えます"
+    },
+    {
+      "id": "part14_q087",
+      "questionNumber": 87,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Services",
+      "questionText": "問題87 現在のリースの有効期限が切れた場合、クライアントはどのアドレスに連絡して IPアドレスを更新しますか。",
+      "diagramDescription": null,
+      "commandOutputs": "wireless LAN adapter Wi-Fi\n\nConnection-specific DNS Suffix\nDescription .........: Intel(R) dual Band wireless-AC 7265\nPhysical Address........: C8-21-5B-B4-D3-E0\nDHCP Enabled...........: YES\nAutoconfiguration Enabled ... : YES\nLink-local IPv6 Address .... : fe80::45a1:b3fa:2f37:bf37%2(Preferred)\nIPv4 Address.......... : 192.168.25.103(Preferred)\nSubnet Mask........... : 255.255.255.0\nLease Obtained.........: June 11, 2019 10:21:31 AM\nLease Expires .........: June 12, 2019 10:21:36 AM\nDefault Gateway ....... : 192.168.25.1\nDHCP Server .......... : 192.168.25.100\nDHCPv6 IAID.......... : 46670168\nDHCPv6 Client DUID....... : 00-01-00-20-FF-05-55-3C-52-82-33-D3-84\nDNS Servers .......... : 192.168.25.254\n                         192.168.25.254",
+      "options": [
+        {
+          "id": "A",
+          "text": "192.168.25.103"
+        },
+        {
+          "id": "B",
+          "text": "192.168.25.100"
+        },
+        {
+          "id": "C",
+          "text": "192.168.25.1"
+        },
+        {
+          "id": "D",
+          "text": "192.168.25.254"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊DHCP Server"
+    },
+    {
+      "id": "part14_q088",
+      "questionNumber": 88,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題88 プライマリリンクに障害が発生した場合にトラフィックを R2 の LAN ネットワークに渡すには、R1にセカンダリルートが必要です。ルータを構成するにはどのコマンドを入力しますか。",
+      "diagramDescription": "【図のトポロジ構成】\nR1 (.1) ──(10.0.0.0/30)── (.2) R2\nR1 (.5) ──(10.0.0.4/30)── (.6) R2\nR2 ── スイッチ ── ワークステーション (10.0.2.0/29)",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ip route 10.0.2.0 256.255.255.248 null0 93"
+        },
+        {
+          "id": "B",
+          "text": "ip route 10.0.2.0 255.255.255.240 10.0.0.6 91"
+        },
+        {
+          "id": "C",
+          "text": "ip route 10.0.2.0 255.255.255.240 10.0.0.7 92"
+        },
+        {
+          "id": "D",
+          "text": "ip route 10.0.2.0 255.255.255.248 10.0.0.6 91"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊宛先が/29（.248）であり、ネクストホップが「.2」または「.6」である選択肢が正しい。"
+    },
+    {
+      "id": "part14_q089",
+      "questionNumber": 89,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "drag_and_drop",
+      "category": "Network Fundamentals",
+      "questionText": "問題89 IPv6 アドレス タイプの特性を左から右にドラッグ アンド ドロップします。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [],
+      "dragAndDropPairs": [
+        {
+          "item": "パブリック IPv4 アドレスと同等",
+          "target": "グローバルユニキャストアドレス"
+        },
+        {
+          "item": "インターネット経由でルーティングおよび到達可能",
+          "target": "グローバルユニキャストアドレス"
+        },
+        {
+          "item": "インターフェースごとに1回のみ設定",
+          "target": "リンクローカルアドレス"
+        },
+        {
+          "item": "単一のサブネットに接続",
+          "target": "リンクローカルアドレス"
+        }
+      ],
+      "correctAnswers": [
+        "グローバルユニキャストアドレス: パブリック IPv4 アドレスと同等, インターネット経由でルーティングおよび到達可能",
+        "リンクローカルアドレス: インターフェースごとに1回のみ設定, 単一のサブネットに接続"
+      ],
+      "explanation": "答え:\nグローバルユニキャストアドレス:\n・パブリック IPv4 アドレスと同等\n・インターネット経由でルーティングおよび到達可能\nリンクローカルアドレス:\n・インターフェースごとに1回のみ設定\n・単一のサブネットに接続"
+    },
+    {
+      "id": "part14_q090",
+      "questionNumber": 90,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題90 この出力を実行するには何が欠けているのでしょうか。",
+      "diagramDescription": null,
+      "commandOutputs": "{\n\"Cisco Devices\": [\n{\n\"name\": \"ASA - Security Device\",\n\"name\": \"Cisco 1100 ASR Router\",\n\"name\": \"Cisco 6800 Switch\"\n}\n]",
+      "options": [
+        {
+          "id": "A",
+          "text": "先頭に角括弧（ [ ）"
+        },
+        {
+          "id": "B",
+          "text": "末尾に中括弧（ } ）"
+        },
+        {
+          "id": "C",
+          "text": "「Cisco Devices」文字列を囲む二重引用符（\" \"）"
+        },
+        {
+          "id": "D",
+          "text": "各行の先頭に感嘆符（!）"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊\"}\"が1つ足りない"
+    },
+    {
+      "id": "part14_q091",
+      "questionNumber": 91,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題91 LACP EtherChannel が設定され、受信したパケットに応答するように SwitchA のインターフェイスを変更しますが、ネゴシエーションを開始しないようにします。どの設定をしますか。",
+      "diagramDescription": "【図のトポロジ構成】\nSwitch A ──(Group1: 4本のリンク)── Switch B\n各スイッチに端末が接続",
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "SwitchA(config-if-range)#channel-group 1 mode desirable"
+        },
+        {
+          "id": "B",
+          "text": "SwitchA(config-if-range)#channel-group 1 mode passive"
+        },
+        {
+          "id": "C",
+          "text": "SwitchA(config-if-range)#channel-group 1 mode auto"
+        },
+        {
+          "id": "D",
+          "text": "SwitchA(config-if-range)#channel-group 1 mode active"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊LACP で「自分からネゴシエーションを開始しないが、相手からの要求には応答したい」は、passive モードを指しております。"
+    },
+    {
+      "id": "part14_q092",
+      "questionNumber": 92,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題92 プライベート IPv4 アドレスを使用する 2 つの利点は何ですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "障害発生時に冗長性を提供する"
+        },
+        {
+          "id": "B",
+          "text": "パブリック IPv4 アドレスの不足を緩和する"
+        },
+        {
+          "id": "C",
+          "text": "インターネットの脅威に対するセキュリティ レイヤーを提供する"
+        },
+        {
+          "id": "D",
+          "text": "プライベート ネットワーク上のエンドポイントへのインターネット接続を提供する"
+        },
+        {
+          "id": "E",
+          "text": "IoT デバイスからのインターネット アクセスを可能にする"
+        }
+      ],
+      "correctAnswers": [
+        "B",
+        "C"
+      ],
+      "explanation": "答え: B,C\n＊インターネットから直接アクセスできないため、外部からの直接攻撃が困難という意味です。"
+    },
+    {
+      "id": "part14_q093",
+      "questionNumber": 93,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題93 WLC で LAG を使用する場合、どの EtherChannel モードを設定しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "On"
+        },
+        {
+          "id": "B",
+          "text": "active"
+        },
+        {
+          "id": "C",
+          "text": "auto"
+        },
+        {
+          "id": "D",
+          "text": "passive"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊LAG を行うには、コントローラと Catalyst スイッチの両方で EtherChannel が on モードに設定されている必要があります。"
+    },
+    {
+      "id": "part14_q094",
+      "questionNumber": 94,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題94 新しい AccSw2 スイッチで VLAN を構成しました。両方のスイッチにルータ オン ア スティックが接続されています。2つのスイッチ間および Server1 の完全な接続を確立するには、AccSw2のポートをどのように構成しますか。",
+      "diagramDescription": "【図のトポロジ構成】\nAccSw1 (gi1/1) ── PC1 (10.0.1.11/24)\nAccSw2 (gi1/3) ── Server1 (10.0.2.22/24)\nAccSw1 と AccSw2 が接続",
+      "commandOutputs": "AccSw1#sho vlan\n\nVLAN Name     Status   Ports\n---- -------- -------- ---------------------------------------------\n1    default  active   Fa0/3, Fa0/4, Fa0/5, Fa0/6, Fa0/7, Fa0/8,\n                       Fa0/9, Fa0/10, Fa0/11, Fa0/12, Fa0/13, Fa0/14,\n                       Fa0/15, Fa0/16, Fa0/13, Fa0/18, Fa0/19,\n                       Fa0/20, Fa0/21, Fa0/22\n2    IT-Support active Fa0/1, Fa0/23, Fa0/24\n10   Servers  active   Gig1/3, Gig1/4\n11   Staff    active   Gig1/1\n12   Guests   active   Gig1/2\n--\noutput suppressed",
+      "options": [
+        {
+          "id": "A",
+          "text": "interface GigabitEthernet1/3\nswitchport mode access\nswitchport access vlan 10\n!\ninterface GigabitEthernet1/24\nswitchport mode trunk\nswitchport trunk allowed vlan 2,10"
+        },
+        {
+          "id": "B",
+          "text": "interface GigabitEthernet1/3\nswitchport mode access\nswitchport access vlan 10\n!\ninterface GigabitEthernet1/24\nswitchport mode trunk"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊サーバーはVLAN10、PCはVLAN11である。スイッチ間はこの2つを通す。スイッチ下はアクセスポートにする。\n＊showはSw1だが、設定するのはSw2であるので、注意。\n＊A.最後の行が「allowed vlan 10,11」なら良い。\n＊なお、show vlan はトランクとなっているvlanは表示しない。\n＊\"ルータ オン ア スティック\"とは、NWは異なっても、通信ができること。"
+    },
+    {
+      "id": "part14_q095",
+      "questionNumber": 95,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題95 ARPスプーフィング攻撃未遂の余波を受け、ネットワークセキュリティを評価している。ポートチャネル1がディストリビューションスイッチに向かうアクセススイッチのアップリンクインタフェースである場合、適切な保護を提供するためにアクセスレイヤスイッチに設定するのはどれか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "ip dhcp snooping\n!\ninterface Port-channel1\nswitchport port-security maximum 1\nswitchport port-security"
+        },
+        {
+          "id": "B",
+          "text": "ip dhcp snooping vlan 1-4094\nip dhcp snooping\n!\ninterface Port-channel1\nip dhcp snooping trust"
+        },
+        {
+          "id": "C",
+          "text": "ip dhcp snooping vlan 1-4094\n!\ninterface Port-channel1\nswitchport protected\nswitchport port-security maximum 1"
+        },
+        {
+          "id": "D",
+          "text": "ip arp inspection trust\n!\ninterface Port-channel1\nswitchport port-security maximum 4094\nswitchport port-security\nip verify source mac-check"
+        },
+        {
+          "id": "E",
+          "text": "ip arp inspection vlan 1-4094\n!\ninterface Port-channel1\nip arp inspection trust"
+        }
+      ],
+      "correctAnswers": [
+        "B",
+        "E"
+      ],
+      "explanation": "答え: B,E\n＊ARPスプーフィング攻撃への対策として、アクセススイッチ（L2）側でどのようなセキュリティ設定をすべきかを問うものです。B.\"dhcp snooping\"により、信頼できないポートのDHCP応答を遮断します。\"arp inspection\"により、ARPパケットの正当性を確認します。【実践】ip dhcp snooping vlan 1-4094とip arp inspection vlan 1-4094を探しましょう。"
+    },
+    {
+      "id": "part14_q096",
+      "questionNumber": 96,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題96 Cisco WLC がサポートする同時 Telnet セッションの最大数はいくつですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "3"
+        },
+        {
+          "id": "B",
+          "text": "5"
+        },
+        {
+          "id": "C",
+          "text": "6"
+        },
+        {
+          "id": "D",
+          "text": "15"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊0～5セッションで設定可能です。デフォルト値は5です。SSHも同様。"
+    },
+    {
+      "id": "part14_q097",
+      "questionNumber": 97,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題97 企業内のファイアウォールの 2 つの機能は何ですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "スタンドアロンモードでサイト間VPNのエンドポイントとして機能します。"
+        },
+        {
+          "id": "B",
+          "text": "URLベースのトラフィックフィルタリングを有効にする。"
+        },
+        {
+          "id": "C",
+          "text": "マルチコンテキストモードでリモートアクセスVPNのエンドポイントとしてサポートします。"
+        },
+        {
+          "id": "D",
+          "text": "ホスト間でレイヤー2サービスを提供します。"
+        },
+        {
+          "id": "E",
+          "text": "ワイヤレスデバイスのネットワーク接続を可能にします。"
+        }
+      ],
+      "correctAnswers": [
+        "A",
+        "B"
+      ],
+      "explanation": "答え: A,B"
+    },
+    {
+      "id": "part14_q098",
+      "questionNumber": 98,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題98 Chef 構成管理は必要なデバイス構成をどのように強制しますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "デバイスにインストールされたエージェントは Chef Infra Server に接続し、Cookbook から必要な設定を取り出します。"
+        },
+        {
+          "id": "B",
+          "text": "Chef Infra Server は設定された Cookbook を使って、更新を要求するリモートデバイスに必要な設定をプッシュします。"
+        },
+        {
+          "id": "C",
+          "text": "Chef Infra Server は、設定された Cookbook を使って、デバイスが新しいコンフィグレーションをプルする時期になったら、各リモートデバイスにアラートを出します。"
+        },
+        {
+          "id": "D",
+          "text": "デバイスにインストールされたエージェントが Chef Infra Server に問い合わせ、Cookbook から設定をプッシュして応答します。"
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "答え: A\n＊Chefは「プル型」構成管理ツールです。サーバー側から「プッシュ」される訳ではありません。"
+    },
+    {
+      "id": "part14_q099",
+      "questionNumber": 99,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題99 Ansible インベントリとは何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "YAML フォーマットで表現された、ターゲットデバイスで実行するアクションのコレクション"
+        },
+        {
+          "id": "B",
+          "text": "Ansible内で実行されるPythonコードの単位"
+        },
+        {
+          "id": "C",
+          "text": "ターゲットデバイスを管理するAnsibleがインストールされたデバイス"
+        },
+        {
+          "id": "D",
+          "text": "コマンドとタスクが実行されるターゲットデバイスを定義するファイル"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊YAMLなどで記述するテキストファイルのこと。"
+    },
+    {
+      "id": "part14_q100",
+      "questionNumber": 100,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題100 企業NW内でプライベート使用のために予約されているホストアドレスはどれか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "10.172.76.200"
+        },
+        {
+          "id": "B",
+          "text": "12.17.1.20"
+        },
+        {
+          "id": "C",
+          "text": "172.15.2.250"
+        },
+        {
+          "id": "D",
+          "text": "192.169.32.10"
+        },
+        {
+          "id": "E",
+          "text": "172.31.255.100"
+        }
+      ],
+      "correctAnswers": [
+        "A",
+        "E"
+      ],
+      "explanation": "答え: A,E\n＊育児は柔軟に。16歳まで。192.168～、10.～、172.16～172.31"
+    },
+    {
+      "id": "part14_q101",
+      "questionNumber": 101,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題101 Cisco WLC に推奨されるスイッチのロードバランシング モードは何か。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "送信元MAC アドレス - 宛先 MAC アドレス"
+        },
+        {
+          "id": "B",
+          "text": "宛先 IP アドレス"
+        },
+        {
+          "id": "C",
+          "text": "宛先 MAC アドレス"
+        },
+        {
+          "id": "D",
+          "text": "送信元IP アドレス - 宛先IPアドレス"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊EtherChannelでロードバランシングを行う際、スイッチ側で「送信元IPアドレスと宛先IPアドレスの組み合わせ」に基づいてトラフィックを分散する設定が推奨されているためです。"
+    },
+    {
+      "id": "part14_q102",
+      "questionNumber": 102,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Access",
+      "questionText": "問題102 どの構成により、SW2 は LACP EtherChannel を確立できるようになりますか。",
+      "diagramDescription": "【図のトポロジ構成】\nSW1 (G0/1, G0/2) ── SW2 (G0/1, G0/2)",
+      "commandOutputs": "SW1#show run\ninterface GigabitEthernet0/1\nchannel-group 2 mode passive\n!\ninterface GigabitEthernet0/2\nchannel-group 2 mode passive",
+      "options": [
+        {
+          "id": "A",
+          "text": "SW2(config)#interface gigabitEthernet0/1\nSW2(config-if)#channel-group 2 mode desirable\nSW2(config-if)#interface gigabitEthernet0/2\nSW2(config-if)#channel-group 2 mode desirable"
+        },
+        {
+          "id": "B",
+          "text": "SW2(config)#interface gigabitEthernet0/1\nSW2(config-if)#channel-group 1 mode active\nSW2(config-if)#interface gigabitEthernet0/2\nSW2(config-if)#channel-group 1 mode active"
+        }
+      ],
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "答え: B\n＊対向（SW2）がpassiveであれば、activeを設定する。LACPやPAgPにおける組み合わせは要確認。"
+    },
+    {
+      "id": "part14_q103",
+      "questionNumber": 103,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Network Fundamentals",
+      "questionText": "問題103 FTPの機能は何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "データ転送にはよく知られたUDPポート69を使用する。"
+        },
+        {
+          "id": "B",
+          "text": "ブロック番号を使ってデータ転送エラーを特定し、軽減する。"
+        },
+        {
+          "id": "C",
+          "text": "コントロール・トラフィックとデータ・トラフィックに2つの別々のコネクションを使用する。"
+        },
+        {
+          "id": "D",
+          "text": "常にユーザー接続の検証なしで動作する"
+        }
+      ],
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "答え: C\n＊ポート20：転送用、ポート21：制御用"
+    },
+    {
+      "id": "part14_q104",
+      "questionNumber": 104,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "IP Connectivity",
+      "questionText": "問題104 192.168.10.33 ホストへのルートのメトリックは何ですか。",
+      "diagramDescription": null,
+      "commandOutputs": "R1#show ip route\n\nGateway of last resort is 192.168.30.10 to network 0.0.0.0\n     192.168.30.0/29 is subnetted, 2 subnets\nC    192.168.30.0 is directly connected, FastEthernet0/0\nC    192.168.30.8 is directly connected, Serial0/0.1\n     192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks\nO IA 192.168.10.32/28 [110/193] via 192.168.30.10, 00:18:49, Serial0/0.1\nO IA 192.168.10.0/27 [110/192] via 192.168.30.10, 00:18:49, Serial0/0.1\n     192.168.20.0/30 is subnetted, 1 subnets\nO IA 192.168.20.0 [110/128] via 192.168.30.10, 00:18:49, Serial0/0.1\n     192.168.50.0/32 is subnetted, 1 subnets\nC    192.168.50.1 is directly connected, Loopback0\nO*IA 0.0.0.0/0 [110/84] via 192.168.30.10, 00:10:36, Serial0/0.1",
+      "options": [
+        {
+          "id": "A",
+          "text": "84"
+        },
+        {
+          "id": "B",
+          "text": "110"
+        },
+        {
+          "id": "C",
+          "text": "192"
+        },
+        {
+          "id": "D",
+          "text": "193"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊「192.168.10.32/28」がネクストホップとして正しいが、[AD値/メトリック]であるため注意。"
+    },
+    {
+      "id": "part14_q105",
+      "questionNumber": 105,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "multiple_choice",
+      "category": "Security Fundamentals",
+      "questionText": "問題105 認証とアカウンティングを区別する 2 つの文はどれですか。(2つ選択)",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "認証のみがユーザーに資格情報を要求し、応答を返します。"
+        },
+        {
+          "id": "B",
+          "text": "認証のみがユーザー アクティビティ監査をサポートします。"
+        },
+        {
+          "id": "C",
+          "text": "認証のみが「あなたが誰であるか」を検証します"
+        },
+        {
+          "id": "D",
+          "text": "認証のみがユーザーの接続期間を記録します。"
+        },
+        {
+          "id": "E",
+          "text": "認証のみが課金ユーザーにサポート情報を提供します。"
+        }
+      ],
+      "correctAnswers": [
+        "A",
+        "C"
+      ],
+      "explanation": "答え: A,C\n＊Authentication（認証）、Authorization（認可）、Accounting（アカウンティング）"
+    },
+    {
+      "id": "part14_q106",
+      "questionNumber": 106,
+      "part": "part14",
+      "sourceFile": "part14_3e9b8432.pdf",
+      "type": "single_choice",
+      "category": "Automation and Programmability",
+      "questionText": "問題106 REST API ではどのメソッド セットがサポートされていますか。",
+      "diagramDescription": null,
+      "commandOutputs": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "GET、PUT、ERASE、CHANGE"
+        },
+        {
+          "id": "B",
+          "text": "GET、POST、ERASE、CHANGE"
+        },
+        {
+          "id": "C",
+          "text": "GET、POST、MOD、ERASE"
+        },
+        {
+          "id": "D",
+          "text": "GET、PUT、POST、DELETE"
+        }
+      ],
+      "correctAnswers": [
+        "D"
+      ],
+      "explanation": "答え: D\n＊HTTPと同じ"
+    }
+  ]
+}
