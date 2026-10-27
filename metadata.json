@@ -1,0 +1,6 @@
+{
+  "name": "CCNA Ping-t風 学習システム",
+  "description": "CCNA問題集をデータベース化し、Ping-t風のUIで徹底演習できる自己学習Webアプリケーション",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
