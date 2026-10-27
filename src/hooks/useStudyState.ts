@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { MedalStatus, UserProgressRecord, QuestionItem } from '../types/question';
 import { ALL_QUESTIONS, DATABASE_MANIFEST } from '../data';
+import { PROJECT_ZIP_BASE64 } from '../data/projectZipBase64';
 
 const STORAGE_KEY = 'ccna_pingt_study_records_v2';
 
@@ -154,14 +155,29 @@ export function useStudyState() {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }, []);
 
-  // Download complete project archive ZIP for GitHub / Vercel
+  // Download complete project archive ZIP for GitHub / Vercel (safe in-memory Blob)
   const downloadProjectZip = useCallback(() => {
-    const downloadAnchor = document.createElement('a');
-    downloadAnchor.setAttribute('href', '/ccna_app_github.zip');
-    downloadAnchor.setAttribute('download', 'ccna_app_github.zip');
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
+    try {
+      const binaryString = window.atob(PROJECT_ZIP_BASE64);
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const blob = new Blob([bytes], { type: 'application/zip' });
+      const url = URL.createObjectURL(blob);
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute('href', url);
+      downloadAnchor.setAttribute('download', 'ccna_app_github.zip');
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    } catch (err) {
+      console.error('Failed to download zip from memory, falling back:', err);
+      // Fallback
+      window.open('/ccna_app_github.zip', '_blank');
+    }
   }, []);
 
   // Export ALL Question Data merged with Learning History (問題文・選択肢・正答・カテゴリ・解説・学習履歴)

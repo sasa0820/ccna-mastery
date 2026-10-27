@@ -108,6 +108,10 @@ export default function App() {
       if (activeFilter.onlyBookmarked) {
         pool = pool.filter(q => records[q.id]?.isBookmarked);
       }
+
+      if (activeFilter.questionType && activeFilter.questionType !== 'all') {
+        pool = pool.filter(q => q.type === activeFilter.questionType);
+      }
     }
 
     return pool;
@@ -300,7 +304,7 @@ export default function App() {
 
                   {/* Filter Selectors (for drill tab) */}
                   {currentTab === 'drill' && (
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-800">
+                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-800">
                       <div>
                         <label className="block text-[11px] font-bold text-slate-400 mb-1">CCNA試験分野</label>
                         <select
@@ -312,6 +316,22 @@ export default function App() {
                           {CATEGORIES.map(c => (
                             <option key={c.id} value={c.id}>{c.name}</option>
                           ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-[11px] font-bold text-slate-400 mb-1">出題形式</label>
+                        <select
+                          value={activeFilter.questionType || 'all'}
+                          onChange={(e) => setActiveFilter({ ...activeFilter, questionType: e.target.value as any })}
+                          aria-label="出題形式フィルター"
+                          className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-cyan-500"
+                        >
+                          <option value="all">すべての形式 (641問)</option>
+                          <option value="single_choice">単一選択 (452問)</option>
+                          <option value="multiple_choice">複数選択 (52問)</option>
+                          <option value="drag_and_drop">ドラッグ＆ドロップ (62問)</option>
+                          <option value="simulation">実機シミュレーション (75問)</option>
                         </select>
                       </div>
 
@@ -378,9 +398,21 @@ export default function App() {
                         >
                           <div className="space-y-2">
                             <div className="flex items-center justify-between">
-                              <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/40">
-                                {q.id}
-                              </span>
+                              <div className="flex items-center space-x-1.5">
+                                <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/40">
+                                  {q.id}
+                                </span>
+                                {q.type === 'drag_and_drop' && (
+                                  <span className="text-[10px] font-bold text-amber-300 bg-amber-500/15 px-1.5 py-0.5 rounded border border-amber-500/30">
+                                    D&D
+                                  </span>
+                                )}
+                                {q.type === 'simulation' && (
+                                  <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/15 px-1.5 py-0.5 rounded border border-emerald-500/30">
+                                    SIM
+                                  </span>
+                                )}
+                              </div>
 
                               {/* Medal indicator */}
                               <div className="flex items-center space-x-1">

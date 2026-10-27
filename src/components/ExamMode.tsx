@@ -40,7 +40,7 @@ export const ExamMode: React.FC<ExamModeProps> = ({
 
   // Start exam handler
   const handleStartExam = () => {
-    let pool = [...ALL_QUESTIONS];
+    let pool = ALL_QUESTIONS.filter(q => q.type === 'single_choice' || q.type === 'multiple_choice');
     if (selectedCategory !== 'all') {
       pool = pool.filter(q => q.category === selectedCategory);
     }
@@ -119,8 +119,6 @@ export const ExamMode: React.FC<ExamModeProps> = ({
   };
 
   const handleSubmitExam = () => {
-    if (!window.confirm('模擬試験を終了し、採点しますか？')) return;
-
     setIsSubmitted(true);
 
     // Record results to persistent study stats
