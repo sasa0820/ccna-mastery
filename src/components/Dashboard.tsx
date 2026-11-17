@@ -15,10 +15,22 @@ import {
   Network,
   Clock,
   Sparkles,
-  Download
+  Download,
+  Smartphone,
+  Cloud,
+  RefreshCw,
+  LogIn,
+  AlertCircle
 } from 'lucide-react';
 import { CATEGORIES, PART_LIST, ALL_QUESTIONS } from '../data';
-import { UserProgressRecord, MedalStatus } from '../types/question';
+import { UserProgressRecord, MedalStatus, QuestionItem } from '../types/question';
+import { CloudSyncStatus } from '../hooks/useStudyState';
+
+export interface ResumeTargetInfo {
+  question: QuestionItem;
+  tab: 'drill' | 'simulation' | 'mistakes' | 'bookmarks';
+  label: string;
+}
 
 interface DashboardProps {
   stats: {
@@ -35,9 +47,18 @@ interface DashboardProps {
     totalAttemptsSum: number;
   };
   records: Record<string, UserProgressRecord>;
+  resumeTarget?: ResumeTargetInfo | null;
+  user?: { displayName: string | null; email: string | null; photoURL: string | null } | null;
+  syncStatus?: CloudSyncStatus;
+  syncError?: string | null;
+  lastSyncedAt?: number | null;
+  onSignInGoogle?: () => void;
+  onSyncNow?: () => void;
+  onResumeLast?: () => void;
   onStartDrill: (filter: { category?: string; part?: string; medal?: MedalStatus | 'all'; onlyMistakes?: boolean; onlyBookmarked?: boolean; isRandom?: boolean }) => void;
   onStartExam: () => void;
   onStartSimulation: () => void;
+  onOpenDataModal?: () => void;
   onExportAllWithHistory?: () => void;
   onDownloadQuestionsJson?: () => void;
 }
@@ -45,9 +66,18 @@ interface DashboardProps {
 export const Dashboard: React.FC<DashboardProps> = ({
   stats,
   records,
+  resumeTarget,
+  user,
+  syncStatus = 'local',
+  syncError,
+  lastSyncedAt,
+  onSignInGoogle,
+  onSyncNow,
+  onResumeLast,
   onStartDrill,
   onStartExam,
   onStartSimulation,
+  onOpenDataModal,
   onExportAllWithHistory,
   onDownloadQuestionsJson,
 }) => {
@@ -132,6 +162,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
             {/* Quick action buttons */}
             <div className="flex flex-wrap items-center gap-2.5">
+              {resumeTarget && onResumeLast && (
+                <button
+                  onClick={onResumeLast}
+                  data-testid="resume-last-button"
+                  className="flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 rounded-xl font-extrabold shadow-lg shadow-amber-500/25 transition text-sm cursor-pointer"
+                >
+                  <Play className="w-4 h-4 fill-current" />
+                  <span>前回の続きから再開</span>
+                </button>
+              )}
+
               <button
                 onClick={() => onStartDrill({ isRandom: true })}
                 className="flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl font-bold shadow-lg shadow-blue-500/25 transition text-sm cursor-pointer"
@@ -156,6 +197,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 <span>模擬試験</span>
               </button>
 
+              {onOpenDataModal && (
+                <button
+                  onClick={onOpenDataModal}
+                  className="flex items-center space-x-2 px-4 py-2.5 bg-indigo-950/80 hover:bg-indigo-900 text-indigo-200 border border-indigo-600/60 rounded-xl font-semibold transition text-sm cursor-pointer"
+                  title="PC ⇔ スマホ間で学習履歴を引き継ぐための同期コード・JSON管理"
+                >
+                  <Smartphone className="w-4 h-4 text-indigo-400" />
+                  <span>PC⇔スマホ 引き継ぎ</span>
+                </button>
+              )}
+
               {onDownloadQuestionsJson && (
                 <button
                   onClick={onDownloadQuestionsJson}
@@ -178,6 +230,119 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 </button>
               )}
             </div>
+          </div>
+
+          {/* Resume Session Banner (when user stopped partway through) */}
+          {resumeTarget && onResumeLast && (
+            <div className="bg-gradient-to-r from-amber-500/15 via-slate-900/90 to-cyan-500/10 border border-amber-500/40 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-0.5 min-w-0">
+                <div className="flex items-center space-x-2 text-xs font-bold text-amber-300">
+                  <RotateCcw className="w-3.5 h-3.5 shrink-0" />
+                  <span>中断した場所が見つかりました（{resumeTarget.label}）</span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-200 truncate">
+                  <span className="font-mono text-cyan-400 mr-2">{resumeTarget.question.id}</span>
+                  {resumeTarget.question.questionText}
+                </p>
+              </div>
+              <button
+                onClick={onResumeLast}
+                className="shrink-0 flex items-center justify-center space-x-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm rounded-lg transition cursor-pointer shadow-md"
+              >
+                <Play className="w-3.5 h-3.5 fill-current" />
+                <span>続きから開く</span>
+              </button>
+            </div>
+          )}
+
+          {/* Cloud Auto Sync Status Strip */}
+          <div className="bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            {user ? (
+              <>
+                <div className="flex items-center space-x-3 min-w-0">
+                  <div className="p-2 rounded-lg bg-emerald-500/15 border border-emerald-500/30 shrink-0">
+                    <Cloud className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center space-x-2 text-xs font-bold text-emerald-300">
+                      <span>PC ⇔ スマホ 自動リアルタイム同期中</span>
+                      {syncStatus === 'syncing' && (
+                        <span className="text-[11px] text-cyan-300 font-normal">更新中...</span>
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-400 truncate">
+                      {user.email || user.displayName || 'Googleアカウント連携済み'}
+                      {lastSyncedAt ? ` ・ 最終同期 ${new Date(lastSyncedAt).toLocaleTimeString('ja-JP')}` : ''}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2 shrink-0">
+                  {onSyncNow && (
+                    <button
+                      type="button"
+                      onClick={onSyncNow}
+                      className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition cursor-pointer"
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 text-emerald-400 ${syncStatus === 'syncing' ? 'animate-spin' : ''}`} />
+                      <span>今すぐ同期</span>
+                    </button>
+                  )}
+                  {onOpenDataModal && (
+                    <button
+                      type="button"
+                      onClick={onOpenDataModal}
+                      className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-medium transition cursor-pointer"
+                    >
+                      同期設定
+                    </button>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex items-start sm:items-center space-x-3 min-w-0">
+                  <div className="p-2 rounded-lg bg-cyan-500/15 border border-cyan-500/30 shrink-0">
+                    <Cloud className="w-4 h-4 text-cyan-400" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-white">
+                      PC ⇔ スマホ 自動同期（Googleログイン）
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      PCとスマホで同じGoogleアカウントにログインすると、解答履歴・メダル・途中位置を自動同期できます。
+                    </p>
+                    {syncError && (
+                      <p className="text-xs text-rose-300 mt-1 flex items-center space-x-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{syncError}</span>
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2 shrink-0">
+                  {onSignInGoogle && (
+                    <button
+                      type="button"
+                      onClick={onSignInGoogle}
+                      data-testid="dashboard-google-signin-btn"
+                      className="flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition cursor-pointer shadow-sm whitespace-nowrap"
+                    >
+                      <LogIn className="w-3.5 h-3.5" />
+                      <span>Googleでログイン</span>
+                    </button>
+                  )}
+                  {onOpenDataModal && (
+                    <button
+                      type="button"
+                      onClick={onOpenDataModal}
+                      className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs font-semibold transition cursor-pointer whitespace-nowrap"
+                    >
+                      引き継ぎコード
+                    </button>
+                  )}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Master Ping-t Stacked Progress Bar */}
@@ -329,7 +494,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   className="flex items-center justify-center space-x-1.5 py-1.5 px-3 bg-blue-600/90 hover:bg-blue-600 text-white rounded-lg text-xs font-semibold transition cursor-pointer"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>演習開始</span>
+                  <span>{cat.unanswered < cat.total ? '続きから再開' : '演習開始'}</span>
                 </button>
 
                 {cat.unanswered > 0 ? (
@@ -372,10 +537,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {PART_LIST.map(part => {
-            const partQuestions = ALL_QUESTIONS.filter(q => q.part.toLowerCase() === part.id.toLowerCase());
+            const partQuestions = ALL_QUESTIONS.filter(q =>
+              part.id === 'simulation'
+                ? q.type === 'simulation' || q.part.toLowerCase().includes('sim')
+                : q.part.toLowerCase() === part.id.toLowerCase()
+            );
             let gold = 0;
+            let attempted = 0;
             partQuestions.forEach(q => {
-              if (records[q.id]?.medal === 'gold') gold++;
+              const rec = records[q.id];
+              if (rec && rec.totalAttempts > 0) attempted++;
+              if (rec?.medal === 'gold') gold++;
             });
             const percent = part.count > 0 ? Math.round((gold / part.count) * 100) : 0;
 
@@ -399,9 +571,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   </p>
                 </div>
                 <div className="mt-2.5 flex items-center justify-between text-xs text-slate-400">
-                  <span>収録: <strong>{part.count}</strong> 問</span>
+                  <span>進捗: <strong>{attempted}</strong> / {part.count} 問</span>
                   <span className="text-blue-400 group-hover:translate-x-0.5 transition-transform text-[11px] font-medium flex items-center">
-                    解く →
+                    {attempted > 0 ? '続きから →' : '解く →'}
                   </span>
                 </div>
               </div>

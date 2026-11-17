@@ -9,16 +9,18 @@ import { DataManagementModal } from './components/DataManagementModal';
 import { useStudyState } from './hooks/useStudyState';
 import { ALL_QUESTIONS, CATEGORIES, PART_LIST } from './data';
 import { QuestionItem, MedalStatus, StudyFilter } from './types/question';
+import {
+  filterQuestionsPool,
+  findResumeQuestionId,
+  getResumeScopeKey,
+  resolveActiveSolverPool,
+} from './utils/studyResumeAndSync';
 import { 
   Filter, 
-  RotateCcw, 
   Play, 
-  Layers, 
-  Terminal, 
   Award, 
   CheckCircle, 
   Bookmark, 
-  AlertCircle,
   Shuffle,
   ChevronRight
 } from 'lucide-react';
@@ -26,8 +28,19 @@ import {
 export default function App() {
   const {
     records,
+    resumeState,
     stats,
+    user,
+    syncStatus,
+    syncError,
+    lastSyncedAt,
+    fatalError,
+    signInWithGoogle,
+    signOutCloud,
+    syncNow,
     recordAnswer,
+    markQuestionVisited,
+    markQuestionAnswered,
     toggleBookmark,
     saveUserNote,
     resetProgress,
@@ -36,7 +49,13 @@ export default function App() {
     downloadQuestionsJsonOnly,
     downloadProjectZip,
     importProgress,
+    generateSyncCode,
+    importSyncCode,
   } = useStudyState();
+
+  if (fatalError) {
+    throw fatalError;
+  }
 
   // Navigation tab state
   const [currentTab, setCurrentTab] = useState<'dashboard' | 'drill' | 'simulation' | 'exam' | 'mistakes' | 'bookmarks'>('dashboard');
@@ -52,6 +71,7 @@ export default function App() {
   });
 
   const [activeQuestionId, setActiveQuestionId] = useState<string | null>(null);
+  const [solverSessionIds, setSolverSessionIds] = useState<string[] | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDataModalOpen, setIsDataModalOpen] = useState(false);
 
@@ -67,64 +87,119 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Filtered questions pool
+  // Filtered questions pool (live list view)
   const filteredQuestions = useMemo(() => {
-    let pool = [...ALL_QUESTIONS];
+    return filterQuestionsPool(ALL_QUESTIONS, activeFilter, records, currentTab);
+  }, [currentTab, activeFilter, records]);
 
-    // Tab specific overrides
-    if (currentTab === 'simulation') {
-      pool = pool.filter(q => q.type === 'simulation' || q.part.toLowerCase().includes('sim'));
-    } else if (currentTab === 'mistakes') {
-      pool = pool.filter(q => records[q.id]?.lastResult === 'incorrect');
-    } else if (currentTab === 'bookmarks') {
-      pool = pool.filter(q => records[q.id]?.isBookmarked);
-    } else {
-      // General drill filter
-      if (activeFilter.category && activeFilter.category !== 'all') {
-        if (activeFilter.category === 'Simulation') {
-          pool = pool.filter(q => q.type === 'simulation' || q.part.toLowerCase().includes('sim'));
-        } else if (activeFilter.category === 'Automation and Programmability') {
-          pool = pool.filter(q => q.category.includes('Automation'));
-        } else {
-          pool = pool.filter(q => q.category === activeFilter.category);
-        }
-      }
+  // Active solver pool (pinned for the current question-solving session so answering
+  // under 'unanswered' or 'mistakes' filters does not immediately remove the current question)
+  const activeSolverQuestions = useMemo(() => {
+    return resolveActiveSolverPool(ALL_QUESTIONS, filteredQuestions, solverSessionIds);
+  }, [filteredQuestions, solverSessionIds]);
 
-      if (activeFilter.part && activeFilter.part !== 'all') {
-        pool = pool.filter(q => q.part.toLowerCase() === activeFilter.part!.toLowerCase());
-      }
+  // Current question index within the active solver pool
+  const currentQuestionIndex = useMemo(() => {
+    if (!activeQuestionId) return 0;
+    const idx = activeSolverQuestions.findIndex(q => q.id === activeQuestionId);
+    return idx >= 0 ? idx : 0;
+  }, [activeQuestionId, activeSolverQuestions]);
 
-      if (activeFilter.medal && activeFilter.medal !== 'all') {
-        pool = pool.filter(q => {
-          const m = records[q.id]?.medal || 'unanswered';
-          return m === activeFilter.medal;
-        });
-      }
+  const currentQuestion = activeSolverQuestions[currentQuestionIndex] || activeSolverQuestions[0];
 
-      if (activeFilter.onlyMistakes) {
-        pool = pool.filter(q => records[q.id]?.lastResult === 'incorrect');
-      }
+  // Track last visited question whenever solver view opens a question
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentTab, activeQuestionId]);
 
-      if (activeFilter.onlyBookmarked) {
-        pool = pool.filter(q => records[q.id]?.isBookmarked);
-      }
+  useEffect(() => {
+    if (
+      activeQuestionId &&
+      currentQuestion &&
+      (currentTab === 'drill' ||
+        currentTab === 'simulation' ||
+        currentTab === 'mistakes' ||
+        currentTab === 'bookmarks')
+    ) {
+      markQuestionVisited(currentQuestion.id, currentTab, activeFilter);
+    }
+  }, [activeQuestionId, currentQuestion?.id, currentTab, activeFilter, markQuestionVisited]);
 
-      if (activeFilter.questionType && activeFilter.questionType !== 'all') {
-        pool = pool.filter(q => q.type === activeFilter.questionType);
+  const handleRecordAnswerWithResume = (
+    questionId: string,
+    isCorrect: boolean,
+    selectedAnswers?: string[]
+  ) => {
+    recordAnswer(questionId, isCorrect, selectedAnswers);
+    if (
+      currentTab === 'drill' ||
+      currentTab === 'simulation' ||
+      currentTab === 'mistakes' ||
+      currentTab === 'bookmarks'
+    ) {
+      markQuestionAnswered(questionId, currentTab, activeFilter);
+    }
+  };
+
+  // Compute global resume target for Dashboard
+  const dashboardResumeInfo = useMemo(() => {
+    const last = resumeState.lastGlobal;
+    if (last) {
+      const targetTab = last.tab;
+      const targetFilter = last.filter || { category: 'all', part: 'all', medal: 'all' };
+      const pool = filterQuestionsPool(ALL_QUESTIONS, targetFilter, records, targetTab);
+      const nextId = findResumeQuestionId(pool, last, records);
+      const q = nextId ? ALL_QUESTIONS.find(item => item.id === nextId) : undefined;
+      if (q) {
+        let label = '問題演習';
+        if (targetTab === 'simulation') label = 'シミュレーション演習';
+        else if (targetTab === 'mistakes') label = 'ミス問題復習';
+        else if (targetTab === 'bookmarks') label = 'チェック問題';
+        else if (targetFilter.part && targetFilter.part !== 'all') label = targetFilter.part.toUpperCase();
+        else if (targetFilter.category && targetFilter.category !== 'all') label = targetFilter.category;
+        return { question: q, tab: targetTab, filter: targetFilter, label };
       }
     }
 
-    return pool;
-  }, [currentTab, activeFilter, records]);
+    // Fallback when user has existing progress (e.g. synced from another device)
+    if (stats.attemptedCount > 0) {
+      const firstUnansweredId = findResumeQuestionId(ALL_QUESTIONS, undefined, records);
+      const q = firstUnansweredId ? ALL_QUESTIONS.find(item => item.id === firstUnansweredId) : undefined;
+      if (q) {
+        return {
+          question: q,
+          tab: 'drill' as const,
+          filter: { category: 'all', part: 'all', medal: 'all' } as StudyFilter,
+          label: '未出題の問題',
+        };
+      }
+    }
 
-  // Current question index within the active filtered pool
-  const currentQuestionIndex = useMemo(() => {
-    if (!activeQuestionId) return 0;
-    const idx = filteredQuestions.findIndex(q => q.id === activeQuestionId);
-    return idx >= 0 ? idx : 0;
-  }, [activeQuestionId, filteredQuestions]);
+    return null;
+  }, [resumeState, records, stats.attemptedCount]);
 
-  const currentQuestion = filteredQuestions[currentQuestionIndex] || filteredQuestions[0];
+  const openSolverWithPool = (pool: QuestionItem[], targetQuestionId: string) => {
+    setSolverSessionIds(pool.map(q => q.id));
+    setActiveQuestionId(targetQuestionId);
+  };
+
+  const exitSolverToList = () => {
+    setActiveQuestionId(null);
+    setSolverSessionIds(null);
+  };
+
+  const handleResumeLastSession = () => {
+    if (!dashboardResumeInfo) return;
+    const pool = filterQuestionsPool(
+      ALL_QUESTIONS,
+      dashboardResumeInfo.filter,
+      records,
+      dashboardResumeInfo.tab
+    );
+    setActiveFilter(dashboardResumeInfo.filter);
+    setCurrentTab(dashboardResumeInfo.tab);
+    openSolverWithPool(pool.length > 0 ? pool : [dashboardResumeInfo.question], dashboardResumeInfo.question.id);
+  };
 
   // Quick navigation handlers
   const handleStartDrillWithFilter = (filterParams: {
@@ -135,63 +210,72 @@ export default function App() {
     onlyBookmarked?: boolean;
     isRandom?: boolean;
   }) => {
-    setActiveFilter({
+    const nextFilter: StudyFilter = {
       category: filterParams.category || 'all',
       part: filterParams.part || 'all',
       medal: filterParams.medal || 'all',
       onlyMistakes: filterParams.onlyMistakes || false,
       onlyBookmarked: filterParams.onlyBookmarked || false,
-    });
-
+      questionType: 'all',
+    };
+    setActiveFilter(nextFilter);
     setCurrentTab('drill');
 
-    // If random requested or target category has questions, pick target question
-    setTimeout(() => {
-      let pool = ALL_QUESTIONS;
-      if (filterParams.category && filterParams.category !== 'all') {
-        if (filterParams.category === 'Simulation') {
-          pool = pool.filter(q => q.type === 'simulation' || q.part.toLowerCase().includes('sim'));
-        } else {
-          pool = pool.filter(q => q.category === filterParams.category);
-        }
+    const pool = filterQuestionsPool(ALL_QUESTIONS, nextFilter, records, 'drill');
+    if (pool.length > 0) {
+      if (filterParams.isRandom) {
+        const rand = pool[Math.floor(Math.random() * pool.length)];
+        openSolverWithPool(pool, rand.id);
+      } else {
+        const scopeKey = getResumeScopeKey('drill', nextFilter);
+        const resumeId = findResumeQuestionId(pool, resumeState.byScope[scopeKey], records);
+        openSolverWithPool(pool, resumeId || pool[0].id);
       }
-      if (filterParams.medal && filterParams.medal !== 'all') {
-        pool = pool.filter(q => (records[q.id]?.medal || 'unanswered') === filterParams.medal);
-      }
-      if (filterParams.onlyMistakes) {
-        pool = pool.filter(q => records[q.id]?.lastResult === 'incorrect');
-      }
+    } else {
+      exitSolverToList();
+    }
+  };
 
-      if (pool.length > 0) {
-        if (filterParams.isRandom) {
-          const rand = pool[Math.floor(Math.random() * pool.length)];
-          setActiveQuestionId(rand.id);
-        } else {
-          setActiveQuestionId(pool[0].id);
-        }
-      }
-    }, 50);
+  const handleResumeCurrentPool = () => {
+    if (filteredQuestions.length === 0) return;
+    if (
+      currentTab === 'drill' ||
+      currentTab === 'simulation' ||
+      currentTab === 'mistakes' ||
+      currentTab === 'bookmarks'
+    ) {
+      const scopeKey = getResumeScopeKey(currentTab, activeFilter);
+      const resumeId = findResumeQuestionId(filteredQuestions, resumeState.byScope[scopeKey], records);
+      openSolverWithPool(filteredQuestions, resumeId || filteredQuestions[0].id);
+    }
   };
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < filteredQuestions.length - 1) {
-      setActiveQuestionId(filteredQuestions[currentQuestionIndex + 1].id);
+    if (currentQuestionIndex < activeSolverQuestions.length - 1) {
+      setActiveQuestionId(activeSolverQuestions[currentQuestionIndex + 1].id);
     }
   };
 
   const handlePrevQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setActiveQuestionId(filteredQuestions[currentQuestionIndex - 1].id);
+      setActiveQuestionId(activeSolverQuestions[currentQuestionIndex - 1].id);
     }
   };
 
   const handleSelectDirectQuestion = (q: QuestionItem) => {
-    setActiveQuestionId(q.id);
-    if (q.type === 'simulation') {
-      setCurrentTab('simulation');
-    } else {
-      setCurrentTab('drill');
-    }
+    const targetTab = q.type === 'simulation' ? 'simulation' : 'drill';
+    const nextFilter: StudyFilter = {
+      category: 'all',
+      part: 'all',
+      medal: 'all',
+      onlyMistakes: false,
+      onlyBookmarked: false,
+      questionType: 'all',
+    };
+    setActiveFilter(nextFilter);
+    setCurrentTab(targetTab);
+    const pool = filterQuestionsPool(ALL_QUESTIONS, nextFilter, records, targetTab);
+    openSolverWithPool(pool.length > 0 ? pool : [q], q.id);
   };
 
   return (
@@ -201,9 +285,12 @@ export default function App() {
         currentTab={currentTab}
         onSelectTab={(tab) => {
           setCurrentTab(tab);
-          setActiveQuestionId(null);
+          exitSolverToList();
         }}
         stats={stats}
+        user={user}
+        syncStatus={syncStatus}
+        onSignInGoogle={signInWithGoogle}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenDataModal={() => setIsDataModalOpen(true)}
         onDownloadQuestionsJson={downloadQuestionsJsonOnly}
@@ -217,12 +304,21 @@ export default function App() {
           <Dashboard
             stats={stats}
             records={records}
+            resumeTarget={dashboardResumeInfo}
+            user={user}
+            syncStatus={syncStatus}
+            syncError={syncError}
+            lastSyncedAt={lastSyncedAt}
+            onSignInGoogle={signInWithGoogle}
+            onSyncNow={syncNow}
+            onResumeLast={handleResumeLastSession}
             onStartDrill={handleStartDrillWithFilter}
             onStartExam={() => setCurrentTab('exam')}
             onStartSimulation={() => {
               setCurrentTab('simulation');
-              setActiveQuestionId(null);
+              exitSolverToList();
             }}
+            onOpenDataModal={() => setIsDataModalOpen(true)}
             onExportAllWithHistory={exportAllDataWithHistory}
             onDownloadQuestionsJson={downloadQuestionsJsonOnly}
           />
@@ -243,28 +339,30 @@ export default function App() {
             {activeQuestionId && currentQuestion ? (
               currentQuestion.type === 'simulation' ? (
                 <SimulationCard
+                  key={currentQuestion.id}
                   question={currentQuestion}
                   record={records[currentQuestion.id]}
                   currentIndex={currentQuestionIndex}
-                  totalQuestions={filteredQuestions.length}
-                  onAnswer={recordAnswer}
+                  totalQuestions={activeSolverQuestions.length}
+                  onAnswer={handleRecordAnswerWithResume}
                   onToggleBookmark={toggleBookmark}
                   onNext={handleNextQuestion}
                   onPrev={handlePrevQuestion}
-                  onBackToList={() => setActiveQuestionId(null)}
+                  onBackToList={exitSolverToList}
                 />
               ) : (
                 <QuestionCard
+                  key={currentQuestion.id}
                   question={currentQuestion}
                   record={records[currentQuestion.id]}
                   currentIndex={currentQuestionIndex}
-                  totalQuestions={filteredQuestions.length}
-                  onAnswer={recordAnswer}
+                  totalQuestions={activeSolverQuestions.length}
+                  onAnswer={handleRecordAnswerWithResume}
                   onToggleBookmark={toggleBookmark}
                   onSaveNote={saveUserNote}
                   onNext={handleNextQuestion}
                   onPrev={handlePrevQuestion}
-                  onBackToList={() => setActiveQuestionId(null)}
+                  onBackToList={exitSolverToList}
                 />
               )
             ) : (
@@ -283,21 +381,31 @@ export default function App() {
                       </h2>
                     </div>
 
-                    <div className="flex items-center space-x-3">
+                    <div className="flex flex-wrap items-center gap-2.5">
                       <span className="text-xs text-slate-400">
                         対象: <strong className="text-white">{filteredQuestions.length}</strong> 問
                       </span>
                       {filteredQuestions.length > 0 && (
-                        <button
-                          onClick={() => {
-                            const rand = filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
-                            setActiveQuestionId(rand.id);
-                          }}
-                          className="flex items-center space-x-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition cursor-pointer"
-                        >
-                          <Shuffle className="w-3.5 h-3.5" />
-                          <span>ランダム出題</span>
-                        </button>
+                        <>
+                          <button
+                            onClick={handleResumeCurrentPool}
+                            data-testid="pool-resume-btn"
+                            className="flex items-center space-x-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-extrabold transition cursor-pointer shadow-sm"
+                          >
+                            <Play className="w-3.5 h-3.5 fill-current" />
+                            <span>続きから再開</span>
+                          </button>
+                          <button
+                            onClick={() => {
+                              const rand = filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
+                              openSolverWithPool(filteredQuestions, rand.id);
+                            }}
+                            className="flex items-center space-x-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition cursor-pointer"
+                          >
+                            <Shuffle className="w-3.5 h-3.5" />
+                            <span>ランダム出題</span>
+                          </button>
+                        </>
                       )}
                     </div>
                   </div>
@@ -393,7 +501,7 @@ export default function App() {
                       return (
                         <div
                           key={q.id}
-                          onClick={() => setActiveQuestionId(q.id)}
+                          onClick={() => openSolverWithPool(filteredQuestions, q.id)}
                           className="bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl shadow-md transition cursor-pointer flex flex-col justify-between group hover:shadow-cyan-500/10"
                         >
                           <div className="space-y-2">
@@ -488,6 +596,15 @@ export default function App() {
         totalRecords={Object.keys(records).length}
         onDownloadQuestionsJson={downloadQuestionsJsonOnly}
         onDownloadProjectZip={downloadProjectZip}
+        onGenerateSyncCode={generateSyncCode}
+        onImportSyncCode={importSyncCode}
+        user={user}
+        syncStatus={syncStatus}
+        syncError={syncError}
+        lastSyncedAt={lastSyncedAt}
+        onSignInGoogle={signInWithGoogle}
+        onSignOutCloud={signOutCloud}
+        onSyncNow={syncNow}
       />
     </div>
   );

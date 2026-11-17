@@ -1,0 +1,394 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global safety net: default-deny all reads and writes unless explicitly matched below.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Reusable Security & Schema Primitives ---
+
+    function isValidId(id) {
+      return id is string
+        && id.size() >= 1
+        && id.size() <= 128
+        && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isVerifiedUser() && request.auth.uid == userId;
+    }
+
+    function parentUserExists(userId) {
+      return exists(/databases/$(database)/documents/users/$(userId));
+    }
+
+    // --- Validation Blueprints (Synchronized with firebase-blueprint.json) ---
+
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll([
+          'uid',
+          'displayName',
+          'email',
+          'photoURL',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid',
+          'displayName',
+          'email',
+          'photoURL',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.uid)
+        && data.uid == userId
+        && data.uid == request.auth.uid
+        && data.displayName is string
+        && data.displayName.size() <= 100
+        && data.email is string
+        && data.email.size() <= 200
+        && data.photoURL is string
+        && data.photoURL.size() <= 500
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidQuestionProgress(data, userId, questionId) {
+      return data.keys().hasAll([
+          'uid',
+          'questionId',
+          'medal',
+          'consecutiveCorrect',
+          'totalAttempts',
+          'correctCount',
+          'incorrectCount',
+          'lastAttemptAt',
+          'lastResult',
+          'isBookmarked',
+          'userNote',
+          'lastSelectedAnswers',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid',
+          'questionId',
+          'medal',
+          'consecutiveCorrect',
+          'totalAttempts',
+          'correctCount',
+          'incorrectCount',
+          'lastAttemptAt',
+          'lastResult',
+          'isBookmarked',
+          'userNote',
+          'lastSelectedAnswers',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.uid)
+        && data.uid == userId
+        && data.uid == request.auth.uid
+        && isValidId(data.questionId)
+        && data.questionId == questionId
+        && data.medal in ['unanswered', 'bronze', 'silver', 'gold']
+        && data.consecutiveCorrect is int
+        && data.consecutiveCorrect >= 0
+        && data.consecutiveCorrect <= 100000
+        && data.totalAttempts is int
+        && data.totalAttempts >= 0
+        && data.totalAttempts <= 1000000
+        && data.correctCount is int
+        && data.correctCount >= 0
+        && data.correctCount <= 1000000
+        && data.incorrectCount is int
+        && data.incorrectCount >= 0
+        && data.incorrectCount <= 1000000
+        && data.lastAttemptAt is int
+        && data.lastAttemptAt >= 0
+        && data.lastResult in ['none', 'correct', 'incorrect']
+        && data.isBookmarked is bool
+        && data.userNote is string
+        && data.userNote.size() <= 2000
+        && data.lastSelectedAnswers is list
+        && data.lastSelectedAnswers.size() <= 20
+        && (
+          data.lastSelectedAnswers.size() == 0
+          || (
+            data.lastSelectedAnswers[0] is string
+            && data.lastSelectedAnswers[0].size() <= 500
+          )
+        )
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidGlobalResumeState(data, userId) {
+      return data.keys().hasAll([
+          'uid',
+          'questionId',
+          'answeredInVisit',
+          'tab',
+          'filterCategory',
+          'filterPart',
+          'filterMedal',
+          'filterQuestionType',
+          'filterOnlyMistakes',
+          'filterOnlyBookmarked',
+          'clientUpdatedAt',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid',
+          'questionId',
+          'answeredInVisit',
+          'tab',
+          'filterCategory',
+          'filterPart',
+          'filterMedal',
+          'filterQuestionType',
+          'filterOnlyMistakes',
+          'filterOnlyBookmarked',
+          'clientUpdatedAt',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.uid)
+        && data.uid == userId
+        && data.uid == request.auth.uid
+        && isValidId(data.questionId)
+        && data.answeredInVisit is bool
+        && data.tab in ['drill', 'simulation', 'mistakes', 'bookmarks']
+        && data.filterCategory is string
+        && data.filterCategory.size() >= 1
+        && data.filterCategory.size() <= 100
+        && data.filterPart is string
+        && data.filterPart.size() >= 1
+        && data.filterPart.size() <= 64
+        && data.filterMedal in ['all', 'unanswered', 'bronze', 'silver', 'gold']
+        && data.filterQuestionType in ['all', 'single_choice', 'multiple_choice', 'drag_and_drop', 'simulation']
+        && data.filterOnlyMistakes is bool
+        && data.filterOnlyBookmarked is bool
+        && data.clientUpdatedAt is int
+        && data.clientUpdatedAt >= 0
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidScopeResumeState(data, userId, scopeId) {
+      return data.keys().hasAll([
+          'uid',
+          'scopeId',
+          'questionId',
+          'answeredInVisit',
+          'clientUpdatedAt',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid',
+          'scopeId',
+          'questionId',
+          'answeredInVisit',
+          'clientUpdatedAt',
+          'createdAt',
+          'updatedAt'
+        ])
+        && isValidId(data.uid)
+        && data.uid == userId
+        && data.uid == request.auth.uid
+        && isValidId(data.scopeId)
+        && data.scopeId == scopeId
+        && isValidId(data.questionId)
+        && data.answeredInVisit is bool
+        && data.clientUpdatedAt is int
+        && data.clientUpdatedAt >= 0
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    // --- Collection Rules ---
+
+    // Owner-only user profile (PII isolated to owner; listing disabled)
+    match /users/{userId} {
+      allow get: if isOwner(userId) && isValidId(userId);
+      allow list: if false;
+
+      allow create: if isOwner(userId)
+        && isValidId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isOwner(userId)
+        && isValidId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'displayName',
+          'email',
+          'photoURL',
+          'updatedAt'
+        ]);
+
+      allow delete: if false;
+
+      // Per-question learning progress subcollection
+      match /progress/{questionId} {
+        allow get: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(questionId)
+          && parentUserExists(userId);
+
+        allow list: if isOwner(userId)
+          && isValidId(userId)
+          && existing().uid == request.auth.uid;
+
+        allow create: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(questionId)
+          && isValidQuestionProgress(incoming(), userId, questionId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+
+        allow update: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(questionId)
+          && isValidQuestionProgress(incoming(), userId, questionId)
+          && parentUserExists(userId)
+          && incoming().uid == existing().uid
+          && incoming().questionId == existing().questionId
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && (
+            incoming().diff(existing()).affectedKeys().hasOnly([
+              'medal',
+              'consecutiveCorrect',
+              'totalAttempts',
+              'correctCount',
+              'incorrectCount',
+              'lastAttemptAt',
+              'lastResult',
+              'isBookmarked',
+              'userNote',
+              'lastSelectedAnswers',
+              'updatedAt'
+            ])
+          );
+
+        allow delete: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(questionId)
+          && parentUserExists(userId);
+      }
+
+      // Global resume checkpoint singleton document
+      match /resume/global {
+        allow get: if isOwner(userId)
+          && isValidId(userId)
+          && parentUserExists(userId);
+
+        allow create: if isOwner(userId)
+          && isValidId(userId)
+          && isValidGlobalResumeState(incoming(), userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+
+        allow update: if isOwner(userId)
+          && isValidId(userId)
+          && isValidGlobalResumeState(incoming(), userId)
+          && parentUserExists(userId)
+          && incoming().uid == existing().uid
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && (
+            incoming().diff(existing()).affectedKeys().hasOnly([
+              'questionId',
+              'answeredInVisit',
+              'tab',
+              'filterCategory',
+              'filterPart',
+              'filterMedal',
+              'filterQuestionType',
+              'filterOnlyMistakes',
+              'filterOnlyBookmarked',
+              'clientUpdatedAt',
+              'updatedAt'
+            ])
+          );
+
+        allow delete: if isOwner(userId)
+          && isValidId(userId)
+          && parentUserExists(userId);
+      }
+
+      // Per-scope resume checkpoints subcollection
+      match /resumeScopes/{scopeId} {
+        allow get: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(scopeId)
+          && parentUserExists(userId);
+
+        allow list: if isOwner(userId)
+          && isValidId(userId)
+          && existing().uid == request.auth.uid;
+
+        allow create: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(scopeId)
+          && isValidScopeResumeState(incoming(), userId, scopeId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+
+        allow update: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(scopeId)
+          && isValidScopeResumeState(incoming(), userId, scopeId)
+          && parentUserExists(userId)
+          && incoming().uid == existing().uid
+          && incoming().scopeId == existing().scopeId
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && (
+            incoming().diff(existing()).affectedKeys().hasOnly([
+              'questionId',
+              'answeredInVisit',
+              'clientUpdatedAt',
+              'updatedAt'
+            ])
+          );
+
+        allow delete: if isOwner(userId)
+          && isValidId(userId)
+          && isValidId(scopeId)
+          && parentUserExists(userId);
+      }
+    }
+  }
+}

@@ -68,7 +68,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   // Reset state when switching question
   useEffect(() => {
     setIsAnswered(false);
-    setSelectedAnswers(record?.lastSelectedAnswers || []);
+    setSelectedAnswers([]);
     setNoteText(record?.userNote || '');
     setDndAssignments({});
     setActiveDragItemId(null);
@@ -637,13 +637,30 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 解答する
               </button>
             ) : (
-              <button
-                onClick={onNext}
-                className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl font-bold shadow-lg shadow-emerald-500/25 transition cursor-pointer text-sm flex items-center justify-center space-x-2"
-              >
-                <span>次の問題へ進む</span>
-                <ChevronRight className="w-4 h-4" />
-              </button>
+              <div className="flex items-center space-x-2.5 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsAnswered(false);
+                    setSelectedAnswers([]);
+                    setDndAssignments({});
+                    setActiveDragItemId(null);
+                    setDragOverTargetId(null);
+                  }}
+                  className="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl font-medium border border-slate-700 transition cursor-pointer text-sm flex items-center justify-center space-x-1.5"
+                  title="選択をクリアしてもう一度解く"
+                >
+                  <RotateCcw className="w-4 h-4 text-slate-400" />
+                  <span>もう一度解く</span>
+                </button>
+                <button
+                  onClick={onNext}
+                  className="flex-1 sm:flex-initial px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl font-bold shadow-lg shadow-emerald-500/25 transition cursor-pointer text-sm flex items-center justify-center space-x-2"
+                >
+                  <span>次の問題へ進む</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             )}
           </div>
         </div>

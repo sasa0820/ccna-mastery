@@ -1,0 +1,316 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated learner profile stored privately for the signed-in owner.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID matching the document ID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name from Google account.",
+          "minLength": 0,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified Google account email (owner-only PII).",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Profile avatar URL from Google account.",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when profile was first created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when profile was last updated."
+        }
+      },
+      "required": [
+        "uid",
+        "displayName",
+        "email",
+        "photoURL",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "QuestionProgress": {
+      "title": "QuestionProgress",
+      "description": "Per-question CCNA study record (medal, streak, counts, bookmark, user note) synchronized across PC and mobile.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "questionId": {
+          "type": "string",
+          "description": "CCNA question ID matching the document ID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "medal": {
+          "type": "string",
+          "description": "Ping-t mastery medal status.",
+          "enum": ["unanswered", "bronze", "silver", "gold"]
+        },
+        "consecutiveCorrect": {
+          "type": "integer",
+          "description": "Consecutive correct answer streak."
+        },
+        "totalAttempts": {
+          "type": "integer",
+          "description": "Total number of attempts for this question."
+        },
+        "correctCount": {
+          "type": "integer",
+          "description": "Cumulative correct answer count."
+        },
+        "incorrectCount": {
+          "type": "integer",
+          "description": "Cumulative incorrect answer count."
+        },
+        "lastAttemptAt": {
+          "type": "integer",
+          "description": "Client epoch milliseconds of the most recent attempt (0 if none)."
+        },
+        "lastResult": {
+          "type": "string",
+          "description": "Result of the most recent attempt.",
+          "enum": ["none", "correct", "incorrect"]
+        },
+        "isBookmarked": {
+          "type": "boolean",
+          "description": "Whether the question is bookmarked for review."
+        },
+        "userNote": {
+          "type": "string",
+          "description": "Personal study note authored by the user.",
+          "minLength": 0,
+          "maxLength": 2000
+        },
+        "lastSelectedAnswers": {
+          "type": "array",
+          "description": "Most recent selected answer IDs/values (max 20 items)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when record was first created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when record was last updated."
+        }
+      },
+      "required": [
+        "uid",
+        "questionId",
+        "medal",
+        "consecutiveCorrect",
+        "totalAttempts",
+        "correctCount",
+        "incorrectCount",
+        "lastAttemptAt",
+        "lastResult",
+        "isBookmarked",
+        "userNote",
+        "lastSelectedAnswers",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "GlobalResumeState": {
+      "title": "GlobalResumeState",
+      "description": "Last active study question and filter context so the user can resume from the exact question on any device.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "questionId": {
+          "type": "string",
+          "description": "Last visited or answered question ID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "answeredInVisit": {
+          "type": "boolean",
+          "description": "Whether the user submitted an answer on this visit."
+        },
+        "tab": {
+          "type": "string",
+          "description": "Active study tab.",
+          "enum": ["drill", "simulation", "mistakes", "bookmarks"]
+        },
+        "filterCategory": {
+          "type": "string",
+          "description": "Active category filter.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "filterPart": {
+          "type": "string",
+          "description": "Active PDF part filter.",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "filterMedal": {
+          "type": "string",
+          "description": "Active medal filter.",
+          "enum": ["all", "unanswered", "bronze", "silver", "gold"]
+        },
+        "filterQuestionType": {
+          "type": "string",
+          "description": "Active question type filter.",
+          "enum": ["all", "single_choice", "multiple_choice", "drag_and_drop", "simulation"]
+        },
+        "filterOnlyMistakes": {
+          "type": "boolean",
+          "description": "Only-mistakes filter flag."
+        },
+        "filterOnlyBookmarked": {
+          "type": "boolean",
+          "description": "Only-bookmarked filter flag."
+        },
+        "clientUpdatedAt": {
+          "type": "integer",
+          "description": "Client epoch milliseconds timestamp for cross-device tie-breaking."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when resume document was first created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when resume document was last updated."
+        }
+      },
+      "required": [
+        "uid",
+        "questionId",
+        "answeredInVisit",
+        "tab",
+        "filterCategory",
+        "filterPart",
+        "filterMedal",
+        "filterQuestionType",
+        "filterOnlyMistakes",
+        "filterOnlyBookmarked",
+        "clientUpdatedAt",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ScopeResumeState": {
+      "title": "ScopeResumeState",
+      "description": "Per-scope (category, part, or tab) resume checkpoint for continuing partway through any filter pool.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scopeId": {
+          "type": "string",
+          "description": "Sanitized scope identifier matching the document ID.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "questionId": {
+          "type": "string",
+          "description": "Last visited or answered question ID in this scope.",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "answeredInVisit": {
+          "type": "boolean",
+          "description": "Whether the user submitted an answer on this visit."
+        },
+        "clientUpdatedAt": {
+          "type": "integer",
+          "description": "Client epoch milliseconds timestamp for cross-device merge."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when scope checkpoint was first created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when scope checkpoint was last updated."
+        }
+      },
+      "required": [
+        "uid",
+        "scopeId",
+        "questionId",
+        "answeredInVisit",
+        "clientUpdatedAt",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Private owner-only user profile document containing verified identity metadata."
+    },
+    "/users/{userId}/progress/{questionId}": {
+      "schema": {
+        "$ref": "#/entities/QuestionProgress"
+      },
+      "description": "Owner-only per-question CCNA learning progress records synchronized across devices."
+    },
+    "/users/{userId}/resume/global": {
+      "schema": {
+        "$ref": "#/entities/GlobalResumeState"
+      },
+      "description": "Owner-only single document storing the latest global study resume checkpoint."
+    },
+    "/users/{userId}/resumeScopes/{scopeId}": {
+      "schema": {
+        "$ref": "#/entities/ScopeResumeState"
+      },
+      "description": "Owner-only per-filter-scope resume checkpoints for continuing each part or domain."
+    }
+  }
+}
